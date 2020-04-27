@@ -1,0 +1,5 @@
+include README.md
+include LICENSE
+recursive-include docs *
+recursive-include garb/static *
+recursive-include garb/templates *
