@@ -1,0 +1,85 @@
+@color-title:  #21125E;
+@color1: #2196f3;
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+}
+body {
+	-webkit-font-smoothing: antialiased;
+	background-color: #F1F6F6;
+	font-family: "Inter", "Roboto", sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.43;
+}
+input, button, textarea {
+	animation-name: MuiInputBase-keyframes-auto-fill-cancel;
+	background: white;
+	border: 0;
+	box-sizing: content-box;
+	color: currentColor;
+	display: block;
+	font-family: "Inter", "Roboto", sans-serif;
+	font-size: 18px;
+	font: inherit;
+	height: 1.1875em;
+	margin: 0;
+	min-width: 0;
+	padding: 6px 0 7px;
+    width: 100%;
+}
+a {
+	text-decoration: none;
+	
+	transition: filter 0.2s;
+	&:hover {
+		filter: brightness(90%);
+	}
+}
+.layout-container {
+	header {
+		align-items: stretch;
+		display: flex;
+		height: 70px;
+		justify-content: space-between;
+		text-align: center;
+		.titulo {
+			align-items: center;
+			background-color: @color-title;
+			border-right: 1px solid rgba(0,0,0,.15);
+			display: flex;
+			width: 230px;
+			h1 {
+				color: white;
+				font-family: "Exo", sans-serif;
+				font-size: 1.5rem;
+				font-style: italic;
+				font-weight: 900;
+				margin: 0px;
+                width: 100%;
+			}
+		}
+	}
+	.main {
+		align-items: stretch;
+		display: flex;
+		display: flex;
+		justify-content: left;
+		margin: auto 0;
+		min-height: 100vh;
+        width: 100%;
+		section {
+			flex-grow: 1;
+			min-height: 100vh;
+		}
+		#content {
+			margin: 0 5%;
+		}
+	}
+}
+
+@import "./menu.less";
+@import "./login.less";

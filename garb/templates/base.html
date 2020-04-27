@@ -1,0 +1,56 @@
+{% load garb_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+        <title>{{ title|default_if_none:None|garb_title }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
+        <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.0/css/solid.css">
+        <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.0/css/fontawesome.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        {% block extrastyle %}{% endblock %}
+    </head>
+    <body>
+        <div class="layout-container">
+            <header>
+                <div class="titulo">
+                    <h1>{{ None|garb_title }}</h1>
+                </div>
+                {% block login %}
+                    <div class="login dropdown show">
+                        {% if user.is_authenticated %}
+                            <a class="dropdown-toggle" href="/#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ user.username }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                {% block login_menu %}
+                                    <a class="dropdown-item" href="/#"><i class="fas fa-user-circle"></i>Perfil</a>
+                                {% endblock %}
+                                <a class="dropdown-item" href="{% url 'admin:logout' %}"><i class="fas fa-sign-out-alt"> </i>Sair</a>
+                            </div>
+                        {% else %}
+                            <a class="login-button" href="{% url 'admin:login' %}" >
+                                <i class="fas fa-sign-in-alt"> </i>LOGAR 
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endblock %}
+            </header>
+            <div class="main">
+                {% block sidebar %}
+                    {% include 'garb/menu.html' %}
+                {% endblock %}
+                <section id="content">
+                    {% block content %} {% endblock %}
+                </section>
+            </div>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+    {% block extrajs %}{% endblock %}
+</html>

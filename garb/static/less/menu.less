@@ -1,0 +1,77 @@
+.layout-container {
+	.main {
+		.menu {
+			background-color: #f8f8f8;
+			border-right: 1px solid rgba(0,0,0,.15);
+			border-top: 4px solid @color1;
+			font-size: 1.2em;
+			font-weight: 400;
+			height: 100%;
+			overflow: auto;
+			padding-bottom: 6em;
+			top: 0;
+			visibility: visible;
+			width: 230px;
+			a {
+				&:hover {
+					background-color: #f4f4f4;
+					transition: all 0.6s ease;
+				}
+			}
+			ul {
+				li {
+					display: inline-block;
+					width: 100%;
+					a {
+						border-bottom: 1px solid #ededed;
+						color: #000000;;
+						display: block;
+						font-size: 0.75em;
+						height: 50px;
+						padding: 1.05em 1em 1.05em 0.5em;
+						position: relative;
+						text-decoration: none;
+						text-transform: uppercase;
+						&:after {
+							color: #000000;;
+							font-family: "Font Awesome 5 Free";
+							font-size: 1.4em;
+							position: absolute;
+							right: 10px;
+							top: 15px;
+							width: 10px;
+						}
+					}
+					a[aria-expanded="false"] {
+						&:after {
+							content: "\f105";
+						}
+					}
+					a[aria-expanded="true"] {
+						&:after {
+							content: "\f107";
+						}
+					}
+					ul {
+						li {
+							a {
+								background: #ffffff;
+								padding-left: 25px;
+							}
+						}
+						li.active {
+							border-left: 4px solid @color1;
+						}
+					}
+				}
+			}
+			i {
+				font-size: 18px !important;
+				margin-right: 0.2em;
+				padding-right: 0.1em;
+				padding-top: 0.1em;
+				width: 30px !important;
+			}
+		}
+	}
+}
