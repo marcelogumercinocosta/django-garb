@@ -1,0 +1,146 @@
+.layout-container {
+    header {
+        .headerlogin {
+            margin: 15px 65px 15px 15px;
+            .button {
+				text-decoration: none;
+                i {
+                    margin-right: 15px;
+                }
+			}
+			.loginmenu {
+				a {
+					background-color: #ffffff;
+					color: black;
+					text-decoration: none;
+					&:hover {
+						background-color: #f4f4f4;
+						transition: all 0.6s ease;
+						box-shadow: none;
+						transform: none
+					}
+				}
+				.dropdown-toggle {
+					width: 230px;
+					text-align: right;
+					&:after {
+						border: none;
+						font-family: "Font Awesome 5 Free";
+						font-size: 1.4em;
+						margin-left: 0.4em;
+						top: 15px;
+						vertical-align: -4px;
+						width: 10px;
+					}
+				}		
+				.dropdown-toggle[aria-expanded="false"] {
+					&:after {
+						content: "\f107";
+						transition: all 0.6s ease;
+					}
+				}
+				.dropdown-toggle[aria-expanded="true"] {
+					&:after {
+						content: "\f106";
+						transition: all 0.6s ease;
+					}
+				}
+				.dropdown-menu {
+					border: 1px solid rgba(0, 0, 0, .15);
+					font-size: 14px;
+					margin: 0.15rem 0 0 0;
+					padding: 5px;
+					width: 230px;
+				}
+				.dropdown-item {
+					border-radius: 5px;
+					border: none;
+					i {
+						margin-right: 15px;
+					}
+					&:hover {
+						background-color: #f4f4f4;
+						transition: all 0.6s ease;
+					}
+				}
+			}
+		}
+    }
+    .main {
+        .sidebarlogin {
+            background-color: @color-title;
+            border-right: 1px solid rgba(0, 0, 0, .15);
+            flex: 0 0 230px;
+		}
+		.content {
+			.logincontent {
+				align-items: center;
+				justify-content: center;
+				display: flex;
+				flex-flow: row;
+				flex-wrap: wrap;
+				height: 100%;
+				margin-top: -70px;
+				.loginboxes { 
+					flex: 0 0 35%;
+					.loginbox {
+						background-color: #fff;
+						border:  1px solid rgba(0, 0, 0, .15);
+						border-left: 6px solid @color1;
+						border-radius: 5px;
+						padding-top: 3em;
+						form {
+							padding: 21px 3em;
+						}
+						.login_input {
+							width: 100%;
+							label {
+								font-size: 11px;
+								color: #666666;
+								line-height: 1.2;
+								text-transform: uppercase;
+								padding: 15px 0 5px 0px;
+								display: block;
+								margin: 0;
+								width: 100%;
+							}
+							input {
+								padding: 5px 20px;
+								width: 100%;
+							}
+							input[type="submit"]{
+								padding: 10px 25px;
+								text-decoration: none;
+							}
+						}
+						.forGotPassword {
+							background-color: #F2F2F2;;
+							text-align: center;
+							font-size: 12px;
+							padding: 5px;
+							a {
+								text-decoration: none;
+								color: #666666;
+								outline: none;
+								&:hover {
+									color: #000;
+									text-decoration: bold;
+								}
+							}
+							&:hover {
+								background-color: #D5D7D8;
+							}
+						}
+					}
+					.loginbox_error {
+						background-color: #fff;
+						border:  1px solid rgba(0, 0, 0, .15);
+						border-left: 6px solid red;
+						border-radius: 5px;
+					}
+				}
+			}
+		}
+    }
+}
+

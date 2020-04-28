@@ -1,5 +1,4 @@
-{% load garb_tags %}
-{% load static %}
+{% load i18n static garb_tags %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -15,38 +14,48 @@
     </head>
     <body>
         <div class="layout-container">
-            <header>
-                <div class="titulo">
-                    <h1>{{ None|garb_title }}</h1>
-                </div>
-                {% block login %}
-                    <div class="login dropdown show">
-                        {% if user.is_authenticated %}
-                            <a class="dropdown-toggle" href="/#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ user.username }}
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                {% block login_menu %}
-                                    <a class="dropdown-item" href="/#"><i class="fas fa-user-circle"></i>Perfil</a>
-                                {% endblock %}
-                                <a class="dropdown-item" href="{% url 'admin:logout' %}"><i class="fas fa-sign-out-alt"> </i>Sair</a>
-                            </div>
-                        {% else %}
-                            <a class="login-button" href="{% url 'admin:login' %}" >
-                                <i class="fas fa-sign-in-alt"> </i>LOGAR 
-                            </a>
-                        {% endif %}
+            {% block header %}
+                <header>
+                    <div class="titulo">
+                        <a href="/">
+                            <h1>{{ None|garb_title }}</h1>
+                        </a>
                     </div>
-                {% endblock %}
-            </header>
-            <div class="main">
-                {% block sidebar %}
-                    {% include 'garb/menu.html' %}
-                {% endblock %}
-                <section id="content">
-                    {% block content %} {% endblock %}
-                </section>
-            </div>
+                    {% block login %}
+                        <div class="headerlogin dropdown show">
+                            {% if user.is_authenticated %}
+                                <div class="loginmenu">
+                                    <a class="button dropdown-toggle" href="/#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{ user.username }}
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        {% block login_menu %}
+                                            <a class="dropdown-item button" href="/#"><i class="fas fa-user-circle"></i>Perfil</a>
+                                        {% endblock %}
+                                        <a class="dropdown-item button" href="{% url 'admin:logout' %}"><i class="fas fa-sign-out-alt"> </i>Sair</a>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <a class="button" href="{% url 'admin:login' %}" >
+                                    <i class="fas fa-sign-in-alt"></i>{% trans 'Log in' %}
+                                </a>
+                            {% endif %}
+                        </div>
+                    {% endblock %}
+                </header>
+            {% endblock %}
+            {% block main %}
+                <div class="main">
+                    {% block sidebar %}
+                        <aside class="sidebar">
+                            {% include 'garb/menu.html' %}
+                        </aside>
+                    {% endblock %}
+                    <section class="content">
+                        {% block content %} {% endblock %}
+                    </section>
+                </div>
+            {% endblock %}
         </div>
     </body>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

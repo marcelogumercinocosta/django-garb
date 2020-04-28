@@ -15,30 +15,38 @@ body {
 	font-weight: 400;
 	line-height: 1.43;
 }
-input, button, textarea {
-	animation-name: MuiInputBase-keyframes-auto-fill-cancel;
-	background: white;
-	border: 0;
-	box-sizing: content-box;
-	color: currentColor;
-	display: block;
-	font-family: "Inter", "Roboto", sans-serif;
-	font-size: 18px;
-	font: inherit;
-	height: 1.1875em;
-	margin: 0;
-	min-width: 0;
-	padding: 6px 0 7px;
-    width: 100%;
-}
 a {
 	text-decoration: none;
-	
-	transition: filter 0.2s;
+	color: #000;
+}
+.button {
+	background-color: @color1;
+	color: #ffffff;
+	border-radius: 5px;
+	border: 1px solid rgba(0, 0, 0, .15);
+	display: block;
+	font-size: 16px;
+	min-width: 10rem;
+	padding: 10px 25px;
+	text-decoration: none;
+	cursor: pointer;
 	&:hover {
-		filter: brightness(90%);
+		color: #ffffff;
+		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+		transform: translateY(-2px);
 	}
 }
+
+.site-name-azul {
+	color: @color-title;
+	font-family: "Exo", sans-serif;
+	font-size: 1.5rem;
+	font-style: italic;
+	font-weight: 900;
+	margin: 0px;
+	text-align: center;
+}
+
 .layout-container {
 	header {
 		align-items: stretch;
@@ -59,27 +67,28 @@ a {
 				font-style: italic;
 				font-weight: 900;
 				margin: 0px;
-                width: 100%;
+			}
+			a {
+				width: 100%;
+				text-decoration: none;
 			}
 		}
 	}
 	.main {
-		align-items: stretch;
-		display: flex;
 		display: flex;
 		justify-content: left;
 		margin: auto 0;
-		min-height: 100vh;
-        width: 100%;
-		section {
-			flex-grow: 1;
-			min-height: 100vh;
+		min-height: calc( 100vh - 70px);
+		.sidebar {
+			flex: 0 0 230px;
 		}
-		#content {
-			margin: 0 5%;
+		.content {
+			flex: 1;
+			margin: 0 3%;
 		}
 	}
 }
 
+@import "./input.less";
 @import "./menu.less";
 @import "./login.less";
