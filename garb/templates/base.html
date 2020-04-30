@@ -16,10 +16,13 @@
         <div class="layout-container">
             {% block header %}
                 <header>
-                    <div class="titulo">
-                        <a href="/">
-                            <h1>{{ None|garb_title }}</h1>
-                        </a>
+                    <div>
+                        <div class="titulo">
+                            <a href= {% if user.is_authenticated %} {% url 'admin:index' %} {% else %} "/" {% endif %}>
+                                <h1>{{ None|garb_title }}</h1>
+                            </a>
+                        </div>
+                        {% block breadcrumbs %} {% endblock %}
                     </div>
                     {% block login %}
                         <div class="headerlogin dropdown show">

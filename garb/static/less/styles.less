@@ -49,29 +49,62 @@ a {
 
 .layout-container {
 	header {
-		align-items: stretch;
 		display: flex;
 		height: 70px;
 		justify-content: space-between;
-		text-align: center;
-		.titulo {
-			align-items: center;
-			background-color: @color-title;
-			border-right: 1px solid rgba(0,0,0,.15);
+		div:first-child {
 			display: flex;
-			width: 230px;
-			h1 {
-				color: white;
-				font-family: "Exo", sans-serif;
-				font-size: 1.5rem;
-				font-style: italic;
-				font-weight: 900;
-				margin: 0px;
+			.titulo {
+				background-color: @color-title;
+				border-right: 1px solid rgba(0,0,0,.15);
+				width: 230px;
+				a {
+					width: 100%;
+					text-decoration: none;
+					h1 {
+						height: 100%;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						color: white;
+						font-family: "Exo", sans-serif;
+						font-size: 1.5rem;
+						font-style: italic;
+						font-weight: 900;
+						margin: 0px;
+					}
+				}
 			}
-			a {
-				width: 100%;
-				text-decoration: none;
+			.breadcrumb {
+				height: 100%;
+				align-items: flex-end;
+				margin: 0;
+				padding: 3px 4em;
+				flex-wrap: nowrap;
+				font-size: 24px;
+				font-weight: 400;
+				line-height: 1.33;
+				background-color: #F1F6F6;
+				li {
+						color: rgb(78, 83, 83);
+				}
+				a {
+					text-decoration: none;
+					&:hover {
+						color: @color1;
+					}
+				}
+				.divider {
+					color: #0D3D3D;
+					padding: 0 5px;
+				
+				}
 			}
+
+		} 
+		.headerlogin {
+			justify-content: flex-end;
+			margin: 15px 65px 15px 15px;
 		}
 	}
 	.main {

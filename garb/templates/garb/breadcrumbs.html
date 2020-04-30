@@ -1,0 +1,40 @@
+{% load i18n  admin_urls  %}
+<div class="breadcrumbs">
+  {% if nivel == 1 %}
+
+      <ul class="breadcrumb">
+        <li class="active">{% trans breadcrumbs_action|capfirst  %}</li>
+      </ul>
+  {% endif %}
+
+
+  {% if nivel == 2 %}
+    <ul class="breadcrumb">
+        <li>
+          <a href="{% url opts|admin_urlname:'changelist' %}"> {{ opts.verbose_name_plural|capfirst }} </a>
+          <span class="divider">/</span>
+        </li>
+        <li class="active">
+            {{breadcrumbs_action|capfirst|truncatewords:"25" }}
+        </li>
+      </ul>
+  {% endif %}
+
+  {% if nivel == 3 %}
+      <div class="breadcrumb">
+        <li>
+          <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>
+          <span class="divider">/</span>
+        </li>
+        <li>
+          {% if original.pk %}
+            <a href="{% url opts|admin_urlname:'changelist' %}{{ original.pk }}">{{ original|capfirst|truncatewords:"18" }}</a>
+          {% else %}
+            <a href="{% url opts|admin_urlname:'changelist' %}{{ object.pk }}">{{ object|capfirst|truncatewords:"18" }}</a>
+          {% endif %}
+          <span class="divider">/</span>
+        </li>
+        <li class="active">{{breadcrumbs_action|capfirst|truncatewords:"25" }}</li>
+      </div>
+  {% endif %}
+</div>
