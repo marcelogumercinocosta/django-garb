@@ -1,0 +1,115 @@
+{% load  garb_tags %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>{{ title|default_if_none:None|garb_title }}</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                outline: 0;
+                padding: 0;
+            }
+            body {
+                -webkit-font-smoothing: antialiased;
+                background-color: #f1f6f6;
+                font-family: "Inter", "Roboto", sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 1.43;
+            }
+            a {
+                text-decoration: none;
+                color: #000;
+            }
+            .button {
+                background-color: #2196f3;
+                color: #ffffff;
+                border-radius: 5px;
+                border: 1px solid rgba(0, 0, 0, 0.15);
+                display: block;
+                font-size: 16px;
+                min-width: 10rem;
+                padding: 10px 25px;
+                text-decoration: none;
+                cursor: pointer;
+                width: 30%;
+                text-align: center;
+            }
+
+            .button:hover {
+                color: #ffffff;
+                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+                transform: translateY(-2px);
+            }
+
+            .emailcontent {
+                align-items: top;
+                justify-content: center;
+                display: flex;
+                flex-flow: row;
+                flex-wrap: wrap;
+                height: 100vh;
+                padding-top: 4em;
+            }
+
+            .emailboxes {
+                flex: 0 0 65%;
+            }
+
+            .emailbox {
+                background-color: #fff;
+                border: 1px solid rgba(0, 0, 0, 0.15);
+                border-left: 6px solid #2196f3;
+                border-radius: 5px;
+                padding: 3em;
+                width: 100%;
+            }
+
+            .site-name-azul {
+                color: #21125e;
+                font-family: "Exo", sans-serif;
+                font-size: 1rem;
+                font-style: italic;
+                font-weight: 900;
+                margin: 0px;
+                text-align: center;
+                padding-bottom: 2em;
+            }
+
+            .p {
+                padding: 10px 3em 10px 3em;
+                margin: 0;
+                text-align: justify;
+            }
+
+            .alert {
+                color: #d8000c;
+                background-color: #ffd2d2;
+                padding: 4px;
+                border-radius: 5px;
+            }
+
+            .emailbutton {
+                justify-content: center;
+                display: flex;
+                align-items: center;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="emailcontent">
+            <div class="emailboxes">
+                <div class="emailbox">
+                    {% block content %} {% endblock %}
+                    <div class="emailbutton">
+                        {% block button %}{% endblock %}
+                    </div>
+                </div>
+                <br>
+                <p class="site-name-azul m-0">{{ None|garb_title }}</p>
+            </div>
+        </div>
+    </body>
+</html>

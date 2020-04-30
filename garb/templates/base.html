@@ -30,9 +30,10 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                         {% block login_menu %}
-                                            <a class="dropdown-item button" href="/#"><i class="fas fa-user-circle"></i>Perfil</a>
+                                            <a class="dropdown-item button" href="/#"><i class="fas fa-user-circle"></i>{% trans 'Account' %}</a>
                                         {% endblock %}
-                                        <a class="dropdown-item button" href="{% url 'admin:logout' %}"><i class="fas fa-sign-out-alt"> </i>Sair</a>
+                                        <a class="dropdown-item button" href="{% url 'admin:password_change' %}"><i class="fas fa-key"></i>{% trans 'Change password' %}</a>
+                                        <a class="dropdown-item button" href="{% url 'admin:logout' %}"><i class="fas fa-sign-out-alt"></i>{% trans 'Log out' %}</a>
                                     </div>
                                 </div>
                             {% else %}

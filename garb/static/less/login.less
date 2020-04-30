@@ -82,24 +82,30 @@
 				height: 100%;
 				margin-top: -70px;
 				.loginboxes { 
-					flex: 0 0 35%;
+					flex: 0 0 45%;
 					.loginbox {
 						background-color: #fff;
 						border:  1px solid rgba(0, 0, 0, .15);
 						border-left: 6px solid @color1;
 						border-radius: 5px;
-						padding-top: 3em;
+						padding: 3em 0 3.5em 0;
 						form {
 							padding: 21px 3em;
 						}
+						p {
+							padding: 21px 3em 0 3em;
+							margin: 0;
+							text-align: justify;
+						}
 						.login_input {
 							width: 100%;
+							padding: 8px 4em;
 							label {
 								font-size: 11px;
 								color: #666666;
 								line-height: 1.2;
 								text-transform: uppercase;
-								padding: 15px 0 5px 0px;
+								padding: 5px 0px;
 								display: block;
 								margin: 0;
 								width: 100%;
@@ -112,6 +118,32 @@
 								padding: 10px 25px;
 								text-decoration: none;
 							}
+							ul {
+								padding-top: 5px;
+								margin: 0;
+								li {
+									color: #D8000C;
+									background-color: #FFD2D2;
+									padding: 4px;
+									border-radius: 5px;
+									list-style-type: none;
+									margin: 4px;
+								}
+							}
+							.help {
+								ul {
+									padding-top: 0px;
+									li {
+										padding: 0;
+										font-size: 12px;
+										background-color: #fff;
+										color: #000;
+										list-style-type: circle;
+										list-style-position: inside;
+									}
+								} 
+							}
+							
 						}
 						.forGotPassword {
 							background-color: #F2F2F2;;
@@ -137,6 +169,9 @@
 						border:  1px solid rgba(0, 0, 0, .15);
 						border-left: 6px solid red;
 						border-radius: 5px;
+						.alert {
+							margin-bottom: 0;
+						}
 					}
 				}
 			}

@@ -71,11 +71,8 @@ class Menu(object):
         menu_principal = []
         for app in self.app_list:
             item = self.make_app(app)
-            if item:
-                if ("sub_itens" in app) and (not item.childrens):
-                    pass
-                else:
-                    menu_principal.append(item)
+            if item and not (("sub_itens" in app) and (not item.childrens)):
+                menu_principal.append(item)
         return menu_principal
 
     def make_app(self, app):
@@ -83,8 +80,7 @@ class Menu(object):
             app = app.copy()
             if ("model" in app) and (self.user.is_authenticated):
                 return ItemLinkModel(app, self.user).check_perms()
-            if ("label" in app):
-                if self.has_auth_item_link(app, self.user.is_authenticated):
+            if ("label" in app) and self.has_auth_item_link(app, self.user.is_authenticated):
                     return ItemLink(app, self.user).check_perms()
             return False
 
@@ -104,10 +100,7 @@ class Menu(object):
                     return False
         elif ("sub_itens" in app):
             return True
-        else: 
-            pass
         return False
-
 
 @simple_tag(takes_context=True)
 def get_menu(context, request):
