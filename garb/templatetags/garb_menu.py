@@ -49,7 +49,7 @@ class ItemLinkModel(ItemLink):
             model = apps.get_model(self.app_name, self.model_name)
             changelist_view = resolve(reverse('admin:{0}_{1}_changelist'.format(self.app_name, self.model_name)))
             app.update({"label": model._meta.verbose_name_plural})
-            app.update({"route": changelist_view.route})
+            app.update({"route": '/' + str(changelist_view.route)})
             super().__init__(app, user)
         except NoReverseMatch:
             raise NoReverseMatch('Link para o modelo %s não existe' % repr(app['model']))

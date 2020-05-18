@@ -67,7 +67,7 @@
     }
     .main {
         .sidebarlogin {
-            background-color: @color-title;
+            background-color: $color-title;
             border-right: 1px solid rgba(0, 0, 0, .15);
             flex: 0 0 230px;
 		}
@@ -85,7 +85,7 @@
 					.loginbox {
 						background-color: #fff;
 						border:  1px solid rgba(0, 0, 0, .15);
-						border-left: 6px solid @color1;
+						border-left: 6px solid $color1;
 						border-radius: 5px;
 						padding: 3em 0 3.5em 0;
 						form {

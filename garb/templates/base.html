@@ -7,9 +7,10 @@
         <title>{{ title|default_if_none:None|garb_title }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
+        <link href="https://fonts.googleapis.com/css?family=Dosis:400,700|Roboto&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.0/css/solid.css">
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.0/css/fontawesome.css">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.min.css' %}">
         {% block extrastyle %}{% endblock %}
     </head>
     <body>
@@ -19,7 +20,7 @@
                     <div>
                         <div class="titulo">
                             <a href= {% if user.is_authenticated %} {% url 'admin:index' %} {% else %} "/" {% endif %}>
-                                <h1>{{ None|garb_title }}</h1>
+                                <div class='logo'>{{ None|garb_title }}</div>
                             </a>
                         </div>
                         {% block breadcrumbs %} {% endblock %}
