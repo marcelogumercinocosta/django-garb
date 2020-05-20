@@ -1,9 +1,9 @@
-.layout-container {
+.wrapper {
 	.main {
 		.menu {
 			height: 100%;
 			background-color: #f8f8f8;
-			border-right: 1px solid rgba(0,0,0,.15);
+			border-right: $border;
 			border-top: 4px solid $color1;
 			font-size: 1.2em;
 			font-weight: 400;
@@ -23,7 +23,7 @@
 					width: 100%;
 					a {
 						border-bottom: 1px solid #ededed;
-						color: #000000;;
+						color: #000000;
 						display: block;
 						font-size: 0.75em;
 						height: 50px;

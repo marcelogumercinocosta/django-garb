@@ -5,10 +5,10 @@ from django.utils.encoding import force_text as force_unicode
 from garb.tests.models import *
 from garb.tests.urls import *
 from garb.templatetags.garb_menu import get_menu, Menu, ItemLink, ItemLinkModel
-from garb.tests.mixins import ModelsTestCaseMixin, UserTestCaseMixin
+from garb.tests.mixins import UserTestCaseMixin
 
 
-class GarbMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
+class GarbMenuTestCase(UserTestCaseMixin):
     def setUp(self):
         self.setUpConfig()
         self.login_superuser()
@@ -20,14 +20,14 @@ class GarbMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
                 { 'label': 'menu1',  'icon': 'fa-user-plus',  'route': 'blog/', 'auth':'all' },
                 { 'label': 'menu2',  'icon': 'fa-user-plus',
                     'sub_itens':[
-                        { 'model':'garb.blog'},
-                        { 'model':'garb.blogcomment'},
+                        { 'model':'tests.blog'},
+                        { 'model':'tests.blogcomment'},
                     ]
                 },
                 { 'label': 'menu3',  'icon': 'fa-user-plus', 'auth':'all',
                     'sub_itens':[
                         { 'label': 'sub1', 'route': 'www.uol.com.br', 'target':'_blank' },
-                        { 'label': 'sub2', 'route': 'blog1/', 'permission': 'garb.can_hire', },
+                        { 'label': 'sub2', 'route': 'blog1/', 'permission': 'tests.can_hire', },
                         { 'label': 'sub3', 'route': 'blog2/', 'auth':'yes' },
                         { 'label': 'sub4', 'route': 'blog3/', 'auth':'no' },
                     ]
@@ -46,7 +46,7 @@ class GarbMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         self.client.logout()
         self.login_superuser()
         self.get_response()
-        app_label = 'garb'
+        app_label = 'tests'
         mc = settings.GARB_CONFIG['MENU']
         menu = self.make_menu_from_response()
         self.assertEqual(len(menu), len(mc))
@@ -62,8 +62,8 @@ class GarbMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         self.assertEqual(type(menu[i].childrens[0]), ItemLinkModel)
         self.assertEqual(len(menu[i].childrens), len(mc[i]['sub_itens']))
         self.assertEqual(menu[i].icon, mc[i]['icon'])
-        self.assertEqual(menu[i].childrens[0].route, resolve(reverse('admin:%s_%s_changelist' % (app_label,'blog'))).route)
-        self.assertEqual(menu[i].childrens[1].route, resolve(reverse('admin:%s_%s_changelist' % (app_label,'blogcomment'))).route)
+        self.assertEqual(menu[i].childrens[0].route, "/" + resolve(reverse('admin:%s_%s_changelist' % (app_label,'blog'))).route)
+        self.assertEqual(menu[i].childrens[1].route, "/" + resolve(reverse('admin:%s_%s_changelist' % (app_label,'blogcomment'))).route)
 
         i += 1 # as dict      
         self.assertEqual(menu[i].auth, 'all')
@@ -147,7 +147,7 @@ class GarbMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         self.assertEqual(menu[i].childrens[0].auth, 'all')
         self.assertEqual(type(menu[i].childrens[0]), ItemLink)
         self.assertEqual(menu[i].childrens[0].target, '_blank')
-        self.assertEqual(menu[i].childrens[1].permission, 'garb.can_hire')
+        self.assertEqual(menu[i].childrens[1].permission, 'tests.can_hire')
         self.assertEqual(menu[i].childrens[2].auth, 'yes')
         self.assertEqual(menu[i].label, mc[i+1]['label'])
         self.assertEqual(len(menu[i].childrens), 3)

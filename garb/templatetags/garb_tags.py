@@ -3,7 +3,6 @@ from django.urls import NoReverseMatch, Resolver404, resolve, reverse
 from garb.config import get_config
 
 register = template.Library()
-simple_tag = register.simple_tag
 
 @register.filter(name='garb_title')
 def garb_title(title):

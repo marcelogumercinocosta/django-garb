@@ -1,8 +1,18 @@
 $color-title:  #21125E;
 $background-color: #eee;
 $color1: #2196f3;
+$border: 1px solid rgba(0,0,0,.15);
+$border-radius: 5px;
+
+@mixin flex-row() {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 
 @import "base";
 @import "input";
 @import "menu";
 @import "login";
+@import "results-footer";

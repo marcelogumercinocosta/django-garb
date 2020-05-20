@@ -2,6 +2,7 @@ from django.contrib.admin import ModelAdmin
 from django.conf import settings
 from garb.config import default_config, get_config
 from garb.tests.mixins import UserTestCaseMixin
+from garb.tests.models import *
 
 
 class ConfigTestCase(UserTestCaseMixin):
@@ -44,3 +45,10 @@ class ConfigTestCase(UserTestCaseMixin):
         self.assertEqual(ModelAdmin.actions_on_top, False)
         self.assertEqual(ModelAdmin.actions_on_bottom, True)
         self.assertEqual(ModelAdmin.list_per_page, get_config('LIST_PER_PAGE'))
+
+class ConfigWithModelsTestCase( UserTestCaseMixin):
+
+    def create_blog(self):
+        blog = Blog(pk=21132, name='Some blog')
+        blog.save()
+        return blog

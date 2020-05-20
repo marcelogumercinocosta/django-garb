@@ -1,5 +1,5 @@
 {% extends "admin/base_site.html" %}
-{% load i18n admin_urls static admin_list %}
+{% load i18n admin_urls static admin_list garb_list %}
 {% comment %} 
 {% block extrastyle %}
   {{ block.super }}
@@ -79,7 +79,15 @@
           {% result_list cl %}
           {% if action_form and actions_on_bottom and cl.show_admin_actions %}{% admin_actions %}{% endif %}
       {% endblock %}
-      {% block pagination %}{% pagination cl %}{% endblock %}
+
+        <div class="results-footer">
+          <div>
+            {% if action_form and actions_on_bottom and cl.full_result_count %}{% admin_actions %}{% endif %}
+          </div>
+          <div class="pagination-block">
+            {% block pagination %}{% pagination cl %}{% endblock %}
+          </div>
+        </div>
       </form>
     </div>
   </div>

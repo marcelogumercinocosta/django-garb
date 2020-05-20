@@ -8,8 +8,6 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.urls.exceptions import NoReverseMatch
 
 register = template.Library()
-simple_tag = register.simple_tag
-
 
 
 class ItemLink(object):
@@ -102,7 +100,7 @@ class Menu(object):
             return True
         return False
 
-@simple_tag(takes_context=True)
+@register.simple_tag(takes_context=True)
 def get_menu(context, request):
     app_list = get_config('MENU')
     return Menu(app_list, user=context.get('user')).get_app_list()

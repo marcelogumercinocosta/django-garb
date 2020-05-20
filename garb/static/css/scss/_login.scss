@@ -1,4 +1,4 @@
-.layout-container {
+.wrapper {
     header {
         .headerlogin {
             .button {
@@ -45,14 +45,14 @@
 					}
 				}
 				.dropdown-menu {
-					border: 1px solid rgba(0, 0, 0, .15);
+					border: $border;
 					font-size: 14px;
 					margin: 0.15rem 0 0 0;
 					padding: 5px;
 					width: 230px;
 				}
 				.dropdown-item {
-					border-radius: 5px;
+					border-radius: $border-radius;
 					border: none;
 					i {
 						margin-right: 15px;
@@ -84,9 +84,9 @@
 					flex: 0 0 45%;
 					.loginbox {
 						background-color: #fff;
-						border:  1px solid rgba(0, 0, 0, .15);
+						border:  $border;
 						border-left: 6px solid $color1;
-						border-radius: 5px;
+						border-radius: $border-radius;
 						padding: 3em 0 3.5em 0;
 						form {
 							padding: 21px 3em;
@@ -124,7 +124,7 @@
 									color: #D8000C;
 									background-color: #FFD2D2;
 									padding: 4px;
-									border-radius: 5px;
+									border-radius: $border-radius;
 									list-style-type: none;
 									margin: 4px;
 								}
@@ -165,9 +165,9 @@
 					}
 					.loginbox_error {
 						background-color: #fff;
-						border:  1px solid rgba(0, 0, 0, .15);
+						border:  $border;
 						border-left: 6px solid red;
-						border-radius: 5px;
+						border-radius: $border-radius;
 						.alert {
 							margin-bottom: 0;
 						}
