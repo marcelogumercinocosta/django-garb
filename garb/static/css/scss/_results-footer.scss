@@ -1,10 +1,35 @@
 .results-footer {
     @include flex-row();
+    align-items: flex-start;
+    .button {
+        padding: 5.5px 5px;
+        min-width: 60px;
+    }
+    .actions {
+        .button {
+            width: 20px;
+        }
+        select {
+            height: 35px;
+            width: 100%;
+            margin: 0px 10px;
+        }
+        .actions_form {
+            @include flex-row();
+        }
+        .actions_message {
+            @include flex-row();
+            flex-direction: column;
+            a{
+                color: $color1;
+            }
+        }
+    }
     .pagination-block {
         @include flex-row();
         .pagination-list {
             margin: 0;
-            padding-right:20px ;
+            padding: 0 20px ;
             li.disabled a, li.disabled span  {
                 &:hover{
                     background-color:  #fff;
@@ -32,14 +57,12 @@
                     background-color: $background-color;
                 }
             }
-
             li a.end {
                 border-radius: 0 $border-radius $border-radius  0;
             }
             li a.start {
                 border-radius: $border-radius 0 0 $border-radius;
             }
-
         }
         .pagination-info {
             border-radius: $border-radius;
