@@ -1,7 +1,19 @@
+input[type="checkbox"] {
+	width: 14px;
+	border: 1px solid #616161;
+	height: 14px;
+	outline: 0;
+	box-sizing: border-box;
+	border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	cursor: pointer;
+}
+
 input[type="text"], input[type="number"], input[type="url"], input[type="email"], input[type="password"], textarea{
 	background: transparent;
 	line-height: 38px;
-	border: 1px solid #cccccc;
+	border: $border;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;

@@ -2,8 +2,11 @@ from django import template
 from django.utils.safestring import mark_safe
 from garb.config import get_config
 from django.contrib.admin.views.main import ALL_VAR, PAGE_VAR
+from django.template.loader import get_template
+from urllib.parse import parse_qs
 from html import escape
 from builtins import range
+import itertools
 
 register = template.Library()
 DOT = '.'
@@ -42,7 +45,6 @@ def paginator_info(cl):
         if paginator.count < entries_to:
             entries_to = paginator.count
     return '%s - %s' % (entries_from, entries_to)
-
 
 @register.inclusion_tag('admin/pagination.html')
 def pagination(cl):
@@ -85,3 +87,53 @@ def pagination(cl):
         'ALL_VAR': ALL_VAR,
         '1': 1,
     }
+
+# TODO : Create Test
+@register.filter
+def get_for_one_string(fields_list):
+    return ' | '.join(x.capitalize().replace("_", " ") for x in fields_list)
+
+
+@register.simple_tag
+def garb_list_filter_select(cl, spec):
+    template = get_template(spec.template)
+    choices = list(spec.choices(cl))
+    if hasattr(spec, 'field_path'):
+        field_key = spec.field_path
+    else:
+        field_key = spec.parameter_name
+    matched_key = field_key
+
+    for choice in choices:
+        query_string = choice['query_string'][1:]
+        query_parts = parse_qs(query_string)
+        value = ''
+        matches = {}
+        for key in query_parts.keys():
+            if (key == field_key) or (key.startswith( field_key + '__') or '__' + field_key + '__' in key):
+                value = query_parts[key][0]
+                matched_key = key
+            if value:
+                matches[matched_key] = value
+        # Iterate matches, use first as actual values, additional for hidden
+        i = 0
+        for key, value in matches.items():
+            if i == 0:
+                choice['name'] = key
+                choice['val'] = value
+            else:
+                choice['additional'] = '%s=%s' % (key, value)
+            i += 1
+
+    return template.render(dict({
+        'field_name': field_key,
+        'title': spec.title,
+        'choices': choices,
+        'spec': spec,
+    }))
+
+@register.simple_tag
+def admin_extra_filters(cl):
+    """ Return the dict of used filters which is not included in list_filters form """
+    used_parameters = list(itertools.chain(*(s.used_parameters.keys() for s in cl.filter_specs)))
+    return dict((k, v) for k, v in cl.params.items() if k not in used_parameters)

@@ -1,0 +1,97 @@
+{% load i18n static %}
+{% if result_hidden_fields %}
+    <div class="hiddenfields">{# DIV for HTML validation #}
+        {% for item in result_hidden_fields %}{{ item }}{% endfor %}
+    </div>
+{% endif %}
+{% if results %}
+    <div class="results">
+        <table id="result_list" class="table table-hover table-condensed">
+            <thead>
+                <tr>
+                    {% for header in result_headers %}
+                        <th scope="col" {{ header.class_attrib }}>
+                            <div class='th-col'>
+                                <div class="text">
+                                    {% if header.sortable %}
+                                        <a href="{{ header.url_primary }}">{{ header.text|capfirst }}</a>
+                                    {% else %}
+                                        <span> {{  header.text|capfirst }}</span>
+                                    {% endif %}
+                                </div>
+                                <div class="clear"></div>
+                                {% if header.sortable %}
+                                    {% if header.sort_priority > 0 %}
+                                        <div class="sortoptions">
+                                            {% if num_sorted_fields > 1 %}
+                                                <span class="sortpriority" title="{% blocktrans with priority_number=header.sort_priority %}Sorting priority: {{ priority_number }}{% endblocktrans %}">
+                                                    {{ header.sort_priority }}
+                                                </span>
+                                            {% endif %}
+                                            
+                                            <a href="{{ header.url_toggle }}" class="toggle {% if header.ascending %}ascending{% else %}descending{% endif %}" title="{% trans "Toggle sorting" %}">
+                                                {% if header.ascending %} <i class="fas fa-long-arrow-alt-up"></i>{% else %}<i class="fas fa-long-arrow-alt-down"></i>{% endif %}
+                                            </a>
+                                            <a class="sortremove" href="{{ header.url_remove }}" title="{% trans "Remove from sorting" %}"><i class="fas fa-times"></i></a>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                    {% if result.form and result.form.non_field_errors %}
+                        <tr><td colspan="{{ result|length }}">{{ result.form.non_field_errors }}</td></tr>
+                    {% endif %}
+                    <tr class="{% cycle 'row1' 'row2' %}">
+                    {% for item in result %}{{ item }}{% endfor %}</tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endif %}
+{% comment %} 
+
+{% if results %}
+    <div class="results">
+        <table id="result_list" class="table table-hover table-condensed">
+            <thead>
+            <tr>
+                {% for header in result_headers|headers_handler:cl %}
+                    <th scope="col" {{ header.class_attrib }}>
+                        {% if header.sortable %}
+                            {% if header.sort_priority > 0 %}
+                                <div class="relative-wrapper">
+                                    <div class="sortoptions">
+                                        {% if num_sorted_fields > 1 %}
+                                            <span class="sortpriority" title="{% blocktrans with priority_number=header.sort_priority %}Sorting priority: {{ priority_number }}{% endblocktrans %}">{{ header.sort_priority }}</span>{% endif %}
+                                        <a href="{{ header.url_toggle }}" class="toggle {% if header.ascending %}ascending{% else %}descending{% endif %}" title="{% trans "Toggle sorting" %}"></a>
+                                        <a class="sortremove" href="{{ header.url_remove }}" title="{% trans "Remove from sorting" %}"></a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                        <div class="text">{% if header.sortable %}
+                            <a href="{{ header.url_primary }}">{{ header.text|capfirst }}</a>{% else %}<span>{{ header.text|capfirst }}</span>{% endif %}
+                        </div>
+                    </th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            {% for result in results|cells_handler:cl %}
+                {% if result.form.non_field_errors %}
+                    <tr>
+                        <td colspan="{{ result|length }}">{{ result.form.non_field_errors }}</td>
+                    </tr>
+                {% endif %}
+                <tr{% result_row_attrs cl forloop.counter %}>
+                    {% for item in result %}{{ item }}{% endfor %}</tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endif %} {% endcomment %}

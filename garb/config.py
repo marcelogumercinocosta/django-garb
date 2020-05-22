@@ -8,7 +8,7 @@ def default_config():
         'PROJECT_NAME': 'Django Garb',
         'HEADER_DATE_FORMAT': 'l, jS F Y',
         'HEADER_TIME_FORMAT': 'H:i',
-        'LIST_PER_PAGE': 10,
+        'LIST_PER_PAGE': 15,
         'MENU': [],
     }
 

@@ -1,0 +1,174 @@
+.results-footer {
+    @include flex-row();
+    align-items: flex-start;
+
+    .button {
+        padding: 5.5px 5px;
+        min-width: 60px;
+    }
+
+    .actions {
+        .button {
+            width: 20px;
+        }
+
+        select {
+            height: 35px;
+            width: 100%;
+            margin: 0px 10px;
+        }
+
+        .actions_form {
+            @include flex-row();
+        }
+
+        .actions_message {
+            @include flex-row();
+            flex-direction: column;
+
+            a {
+                color: $color1;
+            }
+        }
+    }
+
+    .pagination-block {
+        @include flex-row();
+
+        .pagination-list {
+            margin: 0;
+            padding: 0 20px;
+
+            li.disabled a,
+            li.disabled span {
+                &:hover {
+                    background-color: #fff;
+                }
+            }
+
+            li.active a,
+            li.active span {
+                z-index: 1;
+                color: #fff;
+                background-color: $color1;
+                border-color: $color1;
+
+                &:hover {
+                    background-color: $color1;
+                }
+            }
+
+            li a,
+            li span {
+                position: relative;
+                display: block;
+                padding: .5rem .75rem;
+                margin-left: -1px;
+                line-height: 1.25;
+                background-color: #fff;
+                border: $border;
+                text-decoration: none;
+
+                &:hover {
+                    background-color: $background-color;
+                }
+            }
+
+            li a.end {
+                border-radius: 0 $border-radius $border-radius 0;
+            }
+
+            li a.start {
+                border-radius: $border-radius 0 0 $border-radius;
+            }
+        }
+
+        .pagination-info {
+            border-radius: $border-radius;
+            border: $border;
+            background-color: $background-color;
+            margin: 0;
+            padding: .5rem .75rem;
+            line-height: 1.25;
+
+            a {
+                color: $color1;
+            }
+        }
+    }
+}
+.results {
+    table {
+        position: relative;
+        .action-checkbox, .action-checkbox-column {
+            width: 16px;
+            padding: 0 8px;
+            vertical-align: middle;
+        }
+        a {
+            &:hover {
+                color: #0056b3;
+                text-decoration: none;
+            }
+        }
+        thead {
+            tr th {
+                border-bottom: none;
+            }
+            .th-col {
+                @include flex-row();
+                color: #888888;
+                .sortoptions {
+                    padding-right: 10px;
+                    a {
+                        color:  #888888;
+                    }
+                }
+            }
+        }
+        tbody {
+            border-bottom: 1px solid #dee2e6;
+            tr {
+                height: 3em;
+                a, td {
+                    line-height: 3em;
+                    padding: 0px;
+                    margin: 0px;
+                }
+                th a:before {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    left: 32px;
+                    width: calc( 100% - 32px);
+                    height: 3em;
+                }
+                td, th {
+                    padding: 0px .75rem;
+                    vertical-align: middle;
+                }
+                &:hover {
+                    background-color: #b7ccda;
+                    color: #0056b3;
+                }
+            }
+        }
+    }
+}
+
+.toolbar-content {
+    padding: 10px;
+    @include flex-row();
+    #toolbar {
+        width: 100%;
+        .search-container {
+            @include flex-row();
+            .search-filters {
+                padding: 0 10px;
+                .search-filter{
+                    width: 200px;
+                }
+            }
+        }
+    }
+}
