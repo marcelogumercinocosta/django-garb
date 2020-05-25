@@ -17,23 +17,6 @@ a {
 	text-decoration: none;
 	color: #212529;
 }
-.button {
-	background-color: $color1;
-	color: #ffffff;
-	border-radius: $border-radius;
-	border: $border;
-	display: block;
-	font-size: 16px;
-	min-width: 10rem;
-	padding: 8px 5px;
-	text-decoration: none;
-	cursor: pointer;
-	&:hover {
-		color: #ffffff;
-		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-		transform: translateY(-2px);
-	}
-}
 
 .site-name-azul {
 	color: $color-title;
@@ -43,6 +26,10 @@ a {
 	font-weight: 900;
 	margin: 0px;
 	text-align: center;
+}
+
+.alert {
+	margin: .5rem;
 }
 
 .wrapper {
@@ -83,13 +70,13 @@ a {
 				font-weight: 400;
 				line-height: 1.33;
 				background-color: $background-color;
-				li {
-						color: rgb(78, 83, 83);
+				li.active {
+					font-weight: bold;
 				}
-				a {
-					text-decoration: none;
-					&:hover {
-						color: $color1;
+				li {	
+					color: rgb(78, 83, 83);
+					a {
+						text-decoration: none;
 					}
 				}
 				.divider {

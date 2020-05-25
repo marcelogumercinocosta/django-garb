@@ -30,6 +30,7 @@ def paginator_number(cl, i):
             (i == 0 and ' class="start"' or ''),
             i + 1))
 
+
 @register.simple_tag
 def paginator_info(cl):
     paginator = cl.paginator
@@ -45,6 +46,7 @@ def paginator_info(cl):
         if paginator.count < entries_to:
             entries_to = paginator.count
     return '%s - %s' % (entries_from, entries_to)
+
 
 @register.inclusion_tag('admin/pagination.html')
 def pagination(cl):
@@ -88,7 +90,7 @@ def pagination(cl):
         '1': 1,
     }
 
-# TODO : Create Test
+
 @register.filter
 def get_for_one_string(fields_list):
     return ' | '.join(x.capitalize().replace("_", " ") for x in fields_list)
@@ -131,6 +133,7 @@ def garb_list_filter_select(cl, spec):
         'choices': choices,
         'spec': spec,
     }))
+
 
 @register.simple_tag
 def admin_extra_filters(cl):

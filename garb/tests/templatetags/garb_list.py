@@ -1,7 +1,7 @@
 from builtins import range
 from django.contrib.admin import ModelAdmin
 from django.urls import reverse
-from garb.templatetags.garb_list import (pagination, paginator_info, paginator_number)
+from garb.templatetags.garb_list import garb_list_filter_select, pagination, paginator_info, paginator_number, get_for_one_string
 from garb.tests.mixins import UserTestCaseMixin
 from garb.tests.models import *
 from django.conf import settings
@@ -55,3 +55,15 @@ class GarbListTestCase(UserTestCaseMixin):
         self.assertEqual(pg['cl'], self.changelist)
         self.assertEqual(len(pg['page_range']), 3)
         self.assertEqual(pg['pagination_required'], True)
+
+    def test_garb_list_filter_select(self):
+        filter_matches = (self.blog.pk, self.blog.name)
+        self.assertEqual(len(self.changelist.filter_specs), 2)
+
+        for i, spec in enumerate(self.changelist.filter_specs):
+            filter_output = garb_list_filter_select(self.changelist, spec)
+            self.assertTrue('value="%s"' % filter_matches[i] in filter_output)
+    
+    def test_get_for_one_string(self):
+        filter_output = get_for_one_string(self.changelist.list_filter)
+        self.assertEqual(filter_output, 'Id | Name')

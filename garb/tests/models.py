@@ -18,6 +18,7 @@ class Blog(models.Model):
 
 
 
+
 class BlogComment(models.Model):
     name = models.CharField(max_length=64)
 
@@ -31,6 +32,11 @@ class User(models.Model):
     """
     name = models.CharField(max_length=64)
 
-admin.site.register(Blog)
+class BlogAdmin(admin.ModelAdmin):
+    list_filter = ('id', 'name',)
+    list_display = ('id', 'name',)
+
+
+admin.site.register(Blog, BlogAdmin)
 admin.site.register(BlogComment)
 admin.site.register(User)

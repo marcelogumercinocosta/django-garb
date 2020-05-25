@@ -3,7 +3,7 @@
   {% if nivel == 1 %}
 
       <ul class="breadcrumb">
-        <li class="active">{% trans breadcrumbs_action|capfirst  %}</li>
+        <li class="active">{% trans breadcrumbs_action|title  %}</li>
       </ul>
   {% endif %}
 
@@ -11,11 +11,11 @@
   {% if nivel == 2 %}
     <ul class="breadcrumb">
         <li>
-          <a href="{% url opts|admin_urlname:'changelist' %}"> {{ opts.verbose_name_plural|capfirst }} </a>
+          <a href="{% url opts|admin_urlname:'changelist' %}"> {{ opts.verbose_name_plural|title }} </a>
           <span class="divider">/</span>
         </li>
         <li class="active">
-            {{breadcrumbs_action|capfirst|truncatewords:"25" }}
+            {{breadcrumbs_action|title|truncatewords:"25" }}
         </li>
       </ul>
   {% endif %}
@@ -23,18 +23,18 @@
   {% if nivel == 3 %}
       <div class="breadcrumb">
         <li>
-          <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>
+          <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|title }}</a>
           <span class="divider">/</span>
         </li>
         <li>
           {% if original.pk %}
-            <a href="{% url opts|admin_urlname:'changelist' %}{{ original.pk }}">{{ original|capfirst|truncatewords:"18" }}</a>
+            <a href="{% url opts|admin_urlname:'changelist' %}{{ original.pk }}">{{ original|title|truncatewords:"18" }}</a>
           {% else %}
-            <a href="{% url opts|admin_urlname:'changelist' %}{{ object.pk }}">{{ object|capfirst|truncatewords:"18" }}</a>
+            <a href="{% url opts|admin_urlname:'changelist' %}{{ object.pk }}">{{ object|title|truncatewords:"18" }}</a>
           {% endif %}
           <span class="divider">/</span>
         </li>
-        <li class="active">{{breadcrumbs_action|capfirst|truncatewords:"25" }}</li>
+        <li class="active">{{breadcrumbs_action|title|truncatewords:"25" }}</li>
       </div>
   {% endif %}
 </div>

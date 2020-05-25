@@ -1,0 +1,25 @@
+
+.button {
+	background-color: $color1;
+	color: #ffffff;
+	border-radius: $border-radius;
+	border: $border;
+	display: block;
+	font-size: 16px;
+	min-width: 10rem;
+	padding: 8px 5px;
+	text-decoration: none;
+	cursor: pointer;
+	&:hover {
+		color: #ffffff;
+		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+		transform: translateY(-2px);
+		text-decoration: none;
+	}
+}
+
+.button-green {
+	color: #fff;
+	background-color: #218838;
+	border-color: #1e7e34;
+}

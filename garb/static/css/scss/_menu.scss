@@ -18,6 +18,9 @@
 				}
 			}
 			ul {
+				li.active {
+					border-left: 4px solid $color1;
+				}
 				li {
 					display: inline-block;
 					width: 100%;
@@ -57,9 +60,6 @@
 								background: #ffffff;
 								padding-left: 25px;
 							}
-						}
-						li.active {
-							border-left: 4px solid $color1;
 						}
 					}
 				}

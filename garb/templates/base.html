@@ -12,6 +12,7 @@
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.0/css/fontawesome.css">
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.min.css' %}">
         {% block extrastyle %}{% endblock %}
+        {% block extrahead %}{% endblock %}
     </head>
     <body>
         <div class="wrapper">
@@ -57,13 +58,23 @@
                         </aside>
                     {% endblock %}
                     <section class="content">
+                        {% block messages %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{% firstof message.tags 'info' %}">
+                                        <button class="close" data-dismiss="alert">×</button>
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endblock messages %}
                         {% block content %} {% endblock %}
                     </section>
                 </div>
             {% endblock %}
         </div>
     </body>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
     {% block extrajs %}{% endblock %}

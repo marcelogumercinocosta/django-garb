@@ -9,6 +9,10 @@ from garb.tests.mixins import UserTestCaseMixin
 
 
 class GarbMenuTestCase(UserTestCaseMixin):
+    app_label = 'tests'
+    route_blog = "/" + resolve(reverse('admin:%s_%s_changelist' % (app_label,'blog'))).route
+    route_content =  "/" + resolve(reverse('admin:%s_%s_changelist' % (app_label,'blogcomment'))).route
+
     def setUp(self):
         self.setUpConfig()
         self.login_superuser()
@@ -46,7 +50,6 @@ class GarbMenuTestCase(UserTestCaseMixin):
         self.client.logout()
         self.login_superuser()
         self.get_response()
-        app_label = 'tests'
         mc = settings.GARB_CONFIG['MENU']
         menu = self.make_menu_from_response()
         self.assertEqual(len(menu), len(mc))
@@ -62,8 +65,8 @@ class GarbMenuTestCase(UserTestCaseMixin):
         self.assertEqual(type(menu[i].childrens[0]), ItemLinkModel)
         self.assertEqual(len(menu[i].childrens), len(mc[i]['sub_itens']))
         self.assertEqual(menu[i].icon, mc[i]['icon'])
-        self.assertEqual(menu[i].childrens[0].route, "/" + resolve(reverse('admin:%s_%s_changelist' % (app_label,'blog'))).route)
-        self.assertEqual(menu[i].childrens[1].route, "/" + resolve(reverse('admin:%s_%s_changelist' % (app_label,'blogcomment'))).route)
+        self.assertEqual(menu[i].childrens[0].route, self.route_blog )
+        self.assertEqual(menu[i].childrens[1].route, self.route_content)
 
         i += 1 # as dict      
         self.assertEqual(menu[i].auth, 'all')
@@ -155,4 +158,19 @@ class GarbMenuTestCase(UserTestCaseMixin):
         self.assertEqual(menu[i].childrens[0].label, 'sub1')
         self.assertEqual(menu[i].childrens[1].label, 'sub2')
         self.assertEqual(menu[i].childrens[2].label, 'sub3')
+
+    def test_menu_active(self):
+        self.client.logout()
+        self.login_superuser()
+        self.get_response()
+        self.get_response(url=self.route_blog)
+        menu = self.make_menu_from_response()
+        self.assertEqual(menu[1].childrens[0].get_active(), True)
+        self.assertEqual(menu[1].childrens[1].get_active(), False)
+        self.assertEqual(menu[1].collapsed, True)
+        self.assertEqual(menu[2].collapsed, False)
+
+
+
+
 

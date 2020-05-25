@@ -8,27 +8,26 @@
     }
 
     .actions {
-        .button {
-            width: 20px;
+        @include flex-row();
+        justify-content: flex-start;
+        width: 50%;
+
+        label {
+            margin: 0;
         }
 
         select {
             height: 35px;
-            width: 100%;
-            margin: 0px 10px;
+            min-width: 200px;
+            margin-right: 10px;
         }
 
-        .actions_form {
-            @include flex-row();
-        }
-
-        .actions_message {
-            @include flex-row();
-            flex-direction: column;
-
-            a {
-                color: $color1;
-            }
+        span.all,
+        span.action-counter,
+        span.clear,
+        span.action-counter,
+        span.question {
+            display: none;
         }
     }
 
@@ -37,7 +36,6 @@
 
         .pagination-list {
             margin: 0;
-            padding: 0 20px;
 
             li.disabled a,
             li.disabled span {
@@ -62,7 +60,7 @@
             li span {
                 position: relative;
                 display: block;
-                padding: .5rem .75rem;
+                padding: 0.5rem 0.75rem;
                 margin-left: -1px;
                 line-height: 1.25;
                 background-color: #fff;
@@ -82,71 +80,77 @@
                 border-radius: $border-radius 0 0 $border-radius;
             }
         }
-
-        .pagination-info {
-            border-radius: $border-radius;
-            border: $border;
-            background-color: $background-color;
-            margin: 0;
-            padding: .5rem .75rem;
-            line-height: 1.25;
-
-            a {
-                color: $color1;
-            }
-        }
     }
 }
+
 .results {
     table {
         position: relative;
-        .action-checkbox, .action-checkbox-column {
+
+        .action-checkbox,
+        .action-checkbox-column {
             width: 16px;
             padding: 0 8px;
             vertical-align: middle;
         }
+
         a {
             &:hover {
                 color: #0056b3;
                 text-decoration: none;
             }
         }
+
         thead {
             tr th {
                 border-bottom: none;
             }
+
             .th-col {
                 @include flex-row();
-                color: #888888;
+                color: #212529;
+
                 .sortoptions {
                     padding-right: 10px;
+
                     a {
-                        color:  #888888;
+                        color: #212529;
                     }
                 }
             }
         }
+
         tbody {
             border-bottom: 1px solid #dee2e6;
+
             tr {
                 height: 3em;
-                a, td {
+                a,
+                td {
                     line-height: 3em;
                     padding: 0px;
                     margin: 0px;
                 }
+
                 th a:before {
                     content: "";
                     display: block;
                     position: absolute;
                     left: 32px;
-                    width: calc( 100% - 32px);
+                    width: calc(100% - 32px);
                     height: 3em;
                 }
-                td, th {
-                    padding: 0px .75rem;
+
+                td,
+                th {
+                    padding: 0px 0.75rem;
                     vertical-align: middle;
+                    a {
+                        font-weight: 400;
+                    }
+
                 }
+
                 &:hover {
                     background-color: #b7ccda;
                     color: #0056b3;
@@ -159,16 +163,34 @@
 .toolbar-content {
     padding: 10px;
     @include flex-row();
+
     #toolbar {
         width: 100%;
+
         .search-container {
             @include flex-row();
+
             .search-filters {
                 padding: 0 10px;
-                .search-filter{
+
+                .search-filter {
                     width: 200px;
                 }
             }
         }
+    }
+}
+
+.list-info {
+    border-radius: $border-radius;
+    border: $border;
+    background-color: $background-color;
+    margin: 0;
+    padding: 0.5rem 0.75rem;
+    line-height: 1.25;
+    margin: 0 10px;
+
+    a {
+        color: $color1;
     }
 }
