@@ -3,7 +3,7 @@
     <ul>
         {% get_menu request as app_list %}
         {% for app in app_list %}
-            <li>
+            <li {% if app.get_active %} class="active" {% endif %}>
                 {% if app.childrens %}
                     <a class="collapsed" data-toggle="collapse" data-parent="#menu" href="#{{ app.get_chave }}" aria-expanded="{{app.collapsed}}"  aria-controls="{{ app.get_chave }}">
                         <i class="fa {{ app.icon }} "></i><span>{{ app.label }}</span>

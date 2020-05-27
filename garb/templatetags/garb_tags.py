@@ -21,3 +21,20 @@ def garb_url_exists(url):
         return False
     except Resolver404:
         return False
+
+@register.filter
+def concatene(value1,value2):
+    return str(value1) + " " + str(value2)
+
+@register.filter
+def get_for_one_string(fields_list):
+    return ' | '.join(x.capitalize().replace("_", " ") for x in fields_list)
+
+
+@register.filter
+def get_for_two_string(lista):
+    result = []
+    for fildset_type, fildset in lista:
+        for field in fildset['fields']:
+            result.append(field)
+    return ' | '.join(x.capitalize().replace("_", " ") for x in result)

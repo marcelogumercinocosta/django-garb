@@ -11,19 +11,20 @@ input[type="checkbox"] {
 }
 
 input[type="text"], input[type="number"], input[type="url"], input[type="email"], input[type="password"], textarea{
-	background: transparent;
-	line-height: 38px;
+	background: #fff;
+	height: 40px;
 	border: $border;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
-	color: #666;
+	color: $color-text;
 	font-size: 15px;
 	-webkit-transition: all 0.4s ease;
 	-o-transition: all 0.4s ease;
 	-moz-transition: all 0.4s ease;
 	transition: all 0.4s ease;
-	padding: 0 10px;
+	padding: 0 0 0 10px;
+	width: 80%;
 	&::-webkit-input-placeholder {
 		color: #999;
 	}
@@ -48,8 +49,14 @@ input[type="text"], input[type="number"], input[type="url"], input[type="email"]
 		-ms-transform: translateY(-3px);
 		-o-transform: translateY(-3px);
 		transform: translateY(-3px);
+		border-color: #80bdff;
 	}
 }
+
+textarea { 
+	height: calc(40px * 3 );
+}
+
 
 select {
 	-webkit-appearance: none;
@@ -57,13 +64,13 @@ select {
 	border: 1px solid #cccccc;
 	display: inline-block;
 	font-size: 1rem;
-	font-weight: 400;
 	height: calc(1.5em + .75rem + 4px );
 	padding: 0 0 0 10px;
 	vertical-align: middle;
-	color: #666;
+	color: $color-text;
 	background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.4rem center/8px 10px no-repeat #ffffff;
 	transition: all 0.4s ease;
+	width: 80%;
 	&:focus {
 		-webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
 		-moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
@@ -73,5 +80,6 @@ select {
 		-ms-transform: translateY(-3px);
 		-o-transform: translateY(-3px);
 		transform: translateY(-3px);
+		border-color: #80bdff;
 	}
 }

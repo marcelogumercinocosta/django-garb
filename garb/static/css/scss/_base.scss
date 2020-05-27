@@ -11,11 +11,11 @@ body {
 	font-size: 14px;
 	font-weight: 400;
 	line-height: 1.43;
-	color: #212529;
+	color: $color-text;
 }
 a {
 	text-decoration: none;
-	color: #212529;
+	color: $color-text;
 }
 
 .site-name-azul {
@@ -29,19 +29,20 @@ a {
 }
 
 .alert {
-	margin: .5rem;
+	margin: .5rem 0;
 }
 
-.wrapper {
+body {
 	header {
 		display: flex;
-		height: 70px;
+		height: 60px;
 		justify-content: space-between;
 		div:first-child {
+			
 			display: flex;
 			.titulo {
-				background-color: $color-title;
-				border-right: $border;
+				box-shadow: 0 .125rem 9.375rem rgba(90,97,105,.1),0 .25rem .5rem rgba(90,97,105,.12),0 .9375rem 1.375rem rgba(90,97,105,.1),0 .4375rem 2.1875rem rgba(165,182,201,.1);
+				background-color: $color-menu;
 				width: 230px;
 				a {
 					width: 100%;
@@ -51,7 +52,7 @@ a {
 						display: flex;
 						align-items: center;
 						justify-content: center;
-						color: white;
+						color: $color-title-main;
 						font-family: "Exo", sans-serif;
 						font-size: 1.5rem;
 						font-style: italic;
@@ -60,23 +61,56 @@ a {
 					}
 				}
 			}
+			
+
+		} 
+		.headerlogin {
+			justify-content: flex-end;
+			margin: 9px 3% 15px 15px;
+		}
+	}
+	.wrapper {
+		display: flex;
+		justify-content: left;
+		margin: auto 0;
+		min-height: calc( 100vh - 60px);
+		aside {
+			flex: 0 0 230px;
+			box-shadow: 0 .125rem 9.375rem rgba(90,97,105,.1),0 .25rem .5rem rgba(90,97,105,.12),0 .9375rem 1.375rem rgba(90,97,105,.1),0 .4375rem 2.1875rem rgba(165,182,201,.1);
+		}
+		main {
+			flex: 1;
+			.alertas {
+				margin: -60px 3% 0 3%;
+				min-height: 60px;
+			}
+			.content-extend {
+				margin: 0 3%;
+				.content {
+					@include content();
+				}
+			}
 			.breadcrumb {
 				height: 100%;
 				align-items: flex-end;
-				margin: 0;
-				padding: 3px 4em;
+				margin: 0 3%;
+				padding: 0 1em;
 				flex-wrap: nowrap;
 				font-size: 24px;
 				font-weight: 400;
 				line-height: 1.33;
-				background-color: $background-color;
+				background-color: transparent;
 				li.active {
 					font-weight: bold;
 				}
-				li {	
-					color: rgb(78, 83, 83);
+				li {
+					color: $color1;
 					a {
+						color: $color1;
 						text-decoration: none;
+						&:hover {
+							font-weight: bold;
+						}
 					}
 				}
 				.divider {
@@ -85,28 +119,6 @@ a {
 				
 				}
 			}
-
-		} 
-		.headerlogin {
-			justify-content: flex-end;
-			margin: 15px 65px 15px 15px;
-		}
-	}
-	.main {
-		display: flex;
-		justify-content: left;
-		margin: auto 0;
-		min-height: calc( 100vh - 70px);
-		.sidebar {
-			flex: 0 0 230px;
-		}
-		.content {
-			flex: 1;
-			margin: 0 3% 1%;
-			background-color: white;
-			padding: 10px;
-			border-radius: $border-radius;
-
 		}
 	}
 }

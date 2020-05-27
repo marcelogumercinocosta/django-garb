@@ -15,66 +15,72 @@
         {% block extrahead %}{% endblock %}
     </head>
     <body>
-        <div class="wrapper">
-            {% block header %}
-                <header>
-                    <div>
-                        <div class="titulo">
-                            <a href= {% if user.is_authenticated %} {% url 'admin:index' %} {% else %} "/" {% endif %}>
-                                <div class='logo'>{{ None|garb_title }}</div>
-                            </a>
-                        </div>
-                        {% block breadcrumbs %} {% endblock %}
+        {% block header %}
+            <header>
+                <div>
+                    <div class="titulo">
+                        <a href= {% if user.is_authenticated %} {% url 'admin:index' %} {% else %} "/" {% endif %}>
+                            <div class='logo'>{{ None|garb_title }}</div>
+                        </a>
                     </div>
-                    {% block login %}
-                        <div class="headerlogin dropdown show">
-                            {% if user.is_authenticated %}
-                                <div class="loginmenu">
-                                    <a class="button dropdown-toggle" href="/#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        {{ user.username }}
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        {% block login_menu %}
-                                            <a class="dropdown-item button" href="/#"><i class="fas fa-user-circle"></i>{% trans 'Account' %}</a>
-                                        {% endblock %}
-                                        <a class="dropdown-item button" href="{% url 'admin:password_change' %}"><i class="fas fa-key"></i>{% trans 'Change password' %}</a>
-                                        <a class="dropdown-item button" href="{% url 'admin:logout' %}"><i class="fas fa-sign-out-alt"></i>{% trans 'Log out' %}</a>
-                                    </div>
-                                </div>
-                            {% else %}
-                                <a class="button" href="{% url 'admin:login' %}" >
-                                    <i class="fas fa-sign-in-alt"></i>{% trans 'Log in' %}
+                </div>
+                {% block login %}
+                    <div class="headerlogin dropdown show">
+                        {% if user.is_authenticated %}
+                            <div class="loginmenu">
+                                <a class="button dropdown-toggle" href="/#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ user.username }}
                                 </a>
-                            {% endif %}
-                        </div>
-                    {% endblock %}
-                </header>
-            {% endblock %}
-            {% block main %}
-                <div class="main">
-                    {% block sidebar %}
-                        <aside class="sidebar">
-                            {% include 'garb/menu.html' %}
-                        </aside>
-                    {% endblock %}
-                    <section class="content">
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    {% block login_menu %}
+                                        <a class="dropdown-item button" href="/#"><i class="fas fa-user-circle"></i>{% trans 'Account' %}</a>
+                                    {% endblock %}
+                                    <a class="dropdown-item button" href="{% url 'admin:password_change' %}"><i class="fas fa-key"></i>{% trans 'Change password' %}</a>
+                                    <a class="dropdown-item button" href="{% url 'admin:logout' %}"><i class="fas fa-sign-out-alt"></i>{% trans 'Log out' %}</a>
+                                </div>
+                            </div>
+                        {% else %}
+                            <a class="button" href="{% url 'admin:login' %}" >
+                                <i class="fas fa-sign-in-alt"></i>{% trans 'Log in' %}
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endblock %}
+            </header>
+        {% endblock %}
+        {% block wrapper %}
+            <div class="wrapper">
+                {% block sidebar %}
+                    <aside>
+                        {% include 'garb/menu.html' %}
+                    </aside>
+                {% endblock %}
+                <main>
+                    <div class="alertas" >
                         {% block messages %}
                             {% if messages %}
-                                {% for message in messages %}
-                                    <div class="alert alert-{% firstof message.tags 'info' %}">
-                                        <button class="close" data-dismiss="alert">×</button>
-                                        {{ message }}
-                                    </div>
-                                {% endfor %}
+                                    {% for message in messages %}
+                                        <div class="alert alert-{% firstof message.tags 'info' %}">
+                                            <button class="close" data-dismiss="alert">×</button>
+                                            {{ message }}
+                                        </div>
+                                    {% endfor %}
                             {% endif %}
                         {% endblock messages %}
-                        {% block content %} {% endblock %}
-                    </section>
-                </div>
-            {% endblock %}
-        </div>
+                    </div>
+                    {% block breadcrumbs %} {% endblock %}
+                    <div class="content-extend" >
+                        {% block content-extend %}
+                            <div class="content" >
+                                {% block content %} {% endblock %}
+                            </div>
+                        {% endblock %}
+                    </div>
+                </main>
+            </div>
+        {% endblock %}
     </body>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
     {% block extrajs %}{% endblock %}

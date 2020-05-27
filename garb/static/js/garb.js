@@ -34,4 +34,4 @@
         $('.search-filter').garb_search_filters();
     });
 
-}(Suit.$));
+})(django.jQuery);

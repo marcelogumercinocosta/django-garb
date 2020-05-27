@@ -1,0 +1,109 @@
+.change-columns {
+    @include flex-row();
+    align-items: flex-start;
+    .box-column {
+        width: 250px;
+        .save-box {
+            @include content();
+            margin-bottom: 20px;
+            .btn {
+                margin-bottom: 5px;
+                width: 100%;
+            }
+        }
+    }
+    .form-column {
+        width: 100%;
+        padding-right: 20px;
+        .form-column-item {
+            @include content();
+            align-items: flex-start;
+            margin-bottom: 20px;
+            .alert {
+                margin: 0;
+            }
+            fieldset {
+                ul.errorlist { 
+                    margin-bottom: 0;
+                    margin-top: 0;
+                    color: $erro;
+                    width: 100%;
+                }
+                .module-header {
+                    border-bottom: 1px solid #eee;
+                    padding-left: 165px;
+                    .legend {
+                        font-size: 1.6rem;
+                    }
+                    .description{
+                        font-size: 1rem;
+                        color: #5a6268;
+                    }
+                }
+                .form-row.errors div:first-child .form-row-field input,
+                .form-row.errors div:first-child .form-row-field textarea,
+                .form-row.errors div:first-child .form-row-field select {
+                    border-color:  $erro;
+                }
+                .form-row:last-child {
+                    border-bottom: none;
+                }
+                .form-row {
+                    .vLargeTextField, .vXMLLargeTextField {
+                        width: 80%;
+                    }
+                    .vDateField {
+                        width: 20%;
+                    }
+                    .form-row-box {
+                        @include flex-row();
+                        align-items: flex-start;
+                        width: 100%;
+                        .form-row-label {
+                            width: 160px;
+                            text-align: right;
+                            label {
+                                font-weight: bold;
+                                color: $color-text;
+                            }
+                        }
+                        .form-row-field {
+                            width: 100%;
+                            .related-widget-wrapper {
+                                width: 100%;
+                            }
+                            .readonly {
+                                background: #ffffff;
+                                height: 40px;
+                                border: 1px solid rgba(0,0,0,0.15);
+                                border-radius: 3px;
+                                color: $color-text-off;
+                                font-size: 15px;
+                                -webkit-transition: all 0.4s ease;
+                                transition: all 0.4s ease;
+                                padding: 10px;
+                                width: 80%;
+                            }
+                        }
+                        .form-row-checkbox {
+                            margin-left: 160px;
+                            width: 100%;
+                            label {
+                                font-weight: bold;
+                                color: $color-text;
+                            }
+                        }
+                    }
+                    .help {
+                        color: $color-text-off;
+                        width: 100%;
+                    }
+                    .related-widget-wrapper {
+                        float: left;
+                        overflow: initial;
+                        }
+                }
+            }
+        }
+    }
+}

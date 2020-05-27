@@ -96,7 +96,7 @@
 
         a {
             &:hover {
-                color: #0056b3;
+                color: $color1;
                 text-decoration: none;
             }
         }
@@ -108,13 +108,13 @@
 
             .th-col {
                 @include flex-row();
-                color: #212529;
+                color:$color-text;
 
                 .sortoptions {
                     padding-right: 10px;
 
                     a {
-                        color: #212529;
+                        color:$color-text;
                     }
                 }
             }
@@ -148,12 +148,11 @@
                     a {
                         font-weight: 400;
                     }
-
                 }
 
                 &:hover {
                     background-color: #b7ccda;
-                    color: #0056b3;
+                    color: $color1;
                 }
             }
         }

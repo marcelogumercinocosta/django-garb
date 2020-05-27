@@ -1,47 +1,53 @@
-.wrapper {
-	.main {
+body {
+	.wrapper {
 		.menu {
 			height: 100%;
-			background-color: #f8f8f8;
-			border-right: $border;
-			border-top: 4px solid $color1;
+			background-color: $color-menu;
+			background: linear-gradient(180deg, $color-menu 0%, $color-menu2 100%);
+			border-top: 2px solid $color-menu-active;
 			font-size: 1.2em;
 			font-weight: 400;
 			overflow: auto;
 			padding-bottom: 6em;
 			top: 0;
 			visibility: visible;
+			
 			a {
 				&:hover {
-					background-color: #f4f4f4;
+					background-color: $color-menu-hover;
 					transition: all 0.6s ease;
 				}
 			}
 			ul {
 				li.active {
-					border-left: 4px solid $color1;
+					border-right: 2px solid $color-menu-active ;
 				}
 				li {
+					background-color: $color-menu-item;
 					display: inline-block;
 					width: 100%;
 					a {
-						border-bottom: 1px solid #ededed;
-						color: #000000;
+						border-bottom: $border-menu;
+						color: $color-menu-font;
 						display: block;
 						font-size: 0.75em;
 						height: 50px;
-						padding: 1.05em 1em 1.05em 0.5em;
+						padding: 1.3em 1em 1.05em 0.5em;
 						position: relative;
 						text-decoration: none;
 						text-transform: uppercase;
 						&:after {
-							color: #000000;;
+							color: $color-menu-font;
 							font-family: "Font Awesome 5 Free";
 							font-size: 1.4em;
 							position: absolute;
 							right: 10px;
 							top: 15px;
 							width: 10px;
+						}
+						&:hover {
+							color: $color-menu-font-hover;
+							transform: translatex(-2px);
 						}
 					}
 					a[aria-expanded="false"] {
@@ -57,7 +63,7 @@
 					ul {
 						li {
 							a {
-								background: #ffffff;
+								background: $color-menu-sub;
 								padding-left: 25px;
 							}
 						}

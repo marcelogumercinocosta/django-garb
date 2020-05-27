@@ -1,4 +1,4 @@
-.wrapper {
+body {
     header {
         .headerlogin {
             .button {
@@ -9,12 +9,12 @@
 			}
 			.loginmenu {
 				a {
-					background-color: #ffffff;
-					color: black;
+					background-color: $color-menu-item;
+					color: $color-menu-font;
 					text-decoration: none;
 					padding: 8px 25px;
 					&:hover {
-						background-color: #f4f4f4;
+						background-color: $color-menu-hover;
 						transition: all 0.6s ease;
 						box-shadow: none;
 						transform: none
@@ -23,6 +23,7 @@
 				.dropdown-toggle {
 					width: 230px;
 					text-align: right;
+					box-shadow: $box-shadow;
 					&:after {
 						border: none;
 						font-family: "Font Awesome 5 Free";
@@ -46,20 +47,24 @@
 					}
 				}
 				.dropdown-menu {
-					border: $border;
+					background-color: $color-menu-sub;
+					border: $border-menu;
 					font-size: 14px;
 					margin: 0.15rem 0 0 0;
 					padding: 5px;
 					width: 230px;
+					box-shadow: $box-shadow;
 				}
 				.dropdown-item {
+					background-color: $color-menu-sub;
 					border-radius: $border-radius;
 					border: none;
+					text-align: left;
 					i {
 						margin-right: 15px;
 					}
 					&:hover {
-						background-color: #f4f4f4;
+						background-color:  $color-menu-hover;
 						transition: all 0.6s ease;
 					}
 				}
@@ -68,8 +73,7 @@
     }
     .main {
         .sidebarlogin {
-            background-color: $color-title;
-            border-right: 1px solid rgba(0, 0, 0, .15);
+            background-color: $color-menu;
             flex: 0 0 230px;
 		}
 		.content {
@@ -102,7 +106,7 @@
 							padding: 8px 4em;
 							label {
 								font-size: 11px;
-								color: #666666;
+								color: $color-text-off;
 								line-height: 1.2;
 								text-transform: uppercase;
 								padding: 5px 0px;
@@ -122,7 +126,7 @@
 								padding-top: 5px;
 								margin: 0;
 								li {
-									color: #D8000C;
+									color: $erro;
 									background-color: #FFD2D2;
 									padding: 4px;
 									border-radius: $border-radius;
@@ -152,7 +156,7 @@
 							padding: 5px;
 							a {
 								text-decoration: none;
-								color: #666666;
+								color: $color-text-off;
 								outline: none;
 								&:hover {
 									color: #000;
