@@ -1,9 +1,16 @@
 {% load i18n admin_urls garb_tags %}
-  {% if show_save %}<button type="submit" class="btn btn-info" name="_save">{% trans 'Save' %}</button>{% endif %}
-  {% if show_save_and_continue %}<button type="submit" name="_continue" class=" btn btn-secondary">{% trans 'Save and continue editing' %}</button>{% endif %}
-  {% if show_save_as_new %}<button type="submit" name="_saveasnew" class="btn btn-secondary">{% trans 'Save as new' %}</button>{%endif%}
-  {% if show_save_and_add_another %}<button type="submit" name="_addanother" class="btn btn-secondary">{% trans 'Save and add another' %}</button>{% endif %}
-  {% if show_delete_link %}
-        {% url opts|admin_urlname:'delete' original.pk|admin_urlquote as delete_url %}
-        <a href="{% add_preserved_filters delete_url %}" class="text-error deletelink btn btn-danger">{% trans "Delete" %}</a>
-  {% endif %}
+{% if show_save %}<button type="submit" class="btn btn-info" name="_save">{% trans 'Save' %}</button>{% endif %}
+{% if show_save_and_continue %}<button type="submit" name="_continue" class=" btn btn-secondary">{% trans 'Save and continue editing' %}</button>{% endif %}
+{% if show_save_as_new %}<button type="submit" name="_saveasnew" class="btn btn-secondary">{% trans 'Save as new' %}</button>{%endif%}
+{% if show_save_and_add_another %}<button type="submit" name="_addanother" class="btn btn-secondary">{% trans 'Save and add another' %}</button>{% endif %}
+{% if show_delete_link %}
+      {% url opts|admin_urlname:'delete' original.pk|admin_urlquote as delete_url %}
+      <a href="{% add_preserved_filters delete_url %}" class="text-error deletelink btn btn-danger">{% trans "Delete" %}</a>
+{% endif %}
+{% block object-tools-items %}
+      {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
+      <a href="{% add_preserved_filters history_url %}" class="btn btn-secondary"> <i class="icon-time icon-alpha75"></i>{% trans "History" %}</a>
+      {% if has_absolute_url %}
+            <a href="{{ absolute_url }}" class="btn btn-secondary"><i class="icon-eye-open icon-alpha75"></i>{% trans "View on site" %}</a>
+      {% endif %}
+{% endblock %}

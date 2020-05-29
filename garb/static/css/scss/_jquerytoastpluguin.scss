@@ -1,0 +1,14 @@
+.jq-toast-wrap{
+    width: 40vw;
+    .jq-toast-single {
+        padding: 20px 20px 20px 50px;
+        font-family: "Dosis", "Roboto", sans-serif;
+        font-size: 16px;
+        .jq-toast-loaded {
+            background-color: $color1!important;
+        }
+        .close-jq-toast-single {
+            font-size: 30px;
+        }
+    }
+}

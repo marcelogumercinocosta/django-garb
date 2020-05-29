@@ -18,7 +18,7 @@
 
         select {
             height: 35px;
-            min-width: 200px;
+            width: auto;
             margin-right: 10px;
         }
 
@@ -172,16 +172,22 @@
             }
             .input-group {
                 display: flex;
-                flex-direction: row-reverse;
+                position: relative;
                 .input-group-text {
                     border-top-left-radius: 3px;
                     border-bottom-left-radius: 3px;
                     border: $border;
+                    position: absolute;
+                    left: 0;
+                    top:0;
+                    width: 40px;
+                    height: 100%;
                 }
                 input[type="search"] {
                     border-top-left-radius: 0px;
                     border-bottom-left-radius: 0px;
                     border-left: none;
+                    margin-left: 40px;
                 }
                 input[type="search"]:focus + div span {
                     -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);

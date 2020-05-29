@@ -28,9 +28,6 @@ a {
 	text-align: center;
 }
 
-.alert {
-	margin: .5rem 0;
-}
 
 body {
 	header {
@@ -65,7 +62,7 @@ body {
 		} 
 		.headerlogin {
 			justify-content: flex-end;
-			margin: 9px 3% 15px 15px;
+			margin: 9px $margin-vw 15px 15px;
 		}
 	}
 	.wrapper {
@@ -79,12 +76,8 @@ body {
 		}
 		main {
 			flex: 1;
-			.alertas {
-				margin: -60px 3% 0 3%;
-				min-height: 60px;
-			}
 			.content-extend {
-				margin: 0 3%;
+				margin: 0 $margin-vw;
 				.content {
 					@include content();
 				}
@@ -92,7 +85,7 @@ body {
 			.breadcrumb {
 				height: 100%;
 				align-items: flex-end;
-				margin: 0 3%;
+				margin: 0 $margin-vw;
 				padding: 0 1em;
 				flex-wrap: nowrap;
 				font-size: 24px;

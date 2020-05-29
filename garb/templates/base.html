@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Dosis:400,700|Roboto&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.0/css/solid.css">
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.0/css/fontawesome.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-toast-plugin.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.min.css' %}">
         {% block extrastyle %}{% endblock %}
         {% block extrahead %}{% endblock %}
@@ -56,18 +57,6 @@
                     </aside>
                 {% endblock %}
                 <main>
-                    <div class="alertas" >
-                        {% block messages %}
-                            {% if messages %}
-                                    {% for message in messages %}
-                                        <div class="alert alert-{% firstof message.tags 'info' %}">
-                                            <button class="close" data-dismiss="alert">×</button>
-                                            {{ message }}
-                                        </div>
-                                    {% endfor %}
-                            {% endif %}
-                        {% endblock messages %}
-                    </div>
                     {% block breadcrumbs %} {% endblock %}
                     <div class="content-extend" >
                         {% block content-extend %}
@@ -83,5 +72,24 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+    <script src="{% static 'js/jquery-toast-plugin.js' %}" ></script>
+    <script>
+        {% block messages %}
+            {% if messages %}
+                    {% for message in messages %}
+                        $.toast({
+                            text: `{{ message }}`,
+                            icon: `{% firstof message.tags 'info' %}`,
+                            loader: true,
+                            position: 'bottom-right',
+                            showHideTransition: 'slide',
+                            hideAfter: 9000, 
+                            allowToastClose: true,
+                            stack: 20,
+                        });
+                    {% endfor %}
+            {% endif %}
+        {% endblock messages %}
+    </script>
     {% block extrajs %}{% endblock %}
 </html>
