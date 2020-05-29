@@ -6,7 +6,7 @@ def default_config():
     return {
         # configurable
         'PROJECT_NAME': 'Django Garb',
-        'HEADER_DATE_FORMAT': 'l, jS F Y',
+        'HEADER_DATE_FORMAT': "D d M Y",
         'HEADER_TIME_FORMAT': 'H:i',
         'LIST_PER_PAGE': 15,
         'MENU': [],

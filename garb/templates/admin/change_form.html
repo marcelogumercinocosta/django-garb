@@ -17,9 +17,9 @@
 {% block breadcrumbs %}
   {% if add %}
     {% trans 'Add' as breadcrumb_title %}
-    {% include "garb/breadcrumbs.html" with nivel=2 breadcrumbs_action=breadcrumb_title|concatene:opts.verbose_name %}
+    {% include "admin/includes/breadcrumbs.html" with nivel=2 breadcrumbs_action=breadcrumb_title|concatene:opts.verbose_name %}
   {% else %}
-    {% include "garb/breadcrumbs.html" with nivel=2 breadcrumbs_action=original %}
+    {% include "admin/includes/breadcrumbs.html" with nivel=2 breadcrumbs_action=original %}
   {% endif %}
 {% endblock %}
 

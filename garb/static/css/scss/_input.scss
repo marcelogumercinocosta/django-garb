@@ -10,7 +10,7 @@ input[type="checkbox"] {
 	cursor: pointer;
 }
 
-input[type="text"], input[type="number"], input[type="url"], input[type="email"], input[type="password"], textarea{
+input[type="text"], input[type="number"], input[type="url"], input[type="email"], input[type="search"], input[type="password"], textarea{
 	background: #fff;
 	height: 40px;
 	border: $border;
@@ -61,7 +61,7 @@ textarea {
 select {
 	-webkit-appearance: none;
 	border-radius: 3px;
-	border: 1px solid #cccccc;
+	border: $border;
 	display: inline-block;
 	font-size: 1rem;
 	height: calc(1.5em + .75rem + 4px );

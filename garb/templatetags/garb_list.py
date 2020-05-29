@@ -1,12 +1,16 @@
+import itertools
+from builtins import range
+from html import escape
+from urllib.parse import parse_qs
+
 from django import template
-from django.utils.safestring import mark_safe
-from garb.config import get_config
+from django.apps import apps
 from django.contrib.admin.views.main import ALL_VAR, PAGE_VAR
 from django.template.loader import get_template
-from urllib.parse import parse_qs
-from html import escape
-from builtins import range
-import itertools
+from django.utils.safestring import mark_safe
+
+from garb.config import get_config
+from django.utils.text import capfirst
 
 register = template.Library()
 DOT = '.'
@@ -140,3 +144,10 @@ def admin_extra_filters(cl):
     """ Return the dict of used filters which is not included in list_filters form """
     used_parameters = list(itertools.chain(*(s.used_parameters.keys() for s in cl.filter_specs)))
     return dict((k, v) for k, v in cl.params.items() if k not in used_parameters)
+
+# TODO testar
+@register.filter(name='garb_placeholder_search')
+def garb_placeholder_search(fields_list, opts):
+    app_name, model_name =str(opts).lower().split('.')
+    model = apps.get_model(app_name, model_name)
+    return " | ".join(str(capfirst(model._meta.get_field(x).verbose_name)) for x in fields_list)

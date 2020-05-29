@@ -1,3 +1,5 @@
+from builtins import object
+
 from django import template
 from django.urls import NoReverseMatch, Resolver404, resolve, reverse
 from garb.config import get_config
@@ -21,6 +23,7 @@ def garb_url_exists(url):
         return False
     except Resolver404:
         return False
+# TODO Testar
 
 @register.filter
 def concatene(value1,value2):
@@ -29,7 +32,6 @@ def concatene(value1,value2):
 @register.filter
 def get_for_one_string(fields_list):
     return ' | '.join(x.capitalize().replace("_", " ") for x in fields_list)
-
 
 @register.filter
 def get_for_two_string(lista):

@@ -4,7 +4,12 @@
     <form id="changelist-search" action="" method="get" class="form-inline">
       <div class="search-container">
         {% if cl.search_fields %}
-          <input type="text" class="form-control"  size="40" name="{{ search_var }}" value="{{ cl.query }}" id="search_form.htmlsearchbar" placeholder="{% block search_placeholder %}{% trans 'Search for ' %}{{ cl.search_fields|get_for_one_string }}{% endblock %}" {{ cl.query|yesno:' class=active,' }}>
+          <div class="input-group">
+            <input type="search"  size="40" name="{{ search_var }}" value="{{ cl.query }}" id="search_form.htmlsearchbar" placeholder="{{ cl.search_fields|garb_placeholder_search:cl.opts }}" {{ cl.query|yesno:' class=active,' }}>
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+            </div>
+          </div>
         {% endif %}
         {% spaceless %}
           {% if cl.has_filters %}

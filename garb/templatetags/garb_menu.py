@@ -31,6 +31,7 @@ class ItemLink(object):
             menu =  Menu(self.sub_itens, user=user, path_info=path_info).get_app_list()
             self.collapsed = True if True in [item.get_active() for item in menu ] else False
             self.childrens = menu
+    #TODO quando nao tiver auth setar all
 
     def get_target(self):
         if hasattr(self, 'target'):
