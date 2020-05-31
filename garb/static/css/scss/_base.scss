@@ -57,8 +57,6 @@ body {
 					}
 				}
 			}
-			
-
 		} 
 		.headerlogin {
 			justify-content: flex-end;
@@ -74,7 +72,21 @@ body {
 			flex: 0 0 230px;
 			box-shadow: 0 .125rem 9.375rem rgba(90,97,105,.1),0 .25rem .5rem rgba(90,97,105,.12),0 .9375rem 1.375rem rgba(90,97,105,.1),0 .4375rem 2.1875rem rgba(165,182,201,.1);
 		}
+		main.margin-is-popup {
+			padding: 4% 12%;
+		}
+		@media (max-width: 1200px) {
+			main.margin-is-popup {
+				padding: 4% 5%;
+			}
+		}
+		@media (max-width: 800px) {
+			main.margin-is-popup {
+				padding: 4% 2%;
+			}
+		}
 		main {
+			min-width: 768px;
 			flex: 1;
 			.content-extend {
 				margin: 0 $margin-vw;

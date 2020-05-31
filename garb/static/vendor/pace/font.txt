@@ -1,0 +1,3 @@
+Automatically add a progress bar to your site. #hubspot-open-source 
+- http://github.hubspot.com/pace/docs/welcome
+- https://github.com/HubSpot/pace

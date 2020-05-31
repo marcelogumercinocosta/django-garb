@@ -10,7 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Dosis:400,700|Roboto&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.0/css/solid.css">
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.0/css/fontawesome.css">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-toast-plugin.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/jquery-toast-plugin/jquery.toast.min.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.min.css' %}">
         {% block extrastyle %}{% endblock %}
         {% block extrahead %}{% endblock %}
@@ -25,38 +25,42 @@
                         </a>
                     </div>
                 </div>
-                {% block login %}
-                    <div class="headerlogin dropdown show">
-                        {% if user.is_authenticated %}
-                            <div class="loginmenu">
-                                <a class="button dropdown-toggle" href="/#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ user.username }}
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    {% block login_menu %}
-                                        <a class="dropdown-item button" href="/#"><i class="fas fa-user-circle"></i>{% trans 'Account' %}</a>
-                                    {% endblock %}
-                                    <a class="dropdown-item button" href="{% url 'admin:password_change' %}"><i class="fas fa-key"></i>{% trans 'Change password' %}</a>
-                                    <a class="dropdown-item button" href="{% url 'admin:logout' %}"><i class="fas fa-sign-out-alt"></i>{% trans 'Log out' %}</a>
+                {% if not is_popup %}
+                    {% block login %}
+                        <div class="headerlogin dropdown show">
+                            {% if user.is_authenticated %}
+                                <div class="loginmenu">
+                                    <a class="button dropdown-toggle" href="/#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{ user.username }}
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        {% block login_menu %}
+                                            <a class="dropdown-item button" href="/#"><i class="fas fa-user-circle"></i>{% trans 'Account' %}</a>
+                                        {% endblock %}
+                                        <a class="dropdown-item button" href="{% url 'admin:password_change' %}"><i class="fas fa-key"></i>{% trans 'Change password' %}</a>
+                                        <a class="dropdown-item button" href="{% url 'admin:logout' %}"><i class="fas fa-sign-out-alt"></i>{% trans 'Log out' %}</a>
+                                    </div>
                                 </div>
-                            </div>
-                        {% else %}
-                            <a class="button" href="{% url 'admin:login' %}" >
-                                <i class="fas fa-sign-in-alt"></i>{% trans 'Log in' %}
-                            </a>
-                        {% endif %}
-                    </div>
-                {% endblock %}
+                            {% else %}
+                                <a class="button" href="{% url 'admin:login' %}" >
+                                    <i class="fas fa-sign-in-alt"></i>{% trans 'Log in' %}
+                                </a>
+                            {% endif %}
+                        </div>
+                    {% endblock %}
+                {% endif %}
             </header>
         {% endblock %}
         {% block wrapper %}
             <div class="wrapper">
-                {% block sidebar %}
-                    <aside>
-                        {% include 'garb/menu.html' %}
-                    </aside>
-                {% endblock %}
-                <main>
+                {% if not is_popup %}
+                    {% block sidebar %}
+                        <aside>
+                            {% include 'garb/menu.html' %}
+                        </aside>
+                    {% endblock %}
+                {% endif %}
+                <main  {% if is_popup %} class="margin-is-popup" {% endif %}>
                     {% block breadcrumbs %} {% endblock %}
                     <div class="content-extend" >
                         {% block content-extend %}
@@ -72,7 +76,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
-    <script src="{% static 'js/jquery-toast-plugin.js' %}" ></script>
+    <script src="{% static 'vendor/jquery-toast-plugin/jquery.toast.min.js' %}" ></script>
+    <script src="{% static 'vendor/pace/pace.min.js' %}" ></script>
     <script>
         {% block messages %}
             {% if messages %}

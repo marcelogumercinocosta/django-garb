@@ -17,7 +17,7 @@ register = template.Library()
 class ItemLink(object):
 
     def __init__(self, app, user, path_info):
-        self.auth = 'no'
+        self.auth = 'yes'
         self.user = user
         self.path_info = path_info
         self.route = None
@@ -31,8 +31,7 @@ class ItemLink(object):
             menu =  Menu(self.sub_itens, user=user, path_info=path_info).get_app_list()
             self.collapsed = True if True in [item.get_active() for item in menu ] else False
             self.childrens = menu
-    #TODO quando nao tiver auth setar all
-
+    
     def get_target(self):
         if hasattr(self, 'target'):
             return "target='_blank'"
@@ -41,10 +40,11 @@ class ItemLink(object):
         return re.sub(u'[^a-zA-Z0-9áéíóúÁÉÍÓÚâêîôÂÊÎÔãõÃÕçÇ: ]', '', self.label)
 
     def get_active(self):
-        if self.path_info == self.route:
+        array_path = str(self.path_info).split('/')
+        print(('/'.join(array_path[0:4]) + "/").replace("//", "/"), str(self.route))
+        if ('/'.join(array_path[0:4]) + "/").replace("//", "/") == self.route:
             return True
         return False
-
 
     def check_perms(self):
         if hasattr(self,'permission'):
@@ -55,6 +55,7 @@ class ItemLink(object):
                 return None
         return self
 
+
 class ItemLinkModel(ItemLink):
 
     def __init__(self, app, user, path_info):
@@ -64,6 +65,7 @@ class ItemLinkModel(ItemLink):
             changelist_view = resolve(reverse('admin:{0}_{1}_changelist'.format(self.app_name, self.model_name)))
             app.update({"label": model._meta.verbose_name_plural})
             app.update({"route": '/' + str(changelist_view.route)})
+            app.update({"auth": 'yes'})
             super().__init__(app, user, path_info)
         except NoReverseMatch:
             raise NoReverseMatch('Link para o modelo %s não existe' % repr(app['model']))

@@ -27,9 +27,9 @@
   <div id="content-main" >
     <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.model_name }}_form" novalidate>
       {% csrf_token %}
-      {% block form_top %}{% endblock %}
       <div class="change-columns">
         <div class="form-column">
+          
           <div class="form-column-item">
             {% if is_popup %}<input type="hidden" name="{{ is_popup_var }}" value="1">{% endif %}
             {% if to_field %}<input type="hidden" name="{{ to_field_var }}" value="{{ to_field }}">{% endif %}
@@ -40,7 +40,7 @@
               </div>
                 {{ adminform.form.non_field_errors }}
             {% endif %}
-
+            {% block form_top %}{% endblock %}
             {% block field_sets %}
               {% for fieldset in adminform %}
                 {% include "admin/includes/fieldset.html" %}
@@ -71,12 +71,9 @@
             {% prepopulated_fields_js %}
           </div>
         </div>
-        <div class="box-column">
+        <div class="box-column {% if errors %} error {% endif %}">
           {% block save-box %}
             <div class="save-box">
-              <a href="javascript:history.back()" class="btn btn-light black">
-                Voltar
-              </a>
               {% block submit_buttons_bottom %}
                 {% if not adminform.readonly_fields|get_for_one_string == adminform.fieldsets|get_for_two_string %}
                   {% submit_row %}

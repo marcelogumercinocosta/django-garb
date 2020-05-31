@@ -14,9 +14,9 @@ input[type="text"], input[type="number"], input[type="url"], input[type="email"]
 	background: #fff;
 	height: 40px;
 	border: $border;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 	color: $color-text;
 	font-size: 15px;
 	-webkit-transition: all 0.4s ease;
@@ -60,12 +60,12 @@ textarea {
 
 select {
 	-webkit-appearance: none;
-	border-radius: 3px;
+	border-radius: 5px;
 	border: $border;
 	display: inline-block;
 	font-size: 1rem;
 	height: calc(1.5em + .75rem + 4px );
-	padding: 0 0 0 10px;
+	padding: 0 30px 0 10px;
 	vertical-align: middle;
 	color: $color-text;
 	background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.4rem center/8px 10px no-repeat #ffffff;

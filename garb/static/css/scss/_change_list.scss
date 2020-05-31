@@ -188,6 +188,7 @@
                     border-bottom-left-radius: 0px;
                     border-left: none;
                     margin-left: 40px;
+                    width: 100%;
                 }
                 input[type="search"]:focus + div span {
                     -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
@@ -205,7 +206,7 @@
             }
             .search-filters {
                 .search-filter {
-                    width: 200px;
+                    width: auto;
                 }
             }
         }

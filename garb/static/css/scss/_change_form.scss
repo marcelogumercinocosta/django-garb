@@ -1,6 +1,9 @@
 .change-columns {
     @include flex-row();
     align-items: flex-start;
+    .box-column.error {
+        padding-top: 62px;
+    }
     .box-column {
         width: 230px;
         .save-box {
@@ -15,17 +18,28 @@
     .form-column {
         width: calc(100% - 230px);
         padding-right: 20px;
-        .form-column-item {
+        .form_top {
             @include content();
-            align-items: flex-start;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+            .legend {
+                font-size: 1rem;
+                margin-left: 165px;
+            }
+        }
+        .form-column-item {
             .alert {
-                margin: 0;
+                border-radius: $border-radius;
+                box-shadow: $box-shadow;
+                padding: 10px;
+                margin: 10px 0;
             }
             fieldset {
+                @include content();
+                margin-bottom: 20px;
                 ul.errorlist { 
-                    margin-bottom: 0;
+                    margin-bottom: 2px;
                     margin-top: 0;
+                    padding-left: 0px;
                     color: $erro;
                     width: 100%;
                 }
@@ -33,16 +47,16 @@
                     border-bottom: 1px solid #eee;
                     padding-left: 165px;
                     .legend {
-                        font-size: 1.6rem;
+                        font-size: 1.4rem;
                     }
                     .description{
                         font-size: 1rem;
                         color: #5a6268;
                     }
                 }
-                .form-row.errors div:first-child .form-row-field input,
-                .form-row.errors div:first-child .form-row-field textarea,
-                .form-row.errors div:first-child .form-row-field select {
+                .form-row.errors .form-row-box .form-row-field input,
+                .form-row.errors .form-row-box.form-row-field textarea,
+                .form-row.errors .form-row-box .form-row-field select {
                     border-color:  $erro;
                 }
                 .form-row:last-child {
@@ -52,7 +66,7 @@
                     .vLargeTextField, .vXMLLargeTextField {
                         width: 80%;
                     }
-                    .vDateField {
+                    .vDateField, .vTimeField {
                         width: 20%;
                     }
                     .form-row-box {
@@ -60,11 +74,13 @@
                         align-items: flex-start;
                         width: 100%;
                         .form-row-label {
-                            width: 160px;
+                            width: 25%;
+                            max-width: 160px;
                             text-align: right;
                             label {
                                 font-weight: bold;
                                 color: $color-text;
+                                width: 100%;
                             }
                         }
                         .form-row-field {
@@ -96,7 +112,6 @@
                             }
                         }
                         .form-row-checkbox {
-                            margin-left: 160px;
                             width: 100%;
                             label {
                                 font-weight: bold;
@@ -107,11 +122,20 @@
                     .help {
                         color: $color-text-off;
                         width: 100%;
+                        padding-left: 0px;
+                        padding-top: 3px;
+                        a {
+                            padding-left: 3px;
+                            color: $color1;
+                        }
                     }
                     .related-widget-wrapper {
                         float: left;
                         overflow: initial;
                         }
+                }
+                .field-password .help {
+                    margin: -10px 0 0 150px;
                 }
             }
         }
