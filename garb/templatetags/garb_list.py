@@ -145,7 +145,7 @@ def admin_extra_filters(cl):
     used_parameters = list(itertools.chain(*(s.used_parameters.keys() for s in cl.filter_specs)))
     return dict((k, v) for k, v in cl.params.items() if k not in used_parameters)
 
-# TODO testar
+# TODO: Criar Testes
 @register.filter(name='garb_placeholder_search')
 def garb_placeholder_search(fields_list, opts):
     app_name, model_name =str(opts).lower().split('.')

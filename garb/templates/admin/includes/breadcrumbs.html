@@ -1,7 +1,6 @@
 {% load i18n  admin_urls  %}
 <div class="breadcrumbs">
   {% if nivel == 1 %}
-
       <ul class="breadcrumb">
         <li class="active">{% trans breadcrumbs_action|upper  %}</li>
       </ul>
@@ -34,7 +33,19 @@
           {% endif %}
           <span class="divider">/</span>
         </li>
-        <li class="active">{{breadcrumbs_action|upper|truncatewords:"25" }}</li>
+        <li class="active">{% trans  breadcrumbs_action|upper|truncatewords:"25" %}</li>
       </div>
   {% endif %}
 
+  {% if nivel == "apps" %}
+    <ul class="breadcrumb">
+      <li>
+        <a href="{% url 'admin:index' %}">APPS</a>
+        <span class="divider">/</span>
+      </li>
+      <li class="active">
+          {{breadcrumbs_action|upper|truncatewords:"25" }}
+      </li>
+    </ul>
+  {% endif %}
+</div>

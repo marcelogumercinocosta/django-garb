@@ -1,0 +1,24 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static garb_tags %}
+
+{% block header %} {% endblock %}
+{% block breadcrumbs  %} 
+<div class="breadcrumbs">
+    <ul class="breadcrumb login">
+        <li>
+        <a href="/"> {{ None|garb_title }} </a>
+        <span class="divider">/</span>
+        </li>
+        <li class="active">
+            {% block breadcrumbs_login %}{% endblock %}
+        </li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block content-extend %} {% endblock %}
+
+{% block sidebar %}
+    <div class="login_bar">
+    </div>
+{% endblock %}

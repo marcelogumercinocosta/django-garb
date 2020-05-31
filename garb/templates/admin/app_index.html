@@ -1,0 +1,12 @@
+{% extends "admin/index.html" %}
+{% load i18n %}
+
+{% if not is_popup %}
+    {% block breadcrumbs %}
+        {% for app in app_list %}
+            {% include "admin/includes/breadcrumbs.html" with nivel="apps" breadcrumbs_action=app.name %}
+        {% endfor %}
+    {% endblock %}
+{% endif %}
+
+{% block last-column %}  {% endblock %}

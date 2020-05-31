@@ -1,4 +1,4 @@
-{% load i18n admin_urls garb_tags %}
+{% load i18n admin_urls admin_modify %}
 {% if not is_popup %}
       <a href="javascript:history.back()" class="btn btn-light black">Voltar</a>
 {% endif %}
@@ -10,12 +10,12 @@
       {% url opts|admin_urlname:'delete' original.pk|admin_urlquote as delete_url %}
       <a href="{% add_preserved_filters delete_url %}" class="text-error deletelink btn btn-danger">{% trans "Delete" %}</a>
 {% endif %}
-{% if not is_popup %}
-      {% block object-tools-items %}
-            {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
-            <a href="{% add_preserved_filters history_url %}" class="btn btn-secondary"> <i class="icon-time icon-alpha75"></i>{% trans "History" %}</a>
-            {% if has_absolute_url %}
-                  <a href="{{ absolute_url }}" class="btn btn-secondary"><i class="icon-eye-open icon-alpha75"></i>{% trans "View on site" %}</a>
+{% block object-tools %}
+      {% if change %}
+            {% if not is_popup %}
+                  {% block object-tools-items %}
+                        {% change_form_object_tools %}
+                  {% endblock %}
             {% endif %}
-      {% endblock %}
-{% endif %}
+      {% endif %}
+{% endblock %}

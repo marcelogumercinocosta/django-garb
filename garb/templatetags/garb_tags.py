@@ -23,7 +23,8 @@ def garb_url_exists(url):
         return False
     except Resolver404:
         return False
-# TODO Testar
+
+#TODO: Criar Testes
 
 @register.filter
 def concatene(value1,value2):

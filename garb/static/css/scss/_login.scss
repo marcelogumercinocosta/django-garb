@@ -1,185 +1,195 @@
-body {
-    header {
-        .headerlogin {
-            .button {
-				text-decoration: none;
-                i {
-                    margin-right: 15px;
-                }
-			}
-			.loginmenu {
-				a {
-					background-color: $color-menu-item;
-					color: $color-menu-font;
-					text-decoration: none;
-					padding: 8px 25px;
-					&:hover {
-						background-color: $color-menu-hover;
-						transition: all 0.6s ease;
-						box-shadow: none;
-						transform: none
-					}
-				}
-				.dropdown-toggle {
-					width: 230px;
-					text-align: right;
-					box-shadow: $box-shadow;
-					&:after {
-						border: none;
-						font-family: "Font Awesome 5 Free";
-						font-size: 1.4em;
-						margin-left: 0.4em;
-						top: 15px;
-						vertical-align: -4px;
-						width: 10px;
-					}
-				}		
-				.dropdown-toggle[aria-expanded="false"] {
-					&:after {
-						content: "\f107";
-						transition: all 0.6s ease;
-					}
-				}
-				.dropdown-toggle[aria-expanded="true"] {
-					&:after {
-						content: "\f106";
-						transition: all 0.6s ease;
-					}
-				}
-				.dropdown-menu {
-					background-color: $color-menu-sub;
-					border: $border-menu;
-					font-size: 14px;
-					margin: 0.15rem 0 0 0;
-					padding: 5px;
-					width: 230px;
-					box-shadow: $box-shadow;
-				}
-				.dropdown-item {
-					background-color: $color-menu-sub;
-					border-radius: $border-radius;
-					border: none;
-					text-align: left;
-					i {
-						margin-right: 15px;
-					}
-					&:hover {
-						background-color:  $color-menu-hover;
-						transition: all 0.6s ease;
-					}
-				}
-			}
-		}
-    }
-    .main {
-        .sidebarlogin {
-            background-color: $color-menu;
-            flex: 0 0 230px;
-		}
-		.content {
-			.logincontent {
-				align-items: center;
-				justify-content: center;
-				display: flex;
-				flex-flow: row;
-				flex-wrap: wrap;
-				height: 100%;
-				margin-top: -70px;
-				.loginboxes { 
-					flex: 0 0 45%;
-					.loginbox {
-						background-color: #fff;
-						border:  $border;
-						border-left: 6px solid $color1;
-						border-radius: $border-radius;
-						padding: 3em 0 3.5em 0;
-						form {
-							padding: 21px 3em;
-						}
-						p {
-							padding: 21px 3em 0 3em;
-							margin: 0;
-							text-align: justify;
-						}
-						.login_input {
-							width: 100%;
-							padding: 8px 4em;
-							label {
-								font-size: 11px;
-								color: $color-text-off;
-								line-height: 1.2;
-								text-transform: uppercase;
-								padding: 5px 0px;
-								display: block;
-								margin: 0;
-								width: 100%;
-							}
-							input {
-								padding: 5px 20px;
-								width: 100%;
-							}
-							input[type="submit"]{
-								padding: 10px 25px;
-								text-decoration: none;
-							}
-							ul {
-								padding-top: 5px;
-								margin: 0;
-								li {
-									color: $erro;
-									background-color: #FFD2D2;
-									padding: 4px;
-									border-radius: $border-radius;
-									list-style-type: none;
-									margin: 4px;
-								}
-							}
-							.help {
-								ul {
-									padding-top: 0px;
-									li {
-										padding: 0;
-										font-size: 12px;
-										background-color: #fff;
-										color: #000;
-										list-style-type: circle;
-										list-style-position: inside;
-									}
-								} 
-							}
-							
-						}
-						.forGotPassword {
-							background-color: #F2F2F2;;
-							text-align: center;
-							font-size: 12px;
-							padding: 5px;
-							a {
-								text-decoration: none;
-								color: $color-text-off;
-								outline: none;
-								&:hover {
-									color: #000;
-									text-decoration: bold;
-								}
-							}
-							&:hover {
-								background-color: #D5D7D8;
-							}
-						}
-					}
-					.loginbox_error {
-						background-color: #fff;
-						border:  $border;
-						border-left: 6px solid red;
-						border-radius: $border-radius;
-						.alert {
-							margin-bottom: 0;
-						}
-					}
-				}
-			}
-		}
-    }
+.login_bar {
+	background: $color1;
+	width: 40vw;
+	height: 100vh;
+}
+.breadcrumbs .breadcrumb.login {
+	padding: 60px 30px 0;
 }
 
+.logincontent {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: calc(100vh - 80px);
+
+	.loginbox {
+		@include content();
+		padding: 3em 0 3.5em 0;
+		border-left: 6px solid $color1;
+		margin-top:  -160px;
+		width: calc(12vw + 230px);
+		form {
+			padding: 10px 3em;
+		}
+		p {
+			padding: 21px 3em 0 2em;
+			margin: 0;
+			text-align: justify;
+		}
+		.login_input.errors input {
+			border-color:  $erro;
+		}
+		.login_input {
+			width: 100%;
+			padding: 8px 0;
+
+
+			label {
+				font-size: 11px;
+				color: $color-text;
+				line-height: 1.2;
+				text-transform: uppercase;
+				padding: 5px 0px;
+				display: block;
+				margin: 0;
+				width: 100%;
+			}
+
+			input {
+				padding: 5px 20px;
+				width: 100%;
+			}
+
+			input[type="submit"] {
+				padding: 10px 25px;
+				text-decoration: none;
+				margin: 10px 0 0 50%;
+				width: 50%;
+			}
+			ul {
+				padding: 5px 0px;
+				margin: 0;
+				font-size: 12px;
+				color: $color-text-off;
+				li {
+					padding: 4px 0;
+					margin: 0;
+					list-style-type: circle;
+					list-style-position: inside;
+				}
+			}
+			ul.errorlist {
+				li {
+					color: $erro;
+					background-color: #FFD2D2;
+					border-radius: $border-radius;
+					list-style-type: none;
+					padding-left: 5px;
+				}
+			}
+		}
+
+		.forGotPassword {
+			background-color: #F2F2F2;
+			text-align: center;
+			font-size: 12px;
+			padding: 5px;
+
+			a {
+				text-decoration: none;
+				color: $color-text-off;
+				outline: none;
+
+				&:hover {
+					color: #000;
+					text-decoration: bold;
+				}
+			}
+
+			&:hover {
+				background-color: #D5D7D8;
+			}
+		}
+	}
+	.loginbox_error {
+		@include content();
+		border-left: 6px solid red;
+		width: calc(12vw + 230px);
+		.alert {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.headerlogin {
+	.button {
+		text-decoration: none;
+
+		i {
+			margin-right: 15px;
+		}
+	}
+
+	.loginmenu {
+		a {
+			background-color: $color-menu-item;
+			color: $color-menu-font;
+			text-decoration: none;
+			padding: 8px 25px;
+
+			&:hover {
+				background-color: $color-menu-hover;
+				transition: all 0.6s ease;
+				box-shadow: none;
+				transform: none
+			}
+		}
+
+		.dropdown-toggle {
+			width: 230px;
+			text-align: right;
+			box-shadow: $box-shadow;
+
+			&:after {
+				border: none;
+				font-family: "Font Awesome 5 Free";
+				font-size: 1.4em;
+				margin-left: 0.4em;
+				top: 15px;
+				vertical-align: -4px;
+				width: 10px;
+			}
+		}
+
+		.dropdown-toggle[aria-expanded="false"] {
+			&:after {
+				content: "\f107";
+				transition: all 0.6s ease;
+			}
+		}
+
+		.dropdown-toggle[aria-expanded="true"] {
+			&:after {
+				content: "\f106";
+				transition: all 0.6s ease;
+			}
+		}
+
+		.dropdown-menu {
+			background-color: $color-menu-sub;
+			border: $border-menu;
+			font-size: 14px;
+			margin: 0.15rem 0 0 0;
+			padding: 5px;
+			width: 230px;
+			box-shadow: $box-shadow;
+		}
+
+		.dropdown-item {
+			background-color: $color-menu-sub;
+			border-radius: $border-radius;
+			border: none;
+			text-align: left;
+
+			i {
+				margin-right: 15px;
+			}
+
+			&:hover {
+				background-color: $color-menu-hover;
+				transition: all 0.6s ease;
+			}
+		}
+	}
+}

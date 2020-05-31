@@ -1,0 +1,105 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}">{% endblock %}
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+
+{% block breadcrumbs %}
+        {% include "admin/includes/breadcrumbs.html" with nivel=1 breadcrumbs_action='Apps' %}
+{% endblock %}
+
+{% block content-extend %}
+    <div id="content-main">
+        <div class="change-columns">
+            <div class="apps-column">
+                {% if  app_list %}
+                    {% for app in app_list %}
+                        <div class="app-models">
+                            <div class="module-header">
+                                <div class="legend">
+                                    <a href="{{ app.app_url }}">{{ app.name }}</a>
+                                </div>
+                                <div class="description">{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}</div>
+                            </div>
+                            <table>
+                                {% for model in app.models %}
+                                    <tr class="model-{{ model.object_name|lower }}">
+                                    {% if model.admin_url %}
+                                        <th scope="row"><a href="{{ model.admin_url }}"><i class="fas fa-list"></i>  {{ model.name }}</a></th>
+                                    {% else %}
+                                        <th scope="row">{{ model.name }}</th>
+                                    {% endif %}
+
+                                    {% if model.add_url %}
+                                        <td><a href="{{ model.add_url }}" ><i class="fas fa-plus"></i> {% trans 'Add' %}</a></td>
+                                    {% else %}
+                                        <td>&nbsp;</td>
+                                    {% endif %}
+
+                                    {% if model.admin_url %}
+                                        {% if model.view_only %}
+                                        <td><a href="{{ model.admin_url }}" ><i class="fas fa-list"></i>{% trans 'View' %}</a></td>
+                                        {% else %}
+                                        <td><a href="{{ model.admin_url }}" ><i class="fas fa-edit"></i> {% trans 'Change' %}</a></td>
+                                        {% endif %}
+                                    {% else %}
+                                        <td>&nbsp;</td>
+                                    {% endif %}
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="app-models">
+                        <div class=" m-5">
+                            {% trans 'You don’t have permission to view or edit anything.' %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            {% block last-column %}
+                <div class="last-column">
+                    <div class="module-header last-actions">
+                        <div class="legend"> {% trans 'Recent actions' %} </div>
+                        <div class="description">{% trans 'My actions' %}</div>
+                    </div>
+                    <div class="module" id="recent-actions-module">
+                        {% load log %}
+                        {% get_admin_log 10 as admin_log for_user user %}
+                        {% if not admin_log %}
+                            <div class=" m-5">
+                                {% trans 'None available' %}
+                            </div>
+                        {% else %}
+                            <table>
+                                {% for entry in admin_log %}
+                                    <tr>
+                                        <th scope="row">
+                                            {% if entry.content_type %}
+                                                <a href="{{ entry.admin_url }}"><i class="fas fa-list"></i>  {{  entry.content_type.name|title }}</a>
+                                            {% else %}
+                                                {% trans 'Unknown content' %}
+                                            {% endif %}
+                                        </th>
+                                        <td>
+                                            {% if entry.is_deletion or not entry.get_admin_url %}
+                                                <i class="fas fa-trash-alt"></i> {{ entry.object_repr }}
+                                            {% else %}
+                                                <a href="{{ entry.get_admin_url }}">
+                                                    {% if entry.is_addition %}<i class="fas fa-plus"></i> {% endif %}
+                                                    {% if entry.is_change %}<i class="fas fa-edit"></i> {% endif %}
+                                                    {{ entry.object_repr }}
+                                                </a>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

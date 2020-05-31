@@ -1,85 +1,96 @@
 input[type="checkbox"] {
-	width: 14px;
-	border: 1px solid #616161;
-	height: 14px;
-	outline: 0;
-	box-sizing: border-box;
-	border-radius: 0px;
-	-webkit-border-radius: 0px;
-	-moz-border-radius: 0px;
-	cursor: pointer;
+    width: 14px;
+    border: 1px solid #616161;
+    height: 14px;
+    outline: 0;
+    box-sizing: border-box;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    cursor: pointer;
 }
 
-input[type="text"], input[type="number"], input[type="url"], input[type="email"], input[type="search"], input[type="password"], textarea{
-	background: #fff;
-	height: 40px;
-	border: $border;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	color: $color-text;
-	font-size: 15px;
-	-webkit-transition: all 0.4s ease;
-	-o-transition: all 0.4s ease;
-	-moz-transition: all 0.4s ease;
-	transition: all 0.4s ease;
-	padding: 0 0 0 10px;
-	width: 80%;
-	&::-webkit-input-placeholder {
-		color: #999;
-	}
-	&:-moz-placeholder {
-		color: #999;
-		opacity: 1;
-	}
-	&::-moz-placeholder {
-		color: #999;
-		opacity: 1;
-	}
-	&:-ms-input-placeholder {
-		color: #999;
-		color: #999;
-	}
-	&:focus {
-		-webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
-		-moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
-		box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
-		-webkit-transform: translateY(-3px);
-		-moz-transform: translateY(-3px);
-		-ms-transform: translateY(-3px);
-		-o-transform: translateY(-3px);
-		transform: translateY(-3px);
-		border-color: #80bdff;
-	}
+input[type="text"],
+input[type="number"],
+input[type="url"],
+input[type="email"],
+input[type="search"],
+input[type="password"],
+textarea {
+    background: #fff;
+    height: 40px;
+    border: $border;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: $color-text;
+    font-size: 15px;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    padding: 0 0 0 10px;
+    width: 100%;
+
+    &::-webkit-input-placeholder {
+        color: #999;
+    }
+
+    &:-moz-placeholder {
+        color: #999;
+        opacity: 1;
+    }
+
+    &::-moz-placeholder {
+        color: #999;
+        opacity: 1;
+    }
+
+    &:-ms-input-placeholder {
+        color: #999;
+        color: #999;
+    }
+
+    &:focus {
+        -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+        -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+        -webkit-transform: translateY(-3px);
+        -moz-transform: translateY(-3px);
+        -ms-transform: translateY(-3px);
+        -o-transform: translateY(-3px);
+        transform: translateY(-3px);
+        border-color: #80bdff;
+    }
 }
 
-textarea { 
-	height: calc(40px * 3 );
+textarea {
+    height: calc(40px * 3);
 }
-
 
 select {
-	-webkit-appearance: none;
-	border-radius: 5px;
-	border: $border;
-	display: inline-block;
-	font-size: 1rem;
-	height: calc(1.5em + .75rem + 4px );
-	padding: 0 30px 0 10px;
-	vertical-align: middle;
-	color: $color-text;
-	background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.4rem center/8px 10px no-repeat #ffffff;
-	transition: all 0.4s ease;
-	width: 80%;
-	&:focus {
-		-webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
-		-moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
-		box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
-		-webkit-transform: translateY(-3px);
-		-moz-transform: translateY(-3px);
-		-ms-transform: translateY(-3px);
-		-o-transform: translateY(-3px);
-		transform: translateY(-3px);
-		border-color: #80bdff;
-	}
+    -webkit-appearance: none;
+    border-radius: 5px;
+    border: $border;
+    display: inline-block;
+    font-size: 1rem;
+    height: calc(1.5em + .75rem + 4px);
+    padding: 0 30px 0 10px;
+    vertical-align: middle;
+    color: $color-text;
+    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.4rem center/8px 10px no-repeat #ffffff;
+    transition: all 0.4s ease;
+    width: 100%;
+
+    &:focus {
+        -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+        -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+        -webkit-transform: translateY(-3px);
+        -moz-transform: translateY(-3px);
+        -ms-transform: translateY(-3px);
+        -o-transform: translateY(-3px);
+        transform: translateY(-3px);
+        border-color: #80bdff;
+    }
 }

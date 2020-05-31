@@ -20,22 +20,28 @@
         padding-right: 20px;
         .form_top {
             @include content();
-            margin-bottom: 10px;
             .legend {
                 font-size: 1rem;
                 margin-left: 165px;
             }
         }
         .form-column-item {
+            margin-bottom: 20px;
             .alert {
                 border-radius: $border-radius;
                 box-shadow: $box-shadow;
                 padding: 10px;
                 margin: 10px 0;
             }
+            input[type="text"], input[type="number"], input[type="url"], input[type="email"], input[type="search"], input[type="password"], textarea, select {
+                width: 80%;
+            }
+            .selector select{
+                width: 100%;
+            }
             fieldset {
                 @include content();
-                margin-bottom: 20px;
+                margin-bottom: 10px;
                 ul.errorlist { 
                     margin-bottom: 2px;
                     margin-top: 0;
@@ -43,19 +49,9 @@
                     color: $erro;
                     width: 100%;
                 }
-                .module-header {
-                    border-bottom: 1px solid #eee;
-                    padding-left: 165px;
-                    .legend {
-                        font-size: 1.4rem;
-                    }
-                    .description{
-                        font-size: 1rem;
-                        color: #5a6268;
-                    }
-                }
+
                 .form-row.errors .form-row-box .form-row-field input,
-                .form-row.errors .form-row-box.form-row-field textarea,
+                .form-row.errors .form-row-box .form-row-field textarea,
                 .form-row.errors .form-row-box .form-row-field select {
                     border-color:  $erro;
                 }
@@ -110,7 +106,25 @@
                                     width: 20px;
                                 }
                             }
+                            .selector .selector-chosen h2 {
+                                background: $color1;
+                                color: #fff;
+                            }
+                            .selector .selector-available h2 {
+                                background: $background-color;
+                                color: $color-text;
+                            }
                         }
+                        div.datetime {
+                            strong {
+                                padding-left: 10px;
+                                color: $color-text-off;
+                            }
+                            .datetimeshortcuts {
+                                margin-right: 40px;
+                            }
+                        }
+
                         .form-row-checkbox {
                             width: 100%;
                             label {
@@ -135,9 +149,10 @@
                         }
                 }
                 .field-password .help {
-                    margin: -10px 0 0 150px;
+                    margin: -15px 0 0 160px;
                 }
             }
+            
         }
     }
 }

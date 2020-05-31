@@ -41,7 +41,6 @@ class ItemLink(object):
 
     def get_active(self):
         array_path = str(self.path_info).split('/')
-        print(('/'.join(array_path[0:4]) + "/").replace("//", "/"), str(self.route))
         if ('/'.join(array_path[0:4]) + "/").replace("//", "/") == self.route:
             return True
         return False

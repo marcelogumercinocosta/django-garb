@@ -1,12 +1,11 @@
-{% extends "base.html" %}
+{% extends "base_login.html" %}
 {% load i18n  garb_tags %}
-{% block login %}{% endblock %}
 
-{% block sidebar %}
-    <aside class="sidebarlogin"> </aside>
+{% block breadcrumbs_login %}
+    {% trans 'Log in'|upper %}
 {% endblock %}
 
-{% block content %}
+{% block content-extend %}
     <div class="logincontent">
         <div class="loginboxes">
             <div class="loginbox pb-0">
