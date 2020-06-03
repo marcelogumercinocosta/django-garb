@@ -10,8 +10,9 @@ from garb.tests.mixins import UserTestCaseMixin
 
 class GarbMenuTestCase(UserTestCaseMixin):
     app_label = 'tests'
-    route_blog = "/" + resolve(reverse('admin:%s_%s_changelist' % (app_label,'blog'))).route
-    route_content =  "/" + resolve(reverse('admin:%s_%s_changelist' % (app_label,'blogcomment'))).route
+    route_blog =  ("admin:{0}_{1}_changelist".format(app_label,'blog'))
+    route_blog_link = "/" + resolve(reverse('admin:%s_%s_changelist' % (app_label,'blog'))).route
+    route_content =  ("admin:{0}_{1}_changelist".format(app_label,'blogcomment')) 
 
     def setUp(self):
         self.setUpConfig()
@@ -21,7 +22,7 @@ class GarbMenuTestCase(UserTestCaseMixin):
         settings.GARB_CONFIG = getattr(settings, 'GARB_CONFIG', {})
         settings.GARB_CONFIG.update({
             'MENU': [
-                { 'label': 'menu1',  'icon': 'fa-user-plus',  'route': 'blog/', 'auth':'all' },
+                { 'label': 'menu1',  'icon': 'fa-user-plus',  'route': 'blog1', 'auth':'all' },
                 { 'label': 'menu2',  'icon': 'fa-user-plus',
                     'sub_itens':[
                         { 'model':'tests.blog'},
@@ -30,10 +31,10 @@ class GarbMenuTestCase(UserTestCaseMixin):
                 },
                 { 'label': 'menu3',  'icon': 'fa-user-plus', 'auth':'all',
                     'sub_itens':[
-                        { 'label': 'sub1', 'route': 'www.uol.com.br', 'target':'_blank' },
-                        { 'label': 'sub2', 'route': 'blog1/', 'permission': 'tests.can_hire', },
-                        { 'label': 'sub3', 'route': 'blog2/', 'auth':'yes' },
-                        { 'label': 'sub4', 'route': 'blog3/', 'auth':'no' },
+                        { 'label': 'sub1', 'link': 'www.uol.com.br', 'target':'_blank' },
+                        { 'label': 'sub2', 'route': 'blog1', 'permission': 'tests.can_hire', },
+                        { 'label': 'sub3', 'route': 'blog2', 'auth':'yes' },
+                        { 'label': 'sub4', 'route': 'blog3', 'auth':'no' },
                     ]
                 }
             ],
@@ -163,7 +164,7 @@ class GarbMenuTestCase(UserTestCaseMixin):
         self.client.logout()
         self.login_superuser()
         self.get_response()
-        self.get_response(url=self.route_blog)
+        self.get_response(url=self.route_blog_link)
         menu = self.make_menu_from_response()
         self.assertEqual(menu[1].childrens[0].get_active(), True)
         self.assertEqual(menu[1].childrens[1].get_active(), False)

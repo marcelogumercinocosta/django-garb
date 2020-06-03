@@ -10,6 +10,7 @@ def default_config():
         'HEADER_TIME_FORMAT': 'H:i',
         'LIST_PER_PAGE': 15,
         'MENU': [],
+        'ADMIN_ACTIONS_ALL': True,
     }
 
 

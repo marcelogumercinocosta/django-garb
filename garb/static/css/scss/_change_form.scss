@@ -53,7 +53,7 @@
                 .form-row.errors .form-row-box .form-row-field input,
                 .form-row.errors .form-row-box .form-row-field textarea,
                 .form-row.errors .form-row-box .form-row-field select {
-                    border-color:  $erro;
+                    @include errors();
                 }
                 .form-row:last-child {
                     border-bottom: none;

@@ -118,11 +118,13 @@
                     }
                 }
             }
+            .no_actions .action-checkbox-column{
+                display: none;
+            }
         }
 
         tbody {
             border-bottom: 1px solid #dee2e6;
-
             tr {
                 height: 3em;
                 a,
@@ -154,6 +156,9 @@
                     background-color: #b7ccda;
                     color: $color1;
                 }
+            }
+            .no_actions .action-checkbox {
+                display: none;
             }
         }
     }

@@ -12,6 +12,7 @@
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.0/css/fontawesome.css">
         <link rel="stylesheet" type="text/css" href="{% static 'vendor/jquery-toast-plugin/jquery.toast.min.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.min.css' %}">
+        {% block adminstyle %}{% endblock %}
         {% block extrastyle %}{% endblock %}
         {% block extrahead %}{% endblock %}
     </head>
@@ -94,7 +95,7 @@
                         });
                     {% endfor %}
             {% endif %}
-        {% endblock messages %}
+        {% endblock %}
     </script>
     {% block extrajs %}{% endblock %}
 </html>

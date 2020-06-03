@@ -1,83 +1,9 @@
-$color-title:  #081296;
-$background-color: #eee;
 
-$theme:hybrid-theme;
-
-$color-title-main: #fff;
-$color-menu: #0B3A8D;
-$color-menu2:#090979;
-$color-menu-item:#0B3A8D;
-$color-menu-hover: #0F4DB8;
-$color-menu-sub: #0D42A0;
-$border-menu: 1px solid #2059BD;
-$color-menu-font: #fff;
-$color-menu-font-hover: #fff;
-$color-menu-active: #fff;
-$color1: #0F4DB8;
-
-@if $theme == light-theme {
-    $color-title-main: #081296;
-    $color-menu-item: #ffffff;
-    $color-menu: #ffffff;
-    $color-menu2:#dddddd;
-    $color-menu-hover: #EDF0F2;
-    $color-menu-sub: #F5F8FA;
-    $border-menu: 1px solid #E6ECF0;
-    $color-menu-font: #000;
-    $color-menu-font-hover: #000;
-    $color-menu-active: #216BB8;
-    $color1: #216BB8;
-}
-
-@if $theme == hybrid-theme {
-    $color-title-main: #fff;
-    $color-menu: #0D47A1;
-    $color-menu2:#090979;
-    $color-menu-item: #FFFFFF;
-    $color-menu-hover: #E9E9E9;
-    $color-menu-sub: #FBFBFB;
-    $border-menu: 1px solid #E9E9E9;
-
-    $color-menu-font: #000;
-    $color-menu-font-hover: #0068FF;
-    $color-menu-active: #2096F3;
-
-    $color1: #216BB8;
-}
-
-$color-text: #212529;
-$color-text-off: #666666;
-$border: 1px solid rgba(0,0,0,.15);
-$border-radius: 5px;
-$box-shadow: 0 2px 0 rgba(90,97,105,.11),0 4px 8px rgba(90,97,105,.12),0 10px 10px rgba(90,97,105,.06),0 7px 10px rgba(90,97,105,.1);
-$erro: #D8000C;
-$margin-vw:2vw; 
-
-@mixin flex-row() {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-
-@mixin content() {
-    margin: 0;
-    background-color: #fff;
-    padding: 10px;
-    border-radius: $border-radius;
-    box-shadow: $box-shadow;
-    margin-bottom: 10px;
-}
-
-
+@import "variables";
 @import "base";
 @import "input";
 @import "button";
 @import "menu";
 @import "login";
-@import "change_list";
-@import "change_form";
 @import "jquerytoastpluguin";
 @import "pace";
-@import "index"

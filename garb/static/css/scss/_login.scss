@@ -1,6 +1,6 @@
 .login_bar {
 	background: $color1;
-	width: 40vw;
+	width: 30vw;
 	height: 100vh;
 }
 .breadcrumbs .breadcrumb.login {
@@ -28,7 +28,7 @@
 			text-align: justify;
 		}
 		.login_input.errors input {
-			border-color:  $erro;
+			@include errors();
 		}
 		.login_input {
 			width: 100%;
@@ -71,11 +71,11 @@
 			}
 			ul.errorlist {
 				li {
-					color: $erro;
-					background-color: #FFD2D2;
+					@include errors();
 					border-radius: $border-radius;
-					list-style-type: none;
 					padding-left: 5px;
+					color: $erro;
+					margin-bottom: 3px;
 				}
 			}
 		}
@@ -104,7 +104,7 @@
 	}
 	.loginbox_error {
 		@include content();
-		border-left: 6px solid red;
+		border-left: 6px solid $erro;
 		width: calc(12vw + 230px);
 		.alert {
 			margin-bottom: 0;

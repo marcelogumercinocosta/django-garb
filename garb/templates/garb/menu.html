@@ -11,12 +11,12 @@
                     <ul class="collapse {{ app.collapsed|yesno:'show,' }}" id="{{ app.get_chave }}">
                         {% for app_sub in app.childrens %}
                             <li {% if app_sub.get_active %} class="active" {% endif %}>
-                                <a href="{{ app_sub.route }}" {{ app_sub.get_target }}> </i>  <span>{{ app_sub.label }}</span> </a>
+                                <a href="{{ app_sub.get_url }}" {{ app_sub.get_target }}> </i>  <span>{{ app_sub.label }}</span> </a>
                             </li>
                         {% endfor %}
                     </ul>
                 {% else %}
-                    <a href="{{ app.route }}" {{ app.get_target }}> <i class="fa {{ app.icon }} fa-lg "></i>  <span>{{ app.label }}</span> </a>
+                    <a href="{{ app.get_url }}" {{ app.get_target }}> <i class="fa {{ app.icon }} fa-lg "></i>  <span>{{ app.label }}</span> </a>
                 {% endif %}
             </li>
         {% endfor %}

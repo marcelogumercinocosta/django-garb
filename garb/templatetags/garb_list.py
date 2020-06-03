@@ -145,9 +145,17 @@ def admin_extra_filters(cl):
     used_parameters = list(itertools.chain(*(s.used_parameters.keys() for s in cl.filter_specs)))
     return dict((k, v) for k, v in cl.params.items() if k not in used_parameters)
 
+
 # TODO: Criar Testes
 @register.filter(name='garb_placeholder_search')
 def garb_placeholder_search(fields_list, opts):
     app_name, model_name =str(opts).lower().split('.')
     model = apps.get_model(app_name, model_name)
     return " | ".join(str(capfirst(model._meta.get_field(x).verbose_name)) for x in fields_list)
+
+
+@register.simple_tag
+def get_action_form():
+    action_form = get_config('ADMIN_ACTIONS')
+    print(type(action_form))
+    return False

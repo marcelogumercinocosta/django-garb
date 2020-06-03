@@ -6,6 +6,7 @@ from garb.config import get_config
 
 register = template.Library()
 
+
 @register.filter(name='garb_title')
 def garb_title(title):
     value = get_config('PROJECT_NAME')
@@ -30,9 +31,11 @@ def garb_url_exists(url):
 def concatene(value1,value2):
     return str(value1) + " " + str(value2)
 
+
 @register.filter
 def get_for_one_string(fields_list):
     return ' | '.join(x.capitalize().replace("_", " ") for x in fields_list)
+
 
 @register.filter
 def get_for_two_string(lista):
@@ -41,3 +44,8 @@ def get_for_two_string(lista):
         for field in fildset['fields']:
             result.append(field)
     return ' | '.join(x.capitalize().replace("_", " ") for x in result)
+
+
+@register.filter(name='settings_value')
+def settings_value(name):
+    return get_config(name)

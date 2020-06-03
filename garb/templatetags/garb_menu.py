@@ -21,6 +21,8 @@ class ItemLink(object):
         self.user = user
         self.path_info = path_info
         self.route = None
+        self.link = None
+        self.target = None
         self.collapsed = False
         for name in app:
             setattr(self, name, app[name])
@@ -33,7 +35,7 @@ class ItemLink(object):
             self.childrens = menu
     
     def get_target(self):
-        if hasattr(self, 'target'):
+        if self.target:
             return "target='_blank'"
 
     def get_chave(self):
@@ -41,9 +43,18 @@ class ItemLink(object):
 
     def get_active(self):
         array_path = str(self.path_info).split('/')
-        if ('/'.join(array_path[0:4]) + "/").replace("//", "/") == self.route:
+        if self.route and ('/'.join(array_path[0:4]) + "/").replace("//", "/") == reverse(self.route):
             return True
         return False
+    
+    def get_url(self):
+        if self.route:
+            return  reverse(self.route)
+        elif self.link:
+            self.target = "_blank"
+            return self.link
+        else:
+            return "#"
 
     def check_perms(self):
         if hasattr(self,'permission'):
@@ -61,9 +72,8 @@ class ItemLinkModel(ItemLink):
         self.app_name, self.model_name = app['model'].lower().split('.')
         try:
             model = apps.get_model(self.app_name, self.model_name)
-            changelist_view = resolve(reverse('admin:{0}_{1}_changelist'.format(self.app_name, self.model_name)))
             app.update({"label": model._meta.verbose_name_plural})
-            app.update({"route": '/' + str(changelist_view.route)})
+            app.update({"route": 'admin:{0}_{1}_changelist'.format(self.app_name, self.model_name)})
             app.update({"auth": 'yes'})
             super().__init__(app, user, path_info)
         except NoReverseMatch:
@@ -75,7 +85,9 @@ class ItemLinkModel(ItemLink):
     def check_perms(self):
         if self.user.has_perms('admin:{0}_{1}_changelist'.format(self.app_name, self.model_name)):
             return self
-    
+
+
+
 class Menu(object):
 
     def __init__(self, app_list, path_info,  **kwargs):
@@ -117,6 +129,7 @@ class Menu(object):
         elif ("sub_itens" in app):
             return True
         return False
+
 
 @register.simple_tag(takes_context=True)
 def get_menu(context, request):
