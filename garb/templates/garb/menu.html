@@ -5,7 +5,7 @@
         {% for app in app_list %}
             <li {% if app.get_active %} class="active" {% endif %}>
                 {% if app.childrens %}
-                    <a class="collapsed" data-toggle="collapse" data-parent="#menu" href="#{{ app.get_chave }}" aria-expanded="{{app.collapsed}}"  aria-controls="{{ app.get_chave }}">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#menu" href="#{{ app.get_chave }}" aria-expanded="{{app.collapsed|lower}}"  aria-controls="{{ app.get_chave }}">
                         <i class="fa {{ app.icon }} "></i><span>{{ app.label }}</span>
                     </a>
                     <ul class="collapse {{ app.collapsed|yesno:'show,' }}" id="{{ app.get_chave }}">

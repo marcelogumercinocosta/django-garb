@@ -20,9 +20,9 @@ textarea {
     background: #fff;
     height: 40px;
     border: $border;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    -webkit-border-radius: $border-radius;
+    -moz-border-radius: $border-radius;
+    border-radius: $border-radius;
     color: $color-text;
     font-size: 15px;
     -webkit-transition: all 0.4s ease;
@@ -68,9 +68,9 @@ textarea {
     height: calc(40px * 3);
 }
 
-select {
+select{
     -webkit-appearance: none;
-    border-radius: 5px;
+    border-radius: $border-radius;
     border: $border;
     display: inline-block;
     font-size: 1rem;
@@ -94,3 +94,63 @@ select {
         border-color: #80bdff;
     }
 }
+
+
+
+.select2-container--default {
+    .select2-search--dropdown .select2-search__field ,
+    .select2-dropdown {
+        border-radius: $border-radius;
+        border: $border!important;
+        color: $color-text;
+        input:focus {
+            box-shadow: none;
+            transform: none;
+        }
+    }
+    .selection .select2-selection--single {
+        padding: 5px 30px 0 10px;
+        vertical-align: middle;
+        border-radius: $border-radius;
+        border: $border;
+        height: 40px!important;
+        .select2-selection__rendered {
+            color: $color-text;
+            font-size: 1rem;
+            height: 100%;
+        }
+        .select2-selection__arrow {
+            height: 100%;
+        }
+    }
+}
+
+.select2-container--default.select2-container--focus, 
+.select2-container--default.select2-container--open {
+    .select2-selection--single {
+        -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+        -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+        -webkit-transform: translateY(-3px);
+        -moz-transform: translateY(-3px);
+        -ms-transform: translateY(-3px);
+        -o-transform: translateY(-3px);
+        transform: translateY(-3px);
+        border-color: #80bdff;
+    }
+    .select2-dropdown {
+        border-color: #80bdff!important;
+        &.select2-dropdown--below {
+            -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+            box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+            margin-top: -4px;
+        }
+        &.select2-dropdown--above  {
+            -webkit-box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.15);
+            box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.15);
+            margin-top: -2px;
+        }
+    }
+} 

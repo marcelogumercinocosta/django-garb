@@ -11,6 +11,10 @@ def default_config():
         'LIST_PER_PAGE': 15,
         'MENU': [],
         'ADMIN_ACTIONS_ALL': True,
+        'ADMIN_WIDGET_CAN': True,
+        'MENU_NOT_AUTH': True,
+        'ROUTE_PROFILE': False,
+        'NAME_PROFILE': '',
     }
 
 

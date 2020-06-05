@@ -1,4 +1,7 @@
 <fieldset class="module aligned {{ fieldset.classes }}">
+    {% if  forloop.first %}
+        {% block form_top %}{% endblock %}
+    {% endif %}
     {% if fieldset.name  or fieldset.description %}
         <div class="module-header">
             {% if fieldset.name %}

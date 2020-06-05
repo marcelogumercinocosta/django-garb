@@ -231,3 +231,22 @@
         color: $color1;
     }
 }
+
+.delete_confirmation {
+    .module-reader {
+        padding-top: 10px;
+        .description, .legend  {
+            color: $erro;
+            font-weight: bold;
+        }
+    }
+    .module-delete {
+        padding-top: 20px;
+        .delete_confirmation_list {
+            padding: 10px 0 11px 170px;
+            i {
+                color: $erro;
+            }
+        }
+    }
+}

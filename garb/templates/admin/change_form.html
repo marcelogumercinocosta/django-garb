@@ -23,7 +23,7 @@
   {% endif %}
 {% endblock %}
 
-{% block content-extend %}
+{% block content%}
   <div id="content-main" >
     <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.model_name }}_form" novalidate>
       {% csrf_token %}
@@ -40,7 +40,6 @@
               </div>
                 {{ adminform.form.non_field_errors }}
             {% endif %}
-            {% block form_top %}{% endblock %}
             {% block field_sets %}
               {% for fieldset in adminform %}
                 {% include "admin/includes/fieldset.html" %}

@@ -28,7 +28,7 @@ class ItemLink(object):
             setattr(self, name, app[name])
         if 'sub_itens' in app:
             for sub_item in self.sub_itens:
-                if (not 'auth' in sub_item) and ( 'auth' in app):
+                if (not 'auth' in sub_item):
                     sub_item.update({"auth": self.auth})
             menu =  Menu(self.sub_itens, user=user, path_info=path_info).get_app_list()
             self.collapsed = True if True in [item.get_active() for item in menu ] else False
@@ -52,7 +52,7 @@ class ItemLink(object):
             return  reverse(self.route)
         elif self.link:
             self.target = "_blank"
-            return self.link
+            return ('http://' + self.link).replace("http://http://", "http://")
         else:
             return "#"
 
@@ -64,6 +64,7 @@ class ItemLink(object):
             else:
                 return None
         return self
+
 
 
 class ItemLinkModel(ItemLink):
@@ -109,7 +110,7 @@ class Menu(object):
             if ("model" in app) and (self.user.is_authenticated):
                 return ItemLinkModel(app, self.user, self.path_info).check_perms()
             if ("label" in app) and self.has_auth_item_link(app, self.user.is_authenticated):
-                    return ItemLink(app, self.user, self.path_info).check_perms()
+                return ItemLink(app, self.user, self.path_info).check_perms()
             return False
 
     def has_auth_item_link(self, app, authenticated):

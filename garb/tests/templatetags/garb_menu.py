@@ -35,6 +35,14 @@ class GarbMenuTestCase(UserTestCaseMixin):
                         { 'label': 'sub2', 'route': 'blog1', 'permission': 'tests.can_hire', },
                         { 'label': 'sub3', 'route': 'blog2', 'auth':'yes' },
                         { 'label': 'sub4', 'route': 'blog3', 'auth':'no' },
+                        { 'label': 'sub5', 'link': 'www.uol.com.br'},
+                    ]
+                },
+                { 'label': 'menu4',  'icon': 'fa-user-plus',
+                    'sub_itens':[
+                        { 'label': 'sub6', 'route': 'blog1', 'permission': 'tests.can_hire', },
+                        { 'label': 'sub7', 'route': 'blog2' , 'auth':'yes'},
+                        { 'label': 'sub8', 'route': 'blog3' },
                     ]
                 }
             ],
@@ -67,6 +75,7 @@ class GarbMenuTestCase(UserTestCaseMixin):
         self.assertEqual(len(menu[i].childrens), len(mc[i]['sub_itens']))
         self.assertEqual(menu[i].icon, mc[i]['icon'])
         self.assertEqual(menu[i].childrens[0].route, self.route_blog )
+        self.assertEqual(menu[i].childrens[0].get_url(), self.route_blog_link )
         self.assertEqual(menu[i].childrens[1].route, self.route_content)
 
         i += 1 # as dict      
@@ -77,8 +86,16 @@ class GarbMenuTestCase(UserTestCaseMixin):
         self.assertEqual(menu[i].childrens[1].auth, 'all')
         self.assertEqual(menu[i].childrens[2].auth, 'yes')
         self.assertEqual(menu[i].label, mc[i]['label'])
-        self.assertEqual(len(menu[i].childrens), 3)
+        self.assertEqual(len(menu[i].childrens), 4)
         self.assertEqual(len(menu[i].childrens), len(mc[i]['sub_itens'])-1)
+        self.assertEqual(menu[i].childrens[3].get_url(), 'http://www.uol.com.br')
+        self.assertEqual(menu[i].childrens[3].target, '_blank')
+
+        i += 1 # as dict     
+        self.assertEqual(len(menu[i].childrens), 3)
+        self.assertEqual(menu[i].childrens[0].auth, 'yes')
+        self.assertEqual(menu[i].childrens[2].auth, 'yes')
+
 
     def test_menu_user(self):
         self.client.logout()
@@ -101,7 +118,7 @@ class GarbMenuTestCase(UserTestCaseMixin):
         self.assertEqual(menu[i].childrens[0].target, '_blank')
         self.assertEqual(menu[i].childrens[1].auth, 'yes')
         self.assertEqual(menu[i].label, mc[i+1]['label'])
-        self.assertEqual(len(menu[i].childrens), 2)
+        self.assertEqual(len(menu[i].childrens), 3)
         self.assertEqual(len(menu[i].childrens), len(mc[i+1]['sub_itens'])-2)
         self.assertEqual(menu[i].childrens[0].label, 'sub1')
         self.assertEqual(menu[i].childrens[1].label, 'sub3')
@@ -112,7 +129,7 @@ class GarbMenuTestCase(UserTestCaseMixin):
         self.get_response(url="/")
         mc = settings.GARB_CONFIG['MENU']
         menu = self.make_menu_from_response()
-        self.assertEqual(len(menu), len(mc)-1)
+        self.assertEqual(len(menu), len(mc)-2)
 
         i = 0
         self.assertEqual(menu[i].label, mc[i]['label'])
@@ -127,7 +144,7 @@ class GarbMenuTestCase(UserTestCaseMixin):
         self.assertEqual(menu[i].childrens[0].target, '_blank')
         self.assertEqual(menu[i].childrens[1].auth, 'no')
         self.assertEqual(menu[i].label, mc[i+1]['label'])
-        self.assertEqual(len(menu[i].childrens), 2)
+        self.assertEqual(len(menu[i].childrens), 3)
         self.assertEqual(len(menu[i].childrens), len(mc[i+1]['sub_itens'])-2)
         self.assertEqual(menu[i].childrens[0].label, 'sub1')
         self.assertEqual(menu[i].childrens[1].label, 'sub4')
@@ -154,7 +171,7 @@ class GarbMenuTestCase(UserTestCaseMixin):
         self.assertEqual(menu[i].childrens[1].permission, 'tests.can_hire')
         self.assertEqual(menu[i].childrens[2].auth, 'yes')
         self.assertEqual(menu[i].label, mc[i+1]['label'])
-        self.assertEqual(len(menu[i].childrens), 3)
+        self.assertEqual(len(menu[i].childrens), 4)
         self.assertEqual(len(menu[i].childrens), len(mc[i+1]['sub_itens'])-1)
         self.assertEqual(menu[i].childrens[0].label, 'sub1')
         self.assertEqual(menu[i].childrens[1].label, 'sub2')

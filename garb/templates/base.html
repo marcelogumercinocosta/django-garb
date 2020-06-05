@@ -7,7 +7,7 @@
         <title>{{ title|default_if_none:None|garb_title }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
-        <link href="https://fonts.googleapis.com/css?family=Dosis:400,700|Roboto&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Dosis:400,500,700|Roboto&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.0/css/solid.css">
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.0/css/fontawesome.css">
         <link rel="stylesheet" type="text/css" href="{% static 'vendor/jquery-toast-plugin/jquery.toast.min.css' %}">
@@ -35,9 +35,15 @@
                                         {{ user.username }}
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        {% block login_menu %}
-                                            <a class="dropdown-item button" href="/#"><i class="fas fa-user-circle"></i>{% trans 'Account' %}</a>
-                                        {% endblock %}
+                                        {% if "ROUTE_PROFILE"|settings_value %} 
+                                            <a class="dropdown-item button" href="{% url "ROUTE_PROFILE"|settings_value %}"><i class="fas fa-user-circle"></i>
+                                                {% if "NAME_PROFILE"|settings_value %} 
+                                                    {{ "NAME_PROFILE"|settings_value|title }}
+                                                {% else %}
+                                                    {% trans 'Account' %}
+                                                {% endif %}
+                                            </a>
+                                        {% endif %}
                                         <a class="dropdown-item button" href="{% url 'admin:password_change' %}"><i class="fas fa-key"></i>{% trans 'Change password' %}</a>
                                         <a class="dropdown-item button" href="{% url 'admin:logout' %}"><i class="fas fa-sign-out-alt"></i>{% trans 'Log out' %}</a>
                                     </div>
@@ -54,21 +60,19 @@
         {% endblock %}
         {% block wrapper %}
             <div class="wrapper">
-                {% if not is_popup %}
-                    {% block sidebar %}
-                        <aside>
-                            {% include 'garb/menu.html' %}
-                        </aside>
-                    {% endblock %}
-                {% endif %}
+                    {% if not is_popup %}
+                        {% block sidebar %}
+                            {% if  "MENU_NOT_AUTH"|settings_value or user.is_authenticated %}
+                                <aside>
+                                    {% include 'garb/menu.html' %}
+                                </aside>
+                            {% endif %}
+                        {% endblock %}
+                    {% endif %}
                 <main  {% if is_popup %} class="margin-is-popup" {% endif %}>
                     {% block breadcrumbs %} {% endblock %}
                     <div class="content-extend" >
-                        {% block content-extend %}
-                            <div class="content" >
-                                {% block content %} {% endblock %}
-                            </div>
-                        {% endblock %}
+                        {% block content %}  {% endblock %}
                     </div>
                 </main>
             </div>
@@ -79,7 +83,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
     <script src="{% static 'vendor/jquery-toast-plugin/jquery.toast.min.js' %}" ></script>
     <script src="{% static 'vendor/pace/pace.min.js' %}" ></script>
-    <script>
+    <script type="text/javascript">
         {% block messages %}
             {% if messages %}
                     {% for message in messages %}
@@ -97,5 +101,12 @@
             {% endif %}
         {% endblock %}
     </script>
+    {% if  "MENU_NOT_AUTH"|settings_value or user.is_authenticated %}
+        <script type="text/javascript">
+            $('.collapsed').on('click', function () {
+                $('#menu .collapse').collapse('hide');
+            });
+        </script>
+    {% endif %}
     {% block extrajs %}{% endblock %}
 </html>

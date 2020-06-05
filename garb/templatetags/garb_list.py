@@ -153,9 +153,3 @@ def garb_placeholder_search(fields_list, opts):
     model = apps.get_model(app_name, model_name)
     return " | ".join(str(capfirst(model._meta.get_field(x).verbose_name)) for x in fields_list)
 
-
-@register.simple_tag
-def get_action_form():
-    action_form = get_config('ADMIN_ACTIONS')
-    print(type(action_form))
-    return False

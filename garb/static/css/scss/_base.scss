@@ -108,18 +108,41 @@ body {
                 .content {
                     @include content();
                 }
-
                 .module-header {
                     border-bottom: 1px solid #eee;
-                    padding-left: 165px;
-
+                    padding: 5px 0 5px 165px;
+                    min-height: 51px;
+                    display: flex;
+                    justify-content: flex-start;
+                    flex-direction: row;
+                    align-items:center;
                     .legend {
+                        flex:1;
                         font-size: 1.4rem;
                     }
-
                     .description {
+                        flex:1;
                         font-size: 1rem;
                         color: #5a6268;
+                    }
+                    .sub_title {
+                        flex:1;
+                        font-size: 1rem;
+                    }
+                }
+                .module-footer {
+                    border-top: 1px solid #eee;
+                    margin-top: 100px;
+                    padding: 10px 165px;
+                    padding-left: 165px;
+                    min-height: 50px;
+                    .buttons {
+                        align-items: center;
+                        display: flex;
+                        justify-content: flex-end;
+                        input {
+                            padding: 0 10px;
+                        }
                     }
                 }
             }
