@@ -1,9 +1,93 @@
 
-@import "variables";
-@import "base";
-@import "input";
-@import "button";
-@import "menu";
-@import "login";
-@import "jquerytoastpluguin";
-@import "pace";
+$default: (
+    colorTitle:  #081296,
+    background-color: #eee,
+    color-text: #212529,
+    color-text-off: #666666,
+    border: 1px solid #D9D9D9,
+    border-radius: 5px,
+    erro: #D8000C,
+    margin-vw:2vw, 
+    background-color-content: #fff,
+    box-shadow: 0 2px 0 rgba(90,97,105,.11)\,0 4px 8px rgba(90,97,105,.12)\,0 10px 10px rgba(90,97,105,.06)\,0 7px 10px rgba(90,97,105,.1),
+    color-input:#FFFFFF,
+    color-title-main: #fff,
+    color-menu: #0B3A8D,
+    color-menu2:#090979,
+    color-menu-item:#0B3A8D,
+    color-menu-hover: #0F4DB8,
+    color-menu-sub: #0D42A0,
+    border-menu: 1px solid #2059BD,
+    color-menu-font: #fff,
+    color-menu-font-hover: #fff,
+    color-menu-active: #fff,
+    color1: #0F4DB8,
+);
+
+
+
+
+$themes: (
+    light: (
+        backgroundColor: white,
+        textColor: #408bbd,
+        buttonTextColor: #408bbd,
+        buttonTextTransform: none,
+        buttonTextHoverColor: #61b0e7,
+        buttonColor: #fff,
+        buttonBorder: 2px solid #408bbd,
+    ),
+    dark: (
+        backgroundColor: #222,
+        textColor: #ddd,
+        buttonTextColor: #aaa,
+        buttonTextTransform: uppercase,
+        buttonTextHoverColor: #ddd,
+        buttonColor: #333,
+        buttonBorder: 1px solid #333,
+    ),
+);
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: $color-text;
+}
+
+
+
+@mixin themable($theme-name, $variables) {
+    body.#{$theme-name} {
+        -webkit-font-smoothing: antialiased;
+        background-color: $background-color;
+        font-family: "Dosis", "Roboto", sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.43;
+        color: $color-text;
+        @import "variables";
+        @import "base";
+        @import "input";
+        @import "button";
+        @import "menu";
+        @import "login";
+        @import "jquerytoastpluguin";
+        @import "pace";
+        @import "button";
+        @import "change_list";
+        @import "change_form";
+        @import "index";
+    }
+}
+
+
+@include themable(theme-1, $default);
+@include themable(theme-2, $default);
+

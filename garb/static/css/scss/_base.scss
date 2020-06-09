@@ -1,37 +1,3 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    outline: 0;
-    padding: 0;
-}
-
-body {
-    -webkit-font-smoothing: antialiased;
-    background-color: $background-color;
-    font-family: "Dosis", "Roboto", sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.43;
-    color: $color-text;
-}
-
-a {
-    text-decoration: none;
-    color: $color-text;
-}
-
-.site-name-azul {
-    color: $color-title;
-    font-family: "Exo", sans-serif;
-    font-size: 1.5rem;
-    font-style: italic;
-    font-weight: 900;
-    margin: 0px;
-    text-align: center;
-}
-
-
-body {
     header {
         display: flex;
         height: 60px;
@@ -108,40 +74,48 @@ body {
                 .content {
                     @include content();
                 }
+
                 .module-header {
-                    border-bottom: 1px solid #eee;
+                    border-bottom: $border;
                     padding: 5px 0 5px 165px;
                     min-height: 51px;
                     display: flex;
-                    justify-content: flex-start;
-                    flex-direction: row;
-                    align-items:center;
+                    justify-content: flex-end;
+                    align-items: baseline;
+                    flex-direction: column;
+
                     .legend {
-                        flex:1;
                         font-size: 1.4rem;
                     }
+
                     .description {
-                        flex:1;
                         font-size: 1rem;
                         color: #5a6268;
                     }
+
                     .sub_title {
-                        flex:1;
                         font-size: 1rem;
                     }
                 }
+
                 .module-footer {
-                    border-top: 1px solid #eee;
-                    margin-top: 100px;
-                    padding: 10px 165px;
-                    padding-left: 165px;
+                    border-top: $border;
+                    margin-top: 0px;
+                    padding: 10px 170px;
                     min-height: 50px;
+
                     .buttons {
                         align-items: center;
                         display: flex;
                         justify-content: flex-end;
+
                         input {
-                            padding: 0 10px;
+                            height: 40px;
+                        }
+
+                        a {
+                            margin-left: 10px;
+                            height: 40px;
                         }
                     }
                 }
@@ -157,27 +131,42 @@ body {
                 font-weight: 400;
                 line-height: 1.33;
                 background-color: transparent;
+
                 li.active {
                     font-weight: bold;
                 }
+
                 li {
                     color: $color1;
+
                     a {
                         color: $color1;
                         text-decoration: none;
+
                         &:hover {
                             font-weight: bold;
                         }
                     }
                 }
+
                 .divider {
-                    color: #0D3D3D;
+                    color: $color1;
                     padding: 0 5px;
                 }
             }
         }
     }
+
     .alert-danger {
         @include errors();
     }
-}
+
+    .site-name-azul {
+        color: _(colorTitle);
+        font-family: "Exo", sans-serif;
+        font-size: 1.5rem;
+        font-style: italic;
+        font-weight: 900;
+        margin: 0px;
+        text-align: center;
+    }

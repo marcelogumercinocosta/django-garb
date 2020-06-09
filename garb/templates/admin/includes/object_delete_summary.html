@@ -1,7 +1,8 @@
 {% load i18n %}
 <h4>{% trans "Summary" %}</h4>
-<ul>
-    {% for model_name, object_count in model_count %}
-    <li>{{ model_name|capfirst }}: {{ object_count }}</li>
-    {% endfor %}
-</ul>
+{% for model_name, object_count in model_count %}
+    <div class='delete_confirmation_list'>
+        <i class="fas fa-trash-alt"></i>
+        {{ model_name|capfirst }}: {{ object_count }}
+    </div>
+{% endfor %}

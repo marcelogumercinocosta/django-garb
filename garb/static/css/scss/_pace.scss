@@ -4,9 +4,7 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
-
     .pace-progress {
-        background: $color-menu;
         position: fixed;
         z-index: 2000;
         top: 0;
@@ -15,7 +13,13 @@
         height: 5px;
     }
 }
-
 .pace-inactive {
     display: none;
+}
+@include theme() {
+    .pace {
+        .pace-progress {        
+            background: theme(color-menu);
+        }
+    }
 }

@@ -70,7 +70,7 @@
                     {% if field.is_readonly or not field.field.is_hidden %}
                       <td{% if field.field.name %} class="field-{{ field.field.name }}"{% endif %}>
                         {% if field.is_readonly %}
-                          <p>{{ field.contents }}</p>
+                          {{ field.contents }}
                         {% else %}
                           {{ field.field.errors.as_ul }}
                           {{ field.field }}
@@ -88,6 +88,11 @@
                 </td>
               {% endif %}
             </tr>
+          {% empty %}
+          <tr>
+            <td></td>
+            <td colspan="2"> {% trans "None" %}</td>
+          </tr>
           {% endfor %}
         </tbody>
       </table>

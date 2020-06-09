@@ -40,18 +40,18 @@
             li.disabled a,
             li.disabled span {
                 &:hover {
-                    background-color: #fff;
+                    background-color: $color-text;
                 }
             }
 
             li.active a,
             li.active span {
                 z-index: 1;
-                color: #fff;
+                color: $color-text;
                 background-color: $color1;
                 border-color: $color1;
-
                 &:hover {
+                    color: $color-menu-font-hover; 
                     background-color: $color1;
                 }
             }
@@ -63,11 +63,12 @@
                 padding: 0.5rem 0.75rem;
                 margin-left: -1px;
                 line-height: 1.25;
-                background-color: #fff;
+                background-color: $color-menu-item;
                 border: $border;
                 text-decoration: none;
 
                 &:hover {
+                    color: $color-menu-font-hover; 
                     background-color: $background-color;
                 }
             }
@@ -124,7 +125,7 @@
         }
 
         tbody {
-            border-bottom: 1px solid #dee2e6;
+            border-bottom: $border;
             tr {
                 height: 3em;
                 a,
@@ -153,7 +154,7 @@
                 }
 
                 &:hover {
-                    background-color: #b7ccda;
+                    background-color: $color-menu-hover;
                     color: $color1;
                 }
             }
@@ -241,11 +242,39 @@
         }
     }
     .module-delete {
-        padding-top: 20px;
+        padding: 20px 170px;
         .delete_confirmation_list {
-            padding: 10px 0 11px 170px;
+            padding: 5px 10px;
             i {
                 color: $erro;
+            }
+        }
+        ul {
+            list-style: none;
+            padding-left: 20px;
+            margin-bottom: 0;
+            li {
+                padding: 5px 10px;
+                a {
+                    color: $color1;
+                }
+                &:before {
+                    content: "\f03a"; 
+                    font-family: "Font Awesome 5 Free";
+                    display: inline-block;
+                    margin-left: -1.3em; 
+                    width: 1.3em; 
+                    color: $erro;
+                }
+                ul li {
+                    &:before {
+                        content: "\f068";
+                        font-family: "Font Awesome 5 Free";
+                        display: inline-block;
+                        margin-left: -1.3em; 
+                        width: 1.3em; 
+                    }
+                }
             }
         }
     }

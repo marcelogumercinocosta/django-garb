@@ -10,46 +10,81 @@
 {% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} delete-confirmation delete-selected-confirmation{% endblock %}
 
 {% block breadcrumbs %}
-<div class="breadcrumbs">
-<a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
-&rsaquo; <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a>
-&rsaquo; <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>
-&rsaquo; {% trans 'Delete multiple objects' %}
-</div>
+    {% include "admin/includes/breadcrumbs.html" with nivel=2 breadcrumbs_action='Delete' %}
 {% endblock %}
 
+
 {% block content %}
-{% if perms_lacking %}
-    <p>{% blocktrans %}Deleting the selected {{ objects_name }} would result in deleting related objects, but your account doesn't have permission to delete the following types of objects:{% endblocktrans %}</p>
-    <ul>
-    {% for obj in perms_lacking %}
-        <li>{{ obj }}</li>
-    {% endfor %}
-    </ul>
-{% elif protected %}
-    <p>{% blocktrans %}Deleting the selected {{ objects_name }} would require deleting the following protected related objects:{% endblocktrans %}</p>
-    <ul>
-    {% for obj in protected %}
-        <li>{{ obj }}</li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>{% blocktrans %}Are you sure you want to delete the selected {{ objects_name }}? All of the following objects and their related items will be deleted:{% endblocktrans %}</p>
-    {% include "admin/includes/object_delete_summary.html" %}
-    <h2>{% trans "Objects" %}</h2>
-    {% for deletable_object in deletable_objects %}
-        <ul>{{ deletable_object|unordered_list }}</ul>
-    {% endfor %}
-    <form method="post">{% csrf_token %}
-    <div>
-    {% for obj in queryset %}
-    <input type="hidden" name="{{ action_checkbox_name }}" value="{{ obj.pk|unlocalize }}">
-    {% endfor %}
-    <input type="hidden" name="action" value="delete_selected">
-    <input type="hidden" name="post" value="yes">
-    <input type="submit" value="{% trans 'Yes, I’m sure' %}">
-    <a href="#" class="button cancel-link">{% trans "No, take me back" %}</a>
+    <div class="content delete_confirmation" >
+        {% if perms_lacking %}
+            <div class="module-header">
+                <div class="description">
+                {% blocktrans %}Deleting the selected {{ objects_name }} would result in deleting related objects, but your account doesn't have permission to delete the following types of objects:{% endblocktrans %}
+                </div>
+            </div>
+            <div class="module-delete"> 
+                {% for obj in perms_lacking %}
+                    <div class='delete_confirmation_list'>
+                        <i class="fas fa-ban"></i> 
+                        {{ obj }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="module-footer">
+                <div class="buttons">
+                    <a href="#" class="button cancel-link">{% trans "No, take me back" %}</a>
+                </div>
+            <div>
+        {% elif protected %}
+            <div class="module-header">
+                <div class="sub_title">
+                    {% blocktrans %}Deleting the selected {{ objects_name }} would require deleting the following protected related objects:{% endblocktrans %}
+                </div>
+            </div>
+            <div class="module-delete">
+                {% for obj in protected %}
+                    <div class='delete_confirmation_list'>
+                        <i class="fas fa-ban"></i> 
+                        {{ obj }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="module-footer">
+                <div class="buttons">
+                    <a href="#" class="button cancel-link">{% trans "No, take me back" %}</a>
+                </div>
+            <div>
+        {% else %}
+            <div class="module-header">
+                <div class="legend">
+                    {% trans "Are you sure?" %}
+                </div> 
+                <div class="description">
+                    {% blocktrans %}Are you sure you want to delete the selected {{ objects_name }}? All of the following objects and their related items will be deleted:{% endblocktrans %}
+                </div>
+            </div>
+            <div class="module-delete">
+                {% include "admin/includes/object_delete_summary.html" %}
+                <br>
+                <h4>{% trans "Objects" %}</h2>
+                {% for deletable_object in deletable_objects %}
+                    <ul>{{ deletable_object|unordered_list }}</ul>
+                {% endfor %}
+            </div>
+            <div class="module-footer">
+                <div class="buttons">
+                    <form method="post">{% csrf_token %}
+                        {% for obj in queryset %}
+                            <input type="hidden" name="{{ action_checkbox_name }}" value="{{ obj.pk|unlocalize }}">
+                        {% endfor %}
+                        <input type="hidden" name="action" value="delete_selected">
+                        <input type="hidden" name="post" value="yes">
+                        <input type="submit" class="text-error deletelink btn btn-danger" value="{% trans 'Yes, I’m sure' %}">
+                    </form>
+                    <a href="#" class="button cancel-link">{% trans "No, take me back" %}</a>
+                </div>
+            </div>
+        {% endif %}
     </div>
-    </form>
-{% endif %}
 {% endblock %}
+
