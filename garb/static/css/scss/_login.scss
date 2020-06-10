@@ -1,5 +1,5 @@
 .login_bar {
-	background:  linear-gradient(180deg, $color-menu 0%, $color-menu2 100%); 
+	background:  linear-gradient(180deg, _(bgcMenu) 0%,  _(bgcMenu2) 100%); 
 	width: 30vw;
 	height: 100vh;
 }
@@ -16,7 +16,7 @@
 	.loginbox {
 		@include content();
 		padding: 3em 0 3.5em 0;
-		border-left: 6px solid $color1;
+		border-left: 6px solid _(cPrimary);
 		margin-top:  -160px;
 		width: calc(12vw + 230px);
 		form {
@@ -37,7 +37,7 @@
 
 			label {
 				font-size: 11px;
-				color: $color-text;
+				color: _(cText);
 				line-height: 1.2;
 				text-transform: uppercase;
 				padding: 5px 0px;
@@ -61,7 +61,7 @@
 				padding: 5px 0px;
 				margin: 0;
 				font-size: 12px;
-				color: $color-text-off;
+				color: _(cTextOff);
 				li {
 					padding: 4px 0;
 					margin: 0;
@@ -72,9 +72,9 @@
 			ul.errorlist {
 				li {
 					@include errors();
-					border-radius: $border-radius;
+					border-radius: _(bdRadius);
 					padding-left: 5px;
-					color: $erro;
+					color: _(erro);
 					margin-bottom: 3px;
 				}
 			}
@@ -88,7 +88,7 @@
 
 			a {
 				text-decoration: none;
-				color: $color-text-off;
+				color: _(cTextOff);
 				outline: none;
 
 				&:hover {
@@ -104,7 +104,7 @@
 	}
 	.loginbox_error {
 		@include content();
-		border-left: 6px solid $erro;
+		border-left: 6px solid _(erro);
 		width: calc(12vw + 230px);
 		.alert {
 			margin-bottom: 0;
@@ -123,24 +123,23 @@
 
 	.loginmenu {
 		a {
-			background-color: $color-menu-item;
-			color: $color-menu-font;
+			background-color: _(bgcMenuItem);
+			color: _(cMenuFont);
 			text-decoration: none;
 			padding: 8px 25px;
 
 			&:hover {
-				background-color: $color-menu-hover;
+				background-color: _(bgcMenuHover);
 				transition: all 0.6s ease;
-				box-shadow: none;
-				transform: none
+				
 			}
 		}
 
 		.dropdown-toggle {
 			width: 230px;
 			text-align: right;
-			box-shadow: $box-shadow;
-			border: $border-menu;
+			box-shadow: _(boxShadow);
+			border: _(bdMenu);
 
 			&:after {
 				border: none;
@@ -150,6 +149,9 @@
 				top: 15px;
 				vertical-align: -4px;
 				width: 10px;
+			}
+			&:hover {
+				background-color: _(bgcMenuItem);
 			}
 		}
 
@@ -168,18 +170,18 @@
 		}
 
 		.dropdown-menu {
-			background-color: $color-menu-sub;
-			border: $border-menu;
+			background-color: _(bgcMenuSub);
+			border: _(bdMenu);
 			font-size: 14px;
 			margin: 0.15rem 0 0 0;
 			padding: 5px;
 			width: 230px;
-			box-shadow: $box-shadow;
+			box-shadow: _(boxShadow);
 		}
 
 		.dropdown-item {
-			background-color: $color-menu-sub;
-			border-radius: $border-radius;
+			background-color: _(bgcMenuSub);
+			border-radius: _(bdRadius);
 			border: none;
 			text-align: left;
 
@@ -188,8 +190,10 @@
 			}
 
 			&:hover {
-				background-color: $color-menu-hover;
+				background-color: _(bgcMenuHover);
 				transition: all 0.6s ease;
+				box-shadow: none;
+				transform: none
 			}
 		}
 	}

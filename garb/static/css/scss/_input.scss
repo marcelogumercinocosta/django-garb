@@ -1,6 +1,6 @@
 input[type="checkbox"] {
     width: 14px;
-    border: $border;
+    border: _(bd);
     height: 14px;
     outline: 0;
     box-sizing: border-box;
@@ -8,6 +8,7 @@ input[type="checkbox"] {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     cursor: pointer;
+    
 }
 
 input[type="text"],
@@ -17,13 +18,13 @@ input[type="email"],
 input[type="search"],
 input[type="password"],
 textarea {
-    background: $color-input;
+    background: _(cInput);
     height: 40px;
-    border: $border;
-    -webkit-border-radius: $border-radius;
-    -moz-border-radius: $border-radius;
-    border-radius: $border-radius;
-    color: $color-text;
+    border: _(bd);
+    -webkit-border-radius: _(bdRadius);
+    -moz-border-radius: _(bdRadius);
+    border-radius: _(bdRadius);
+    color: _(cText);
     font-size: 15px;
     -webkit-transition: all 0.4s ease;
     -o-transition: all 0.4s ease;
@@ -70,15 +71,15 @@ textarea {
 
 select{
     -webkit-appearance: none;
-    border-radius: $border-radius;
-    border: $border;
+    border-radius: _(bdRadius);
+    border: _(bd);
     display: inline-block;
     font-size: 1rem;
     height: calc(1.5em + .75rem + 4px);
     padding: 0 30px 0 10px;
     vertical-align: middle;
-    color: $color-text;
-    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.4rem center/8px 10px no-repeat $color-input;
+    color: _(cText);
+    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.4rem center/8px 10px no-repeat _(cInput);
     transition: all 0.4s ease;
     width: 100%;
 
@@ -99,25 +100,25 @@ select{
 .select2-container--default {
     .select2-search--dropdown .select2-search__field ,
     .select2-dropdown {
-        border-radius: $border-radius;
-        border: $border!important;
-        color: $color-text;
+        border-radius: _(bdRadius);
+        border: _(bd)!important;
+        color: _(cText);
         input:focus {
             box-shadow: none;
             transform: none;
         }
     }
     .selection .select2-selection--single {
-        background-color: $color-input;
-        color: $color-text;
+        background-color: _(cInput);
+        color: _(cText);
         padding: 5px 30px 0 10px;
         vertical-align: middle;
-        border-radius: $border-radius;
-        border: $border;
+        border-radius: _(bdRadius);
+        border: _(bd);
         height: 40px!important;
         .select2-selection__rendered {
-            background-color: $color-input;
-            color: $color-text;
+            background-color: _(cInput);
+            color: _(cText);
             font-size: 1rem;
             height: 100%;
         }
@@ -127,11 +128,11 @@ select{
     }
 }
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
-    background-color:  $color-menu-hover!important;
-    color: $color-menu-font-hover!important;
+    background-color:  _(bgcMenuHover)!important;
+    color: _(cMenuFontHover)!important;
 }
 .select2-container--default .select2-results__option[aria-selected=true] {
-    background-color:  $color-menu-sub!important;
+    background-color:  _(bgcMenuSub)!important;
 }
 .select2-container--default.select2-container--focus, 
 .select2-container--default.select2-container--open {
@@ -148,7 +149,7 @@ select{
     }
     .select2-dropdown {
         border-color: #80bdff!important;
-        background-color: $color-input;
+        background-color: _(cInput);
         &.select2-dropdown--below {
             -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
             -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
@@ -170,5 +171,5 @@ label.required:before {
     vertical-align: middle;
     height: 26px;
     font-size: 0.8em;
-    color: red;
+    color: _(erro);
 }

@@ -1,53 +1,84 @@
-
-$default: (
-    colorTitle:  #081296,
-    background-color: #eee,
-    color-text: #212529,
-    color-text-off: #666666,
-    border: 1px solid #D9D9D9,
-    border-radius: 5px,
-    erro: #D8000C,
-    margin-vw:2vw, 
-    background-color-content: #fff,
-    box-shadow: 0 2px 0 rgba(90,97,105,.11)\,0 4px 8px rgba(90,97,105,.12)\,0 10px 10px rgba(90,97,105,.06)\,0 7px 10px rgba(90,97,105,.1),
-    color-input:#FFFFFF,
-    color-title-main: #fff,
-    color-menu: #0B3A8D,
-    color-menu2:#090979,
-    color-menu-item:#0B3A8D,
-    color-menu-hover: #0F4DB8,
-    color-menu-sub: #0D42A0,
-    border-menu: 1px solid #2059BD,
-    color-menu-font: #fff,
-    color-menu-font-hover: #fff,
-    color-menu-active: #fff,
-    color1: #0F4DB8,
-);
-
-
-
-
+@use "sass:map";
 $themes: (
+    default: (
+        backgroundColor: #eee,
+        bd: 1px solid #D9D9D9,
+        bdMenu: 1px solid #2059BD,
+        bdRadius: 5px,
+        bgcContent: #fff,
+        bgcMenu: #0B3A8D,
+        bgcMenu2:#090979,
+        bgcMenuHover: #0F4DB8,
+        bgcMenuItem:#0B3A8D,
+        bgcMenuSub: #0D42A0,
+        boxShadow: (0 2px 0 rgba(90,97,105,.11),0 4px 8px rgba(90,97,105,.12),0 10px 10px rgba(90,97,105,.06),0 7px 10px rgba(90,97,105,.1)),
+        boxShadowMenu: (0 .125rem 9.375rem rgba(90, 97, 105, .1), 0 .25rem .5rem rgba(90, 97, 105, .12), 0 .9375rem 1.375rem rgba(90, 97, 105, .1), 0 .4375rem 2.1875rem rgba(165, 182, 201, .1)),
+        cMenuFont: #fff,
+        cMenuFontHover: #fff,
+        cMenuActive: #fff,
+        cInput:#FFFFFF,
+        bgcTitle:  #081296,
+        cTitle: #fff,
+        cPrimary: #0F4DB8,
+        cText: #212529,
+        cTextOff: #666666,
+        erro: #D8000C,
+        marginVw:2vw
+    ),
+    hybrid: (
+        bdMenu: 1px solid #E9E9E9,
+        bgcMenu: #0D47A1,
+        bgcMenu2:#090979,
+        bgcMenuHover: #E9E9E9,
+        bgcMenuItem: #FFFFFF,
+        bgcMenuSub: #FBFBFB,
+        cMenuActive: #2096F3,
+        cMenuFont: #000,
+        cMenuFontHover: #0068FF,
+        bgcTitle: #fff,
+        cPrimary: #216BB8
+    ),
     light: (
-        backgroundColor: white,
-        textColor: #408bbd,
-        buttonTextColor: #408bbd,
-        buttonTextTransform: none,
-        buttonTextHoverColor: #61b0e7,
-        buttonColor: #fff,
-        buttonBorder: 2px solid #408bbd,
+        bdMenu: 1px solid #E6ECF0,
+        bgcMenu: #ffffff,
+        bgcMenu2:#dddddd,
+        bgcMenuHover: #EDF0F2,
+        bgcMenuItem: #ffffff,
+        bgcMenuSub: #F5F8FA,
+        cMenuActive: #216BB8,
+        cMenuFont: #000,
+        cMenuFontHover: #000,
+        bgcTitle: #fff,
+        cTitle:  #081296,
+        cPrimary: #216BB8
     ),
     dark: (
-        backgroundColor: #222,
-        textColor: #ddd,
-        buttonTextColor: #aaa,
-        buttonTextTransform: uppercase,
-        buttonTextHoverColor: #ddd,
-        buttonColor: #333,
-        buttonBorder: 1px solid #333,
+        backgroundColor: #282A36,
+        bd: 1px solid #38444D,
+        bdMenu: 1px solid #38444D,
+        bgcContent:#000000,
+        bgcMenu: #000000,
+        bgcMenu2:#292929,
+        bgcMenuHover: #38444D,
+        bgcMenuItem: #121212,
+        bgcMenuSub: #282A36,
+        boxShadow: none,
+        cMenuActive: #03DAC6,
+        cMenuFont: #ffffff,
+        cMenuFontHover: #ccc,
+        cInput:#263341,
+        bgcTitle: #FFFFFF,
+        cPrimary: #1DA1F2,
+        cText: #fff,
+        cTextOff: #666666,
+        boxShadowMenu: (0 .125rem 9.375rem rgba(90, 97, 105, .1), 0 .25rem .5rem rgba(90, 97, 105, .12), 0 .9375rem 1.375rem rgba(90, 97, 105, .1), 0 .4375rem 2.1875rem rgba(165, 182, 201, .1)),
     ),
 );
 
+$map_update: $themes;
+@function _($key) {
+    @return map-get($map_update, $key);
+}
 
 * {
     box-sizing: border-box;
@@ -56,22 +87,21 @@ $themes: (
     padding: 0;
 }
 
-a {
-    text-decoration: none;
-    color: $color-text;
-}
-
-
-
-@mixin themable($theme-name, $variables) {
+@each $theme-name, $map in $themes {
+    $default:map-get($themes, 'default');
+    $map_update:map-merge( $default, $map);
     body.#{$theme-name} {
         -webkit-font-smoothing: antialiased;
-        background-color: $background-color;
+        background-color: _(backgroundColor);
         font-family: "Dosis", "Roboto", sans-serif;
         font-size: 14px;
         font-weight: 400;
         line-height: 1.43;
-        color: $color-text;
+        color: _(cText);
+        a {
+            text-decoration: none;
+            color: _(cText);
+        }
         @import "variables";
         @import "base";
         @import "input";
@@ -86,8 +116,3 @@ a {
         @import "index";
     }
 }
-
-
-@include themable(theme-1, $default);
-@include themable(theme-2, $default);
-

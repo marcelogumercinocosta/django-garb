@@ -5,7 +5,7 @@
         font-family: "Dosis", "Roboto", sans-serif;
         font-size: 16px;
         .jq-toast-loaded {
-            background-color: $color1!important;
+            background-color: _(cPrimary)!important;
         }
         .close-jq-toast-single {
             font-size: 30px;

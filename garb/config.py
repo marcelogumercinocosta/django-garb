@@ -6,8 +6,6 @@ def default_config():
     return {
         # configurable
         'PROJECT_NAME': 'Django Garb',
-        'HEADER_DATE_FORMAT': "D d M Y",
-        'HEADER_TIME_FORMAT': 'H:i',
         'LIST_PER_PAGE': 15,
         'MENU': [],
         'ADMIN_ACTIONS_ALL': True,
@@ -15,6 +13,7 @@ def default_config():
         'MENU_NOT_AUTH': True,
         'ROUTE_PROFILE': False,
         'NAME_PROFILE': '',
+        'THEME': 'default',
     }
 
 

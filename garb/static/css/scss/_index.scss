@@ -1,14 +1,14 @@
 @mixin table-index() {
     width: 100%;
     tr {
-        border-bottom: $border;
+        border-bottom: _(bd);
         th, td {
             padding: 10px 0;
             a {
                 text-decoration: none;
             }
             i {
-                color: $color1;
+                color: _(cPrimary);
             }
         }
     }
@@ -20,7 +20,7 @@
         .app-models {
             @include content();
             .module-header .legend a {
-                color: $color1;
+                color: _(cPrimary);
                 text-decoration: none;
             }
             table {
@@ -45,7 +45,7 @@
         .module-header.last-actions{
             padding-left: 20px;
             .legend  {
-                color: $color1;
+                color: _(cPrimary);
                 text-decoration: none;
             }
         }

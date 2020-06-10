@@ -1,6 +1,6 @@
 .btn {
-	border-radius: $border-radius;
-	border: $border;
+	border-radius: _(bdRadius);
+	border: 1px solid transparent;
 	display: block;
 	font-size: 16px;
 	min-width: 10rem;
@@ -22,7 +22,7 @@
 .button {
 	@extend .btn;
 	color: #ffffff;
-	background-color: $color1;
+	background-color: _(cPrimary);
 	&:hover {
 		color: #ffffff;
 	}
@@ -31,5 +31,4 @@
 .button-green {
 	color: #fff;
 	background-color: #218838;
-	border-color: #1e7e34;
 }

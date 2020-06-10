@@ -1,9 +1,9 @@
 .wrapper {
     .menu {
         height: 100%;
-        background-color: $color-menu;
-        background: linear-gradient(180deg, $color-menu 0%, $color-menu2 100%);
-        border-top: 2px solid $color-menu-active;
+        background-color: _(bgcMenu);
+        background: linear-gradient(180deg, _(bgcMenu) 0%, _(bgcMenu2) 100%);
+        border-top: 2px solid _(cMenuActive);
         font-size: 1.2em;
         font-weight: 500;
         overflow: auto;
@@ -13,24 +13,24 @@
 
         a {
             &:hover {
-                background-color: $color-menu-hover;
+                background-color: _(bgcMenuHover);
                 transition: all 0.6s ease;
             }
         }
 
         ul {
             li.active {
-                border-right: 2px solid $color-menu-active;
+                border-right: 2px solid _(cMenuActive);
             }
 
             li {
-                background-color: $color-menu-item;
+                background-color: _(bgcMenuItem);
                 display: inline-block;
                 width: 100%;
 
                 a {
-                    border-bottom: $border-menu;
-                    color: $color-menu-font;
+                    border-bottom: _(bdMenu);
+                    color: _(cMenuFont);
                     display: block;
                     font-size: 0.75em;
                     height: 50px;
@@ -40,7 +40,7 @@
                     text-transform: uppercase;
 
                     &:after {
-                        color: $color-menu-font;
+                        color: _(cMenuFont);
                         font-family: "Font Awesome 5 Free";
                         font-size: 1.4em;
                         position: absolute;
@@ -57,7 +57,7 @@
                         left: 0;
                         right: 0;
                         bottom: 0;
-                        background: $color-menu-hover;
+                        background: _(bgcMenuHover);
                         -webkit-transform: scaleX(0);
                         transform: scaleX(0);
                         -webkit-transform-origin: 0 50%;
@@ -73,7 +73,7 @@
                     &:hover,
                     &:focus,
                     &:active {
-                        color: $color-menu-font-hover;
+                        color: _(cMenuFontHover);
                         transform: translatey(0);
                         font-weight: bold;
 
@@ -108,7 +108,7 @@
                 ul {
                     li {
                         a {
-                            background: $color-menu-sub;
+                            background: _(bgcMenuSub);
                             padding-left: 25px;
                             font-weight: 400;
                         }

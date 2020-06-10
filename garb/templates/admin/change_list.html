@@ -29,7 +29,7 @@
             <div class="object-tools">
               {% block object-tools-items %}
                 {% if has_add_permission %}
-                  <a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}" class="btn btn-success">
+                  <a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}" class="btn button-green">
                     <i class="fas fa-plus-circle pr-2"></i>
                     {% blocktrans with cl.opts.verbose_name|capfirst as name %}Add {{ name  }}{% endblocktrans %}
                   </a>

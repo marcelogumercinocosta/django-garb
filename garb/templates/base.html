@@ -16,7 +16,7 @@
         {% block extrastyle %}{% endblock %}
         {% block extrahead %}{% endblock %}
     </head>
-    <body class="theme-2">
+    <body class="{{ "THEME"|settings_value }}">
         {% block header %}
             <header>
                 <div>

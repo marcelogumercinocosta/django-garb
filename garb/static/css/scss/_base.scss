@@ -7,8 +7,8 @@
             display: flex;
 
             .titulo {
-                box-shadow: 0 .125rem 9.375rem rgba(90, 97, 105, .1), 0 .25rem .5rem rgba(90, 97, 105, .12), 0 .9375rem 1.375rem rgba(90, 97, 105, .1), 0 .4375rem 2.1875rem rgba(165, 182, 201, .1);
-                background-color: $color-menu;
+                box-shadow: _(boxShadowMenu);
+                background-color: _(bgcMenu);
                 width: 230px;
 
                 a {
@@ -20,7 +20,7 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        color: $color-title-main;
+                        color: _(cTitle);
                         font-family: "Exo", sans-serif;
                         font-size: 1.5rem;
                         font-style: italic;
@@ -33,7 +33,7 @@
 
         .headerlogin {
             justify-content: flex-end;
-            margin: 9px $margin-vw 15px 15px;
+            margin: 9px _(marginVw) 15px 15px;
         }
     }
 
@@ -45,7 +45,7 @@
 
         aside {
             flex: 0 0 230px;
-            box-shadow: 0 .125rem 9.375rem rgba(90, 97, 105, .1), 0 .25rem .5rem rgba(90, 97, 105, .12), 0 .9375rem 1.375rem rgba(90, 97, 105, .1), 0 .4375rem 2.1875rem rgba(165, 182, 201, .1);
+            box-shadow: _(boxShadowMenu);
         }
 
         main.margin-is-popup {
@@ -69,14 +69,14 @@
             flex: 1;
 
             .content-extend {
-                margin: 0 $margin-vw 10px;
+                margin: 0 _(marginVw) 10px;
 
                 .content {
                     @include content();
                 }
 
                 .module-header {
-                    border-bottom: $border;
+                    border-bottom: _(bd);
                     padding: 5px 0 5px 165px;
                     min-height: 51px;
                     display: flex;
@@ -99,7 +99,7 @@
                 }
 
                 .module-footer {
-                    border-top: $border;
+                    border-top: _(bd);
                     margin-top: 0px;
                     padding: 10px 170px;
                     min-height: 50px;
@@ -124,7 +124,7 @@
             .breadcrumb {
                 height: 100%;
                 align-items: flex-end;
-                margin: 0 $margin-vw;
+                margin: 0 _(marginVw);
                 padding: 0 1em;
                 flex-wrap: nowrap;
                 font-size: 24px;
@@ -137,10 +137,10 @@
                 }
 
                 li {
-                    color: $color1;
+                    color: _(cPrimary);
 
                     a {
-                        color: $color1;
+                        color: _(cPrimary);
                         text-decoration: none;
 
                         &:hover {
@@ -150,7 +150,7 @@
                 }
 
                 .divider {
-                    color: $color1;
+                    color: _(cPrimary);
                     padding: 0 5px;
                 }
             }
@@ -162,11 +162,15 @@
     }
 
     .site-name-azul {
-        color: _(colorTitle);
+        color: _(bgcTitle);
         font-family: "Exo", sans-serif;
         font-size: 1.5rem;
         font-style: italic;
         font-weight: 900;
         margin: 0px;
         text-align: center;
+    }
+
+    i.fas {
+        margin-right: 5px;
     }

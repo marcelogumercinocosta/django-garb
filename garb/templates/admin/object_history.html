@@ -1,0 +1,41 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block breadcrumbs %}
+    {% include "admin/includes/breadcrumbs.html" with nivel=3 breadcrumbs_action='History' %}
+{% endblock %}
+
+{% block content %}
+    <div class="content history-show" >
+        {% if action_list %}
+            <br>
+            <table id="change-history ">
+                <thead>
+                <tr>
+                    <th scope="col">{% trans 'Date/time' %}</th>
+                    <th scope="col">{% trans 'User' %}</th>
+                    <th scope="col">{% trans 'Action' %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for action in action_list %}
+                <tr>
+                    <td scope="row"> <i class="fas fa-history"></i>  {{ action.action_time|date:"DATETIME_FORMAT" }}</td>
+                    <td>{{ action.user.get_username }}{% if action.user.get_full_name %} ({{ action.user.get_full_name }}){% endif %}</td>
+                    <td>{{ action.get_change_message }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="m-5">
+                {% trans 'This object doesn’t have a change history. It probably wasn’t added via this admin site.' %}
+            </div>
+        {% endif %}
+        <div class="module-footer">
+            <div class="buttons">
+                <a href="javascript:history.back()"  class="button cancel-link">{% trans "No, take me back" %}</a>
+            </div>
+        </div>
+</div>
+{% endblock %}

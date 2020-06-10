@@ -14,7 +14,13 @@
             .btn {
                 margin-bottom: 5px;
                 width: 100%;
+                color: #ffffff;
+                &.btn-light {
+                    color: #000000;
+                    border: _(bd);
+                }
             }
+            
         }
     }
 
@@ -26,8 +32,8 @@
             margin-bottom: 20px;
 
             .alert {
-                border-radius: $border-radius;
-                box-shadow: $box-shadow;
+                border-radius: _(bdRadius);
+                box-shadow: _(boxShadow);
                 padding: 10px;
                 margin: 10px 0;
             }
@@ -59,7 +65,7 @@
                     margin-bottom: 2px;
                     margin-top: 0;
                     padding-left: 0px;
-                    color: $erro;
+                    color: _(erro);
                     width: 100%;
                 }
 
@@ -74,7 +80,7 @@
                 }
 
                 .form-row {
-                    border-bottom: $border;
+                    border-bottom: _(bd);
                     .vLargeTextField,
                     .vXMLLargeTextField {
                         width: 80%;
@@ -97,7 +103,7 @@
 
                             label {
                                 font-weight: bold;
-                                color: $color-text;
+                                color: _(cText);
                                 width: 100%;
                             }
                         }
@@ -110,11 +116,11 @@
                             }
 
                             .readonly {
-                                background: $color-input;
+                                background: _(cInput);
                                 height: 40px;
-                                border: $border;
+                                border: _(bd);
                                 border-radius: 3px;
-                                color: $color-text-off;
+                                color: _(cTextOff);
                                 font-size: 15px;
                                 -webkit-transition: all 0.4s ease;
                                 transition: all 0.4s ease;
@@ -135,21 +141,21 @@
                             }
 
                             .selector .selector-chosen h2 {
-                                background: $color1;
-                                color: $color-input;
+                                background: _(cPrimary);
+                                color: _(cInput);
 
                             }
 
                             .selector .selector-available h2 {
-                                background: $background-color;
-                                color: $color-text;
+                                background: _(backgroundColor);
+                                color: _(cText);
                             }
                         }
 
                         div.datetime {
                             strong {
                                 padding-left: 10px;
-                                color: $color-text-off;
+                                color: _(cTextOff);
                             }
 
                             .datetimeshortcuts {
@@ -162,20 +168,20 @@
 
                             label {
                                 font-weight: bold;
-                                color: $color-text;
+                                color: _(cText);
                             }
                         }
                     }
 
                     .help {
-                        color: $color-text-off;
+                        color: _(cTextOff);
                         width: 100%;
                         padding-left: 0px;
                         padding-top: 3px;
 
                         a {
                             padding-left: 3px;
-                            color: $color1;
+                            color: _(cPrimary);
                         }
                     }
 
@@ -189,7 +195,7 @@
                     margin: -15px 0 0 160px;
                 }
                 ul.errorlist {
-                    color: $erro;
+                    color: _(erro);
                     padding-left: 5px;
                     list-style: none;
                 }
@@ -198,10 +204,10 @@
             .tabular fieldset {
                 
                 tr {
-                    border-bottom: $border;
+                    border-bottom: _(bd);
                     td {
-                        color: $color-text;
-                        background: $background-color-content;
+                        color: _(cText);
+                        background: _(bgcContent);
                         vertical-align: bottom;
                         padding: 5px 5px;
                         input[type="text"],
@@ -234,9 +240,10 @@
                     td.delete {
                         width: 100px;
                         text-align: center;
+                        vertical-align: middle;
                         div a.inline-deletelink {
                             @extend .button;
-                            background-color: $erro;
+                            background-color: _(erro);
                             background-image: none;
                             float: right;
                             width: 100%;
@@ -255,7 +262,7 @@
                         vertical-align: middle;
                         height: 26px;
                         font-size: 0.8em;
-                        color: $erro;
+                        color: _(erro);
                     }
 
                     th.delete {

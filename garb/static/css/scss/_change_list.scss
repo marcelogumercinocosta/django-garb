@@ -39,21 +39,26 @@
 
             li.disabled a,
             li.disabled span {
+                border: _(bd);
                 &:hover {
-                    background-color: $color-text;
+                    background-color: _(cText);
                 }
             }
 
             li.active a,
             li.active span {
                 z-index: 1;
-                color: $color-text;
-                background-color: $color1;
-                border-color: $color1;
+                color: _(cMenuFont);
+                background-color: _(bgcMenuSub);
+                color: _(cMenuActive);
+                border: _(bd);
+                text-decoration: none;
+
                 &:hover {
-                    color: $color-menu-font-hover; 
-                    background-color: $color1;
+                    color: _(cMenuFontHover);
+                    background-color: _(bgcMenuHover);
                 }
+                
             }
 
             li a,
@@ -63,22 +68,22 @@
                 padding: 0.5rem 0.75rem;
                 margin-left: -1px;
                 line-height: 1.25;
-                background-color: $color-menu-item;
-                border: $border;
+                background-color: _(bgcMenuItem);
+                color: _(cMenuFont);
                 text-decoration: none;
-
+                border: _(bd);
                 &:hover {
-                    color: $color-menu-font-hover; 
-                    background-color: $background-color;
+                    color: _(cMenuFontHover); 
+                    background-color: _(bgcMenuHover);
                 }
             }
 
             li a.end {
-                border-radius: 0 $border-radius $border-radius 0;
+                border-radius: 0 _(bdRadius) _(bdRadius) 0;
             }
 
             li a.start {
-                border-radius: $border-radius 0 0 $border-radius;
+                border-radius: _(bdRadius) 0 0 _(bdRadius);
             }
         }
     }
@@ -97,7 +102,7 @@
 
         a {
             &:hover {
-                color: $color1;
+                color: _(cPrimary);
                 text-decoration: none;
             }
         }
@@ -109,7 +114,7 @@
 
             .th-col {
                 @include flex-row();
-                color:$color-text;
+                color:_(cText);
 
                 .sortoptions {
                     padding-right: 10px;
@@ -125,7 +130,7 @@
         }
 
         tbody {
-            border-bottom: $border;
+            border-bottom: _(bd);
             tr {
                 height: 3em;
                 a,
@@ -150,12 +155,15 @@
                     vertical-align: middle;
                     a {
                         font-weight: 400;
+                        &:hover {
+                            color: _(cMenuFontHover);
+                        }
                     }
                 }
 
                 &:hover {
-                    background-color: $color-menu-hover;
-                    color: $color1;
+                    background-color: _(bgcMenuHover);
+                    color: _(cMenuFontHover);
                 }
             }
             .no_actions .action-checkbox {
@@ -182,7 +190,7 @@
                 .input-group-text {
                     border-top-left-radius: 3px;
                     border-bottom-left-radius: 3px;
-                    border: $border;
+                    border: _(bd);
                     position: absolute;
                     left: 0;
                     top:0;
@@ -220,34 +228,28 @@
 }
 
 .list-info {
-    border-radius: $border-radius;
-    border: $border;
-    background-color: $background-color;
+    border-radius: _(bdRadius);
+    border: _(bd);
+    background-color: _(backgroundColor);
     margin: 0;
     padding: 0.5rem 0.75rem;
     line-height: 1.25;
     margin: 0 10px;
 
     a {
-        color: $color1;
+        color: _(cPrimary);
     }
 }
 
 .delete_confirmation {
-    .module-reader {
-        padding-top: 10px;
-        .description, .legend  {
-            color: $erro;
-            font-weight: bold;
-        }
+    .module-header,.module-footer {
+        border-color: _(erro)!important;
     }
     .module-delete {
+        @include errors();
         padding: 20px 170px;
         .delete_confirmation_list {
             padding: 5px 10px;
-            i {
-                color: $erro;
-            }
         }
         ul {
             list-style: none;
@@ -256,7 +258,7 @@
             li {
                 padding: 5px 10px;
                 a {
-                    color: $color1;
+                    color: _(cPrimary);
                 }
                 &:before {
                     content: "\f03a"; 
@@ -264,7 +266,6 @@
                     display: inline-block;
                     margin-left: -1.3em; 
                     width: 1.3em; 
-                    color: $erro;
                 }
                 ul li {
                     &:before {
@@ -276,6 +277,32 @@
                     }
                 }
             }
+        }
+    }
+}
+
+
+.history-show {
+    table {
+        width: 100%;
+        tr {
+            border-bottom: _(bd);
+            th, td {
+                padding: 10px 0;
+                a {
+                    text-decoration: none;
+                }
+                i {
+                    color: _(cPrimary);
+                }
+            }
+            th:first-child,
+            td:first-child {
+                padding-left: 5%;
+            }
+        }
+        tbody tr:last-child {
+            border-bottom:none;
         }
     }
 }
