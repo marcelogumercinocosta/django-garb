@@ -10,6 +10,9 @@ select.selectpicker {
     .dropdown-item {
         padding: .25rem 10px;
     }
+    .btn-light.focus, .btn-light:focus {
+        box-shadow: none;
+    }
 }
 
 .bootstrap-select>.dropdown-toggle {
@@ -51,7 +54,7 @@ select.selectpicker {
     -ms-transform: translateY(-1px);
     -o-transform: translateY(-1px);
     transform: translateY(-1px);
-    border-color: #80bdff;
+    border-color: _(cPrimary);
 }
 
 .bootstrap-select>.dropdown-toggle:after {
@@ -298,7 +301,18 @@ select.selectpicker {
     -ms-transform: translateY(-3px);
     -o-transform: translateY(-3px);
     transform: translateY(-3px);
-    border-color: #80bdff;
+    border-color: _(cPrimary);
+    background-color: _(cInput);
+    .dropdown-item:focus, .dropdown-item:hover {
+        color: _(cMenuFontHover);
+        text-decoration: none;
+        background-color: _(bgcMenuHover);
+    }
+    .dropdown-item.active, .dropdown-item:active {
+        color: _(cTextContrast);
+        text-decoration: none;
+        background-color: _(cPrimary);
+    }
 }
 
 .bootstrap-select .dropdown-menu>.inner:focus {

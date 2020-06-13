@@ -16,10 +16,12 @@
             margin: 0;
         }
 
-        select {
-            height: 35px;
-            width: auto;
+        div.bootstrap-select {
+            width: auto!important;
             margin-right: 10px;
+            button {
+                height: 35px;
+            }
         }
 
         span.all,
@@ -135,7 +137,6 @@
                 height: 3em;
                 a,
                 td {
-                    line-height: 3em;
                     padding: 0px;
                     margin: 0px;
                 }
@@ -156,14 +157,14 @@
                     a {
                         font-weight: 400;
                         &:hover {
-                            color: _(cMenuFontHover);
+                            color: _(cPrimary);
                         }
                     }
                 }
 
                 &:hover {
                     background-color: _(bgcMenuHover);
-                    color: _(cMenuFontHover);
+                    color: _(cPrimary);
                 }
             }
             .no_actions .action-checkbox {
@@ -213,9 +214,9 @@
                     -ms-transform: translateY(-3px);
                     -o-transform: translateY(-3px);
                     transform: translateY(-3px);
-                    border-left-color: #80bdff;
-                    border-top-color: #80bdff;
-                    border-bottom-color: #80bdff;
+                    border-left-color: _(cPrimary);
+                    border-top-color: _(cPrimary);
+                    border-bottom-color: _(cPrimary);
                 }
             }
             .search-filters {

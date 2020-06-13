@@ -21,6 +21,7 @@ $themes: (
         cTitle: #fff,
         cPrimary: #0F4DB8,
         cText: #212529,
+        cTextContrast: #fff,
         cTextOff: #666666,
         erro: #D8000C,
         marginVw:2vw
@@ -70,6 +71,7 @@ $themes: (
         bgcTitle: #FFFFFF,
         cPrimary: #1DA1F2,
         cText: #fff,
+        cTextContrast: #000,
         cTextOff: #666666,
         boxShadowMenu: (0 .125rem 9.375rem rgba(90, 97, 105, .1), 0 .25rem .5rem rgba(90, 97, 105, .12), 0 .9375rem 1.375rem rgba(90, 97, 105, .1), 0 .4375rem 2.1875rem rgba(165, 182, 201, .1)),
     ),
