@@ -96,74 +96,11 @@ select{
     }
 }
 
-
-.select2-container--default {
-    .select2-search--dropdown .select2-search__field ,
-    .select2-dropdown {
-        border-radius: _(bdRadius);
-        border: _(bd)!important;
-        color: _(cText);
-        input:focus {
-            box-shadow: none;
-            transform: none;
-        }
-    }
-    .selection .select2-selection--single {
-        background-color: _(cInput);
-        color: _(cText);
-        padding: 5px 30px 0 10px;
-        vertical-align: middle;
-        border-radius: _(bdRadius);
-        border: _(bd);
-        height: 40px!important;
-        .select2-selection__rendered {
-            background-color: _(cInput);
-            color: _(cText);
-            font-size: 1rem;
-            height: 100%;
-        }
-        .select2-selection__arrow {
-            height: 100%;
-        }
-    }
+select.filtered {
+        height: 250px;
+        border-top-left-radius: 0 ;
+        border-top-right-radius: 0 ;
 }
-.select2-container--default .select2-results__option--highlighted[aria-selected] {
-    background-color:  _(bgcMenuHover)!important;
-    color: _(cMenuFontHover)!important;
-}
-.select2-container--default .select2-results__option[aria-selected=true] {
-    background-color:  _(bgcMenuSub)!important;
-}
-.select2-container--default.select2-container--focus, 
-.select2-container--default.select2-container--open {
-    .select2-selection--single {
-        -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
-        -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
-        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
-        -webkit-transform: translateY(-3px);
-        -moz-transform: translateY(-3px);
-        -ms-transform: translateY(-3px);
-        -o-transform: translateY(-3px);
-        transform: translateY(-3px);
-        border-color: #80bdff;
-    }
-    .select2-dropdown {
-        border-color: #80bdff!important;
-        background-color: _(cInput);
-        &.select2-dropdown--below {
-            -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
-            -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
-            box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
-            margin-top: -4px;
-        }
-        &.select2-dropdown--above  {
-            -webkit-box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.15);
-            -moz-box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.15);
-            box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.15);
-            margin-top: -2px;
-        }
-    }
-} 
 
 label.required:before {
     content: '*';

@@ -181,7 +181,7 @@
         width: 100%;
         .search-container {
             @include flex-row();
-            input, select {
+            input, div.bootstrap-select {
                 margin-right: 10px;
             }
             .input-group {
@@ -280,7 +280,6 @@
         }
     }
 }
-
 
 .history-show {
     table {

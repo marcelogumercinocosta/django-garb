@@ -1,5 +1,4 @@
-(function($) {
-
+(function ($) {
     /**
      * Search filters - submit only changed fields
      */
@@ -34,4 +33,4 @@
         $('.search-filter').garb_search_filters();
     });
 
-})(django.jQuery);
+})(jQuery);

@@ -50,7 +50,7 @@
             input[type="search"],
             input[type="password"],
             textarea,
-            select {
+            .bootstrap-select {
                 width: 80%;
             }
 
@@ -71,7 +71,7 @@
 
                 .form-row.errors .form-row-box .form-row-field input,
                 .form-row.errors .form-row-box .form-row-field textarea,
-                .form-row.errors .form-row-box .form-row-field select {
+                .form-row.errors .form-row-box .form-row-field .bootstrap-select>.dropdown-toggle {
                     @include errors();
                 }
 
@@ -81,6 +81,7 @@
 
                 .form-row {
                     border-bottom: _(bd);
+                    overflow: visible;
                     .vLargeTextField,
                     .vXMLLargeTextField {
                         width: 80%;
@@ -217,7 +218,7 @@
                         input[type="search"],
                         input[type="password"],
                         textarea,
-                        select {
+                        .bootstrap-select {
                             width: 100%;
                         }
                         textarea {
