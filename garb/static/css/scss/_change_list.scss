@@ -22,6 +22,9 @@
             button {
                 height: 35px;
             }
+            .filter-option-inner-inner  {
+                line-height: 35px;
+            }
         }
 
         span.all,
@@ -111,7 +114,8 @@
 
         thead {
             tr th {
-                border-bottom: none;
+                border-bottom: _(bd);
+                border-top: _(bd);
             }
 
             .th-col {
@@ -132,7 +136,6 @@
         }
 
         tbody {
-            border-bottom: _(bd);
             tr {
                 height: 3em;
                 a,
@@ -154,17 +157,18 @@
                 th {
                     padding: 0px 0.75rem;
                     vertical-align: middle;
+                    border-bottom: _(bd);
                     a {
                         font-weight: 400;
                         &:hover {
-                            color: _(cPrimary);
+                            color: _(cMenuFontHover);
                         }
                     }
                 }
 
                 &:hover {
                     background-color: _(bgcMenuHover);
-                    color: _(cPrimary);
+                    color: _(cMenuFontHover);
                 }
             }
             .no_actions .action-checkbox {
