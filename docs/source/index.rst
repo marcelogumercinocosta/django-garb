@@ -9,22 +9,29 @@ About
 Django Garb is alternative theme/skin/extension for `Django <http://www.djangoproject.com>`_ admin app (administration interface).
 
 
-Licence
+Preview
 -------
 
+Click on screenshot for live demo:
 
-Welcome to django-garb's documentation!
-=======================================
+   .. image:: _static/preview.png
+      :alt: Django Garb Preview
+
+
+Getting Started
+===============
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+
+   getting_started
+   configuration
 
 
+Screenshots
+===========
 
-Indices and tables
-==================
+.. toctree::
+   :maxdepth: 2
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   screenshots
