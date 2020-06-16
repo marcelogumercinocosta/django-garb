@@ -12,8 +12,6 @@ Django Garb is alternative theme/skin/extension for `Django <http://www.djangopr
 Preview
 -------
 
-Click on screenshot for live demo:
-
    .. image:: _static/preview.png
       :alt: Django Garb Preview
 
