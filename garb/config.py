@@ -10,7 +10,7 @@ def default_config():
         'MENU': [],
         'ADMIN_ACTIONS_ALL': True,
         'ADMIN_WIDGET_CAN': True,
-        'MENU_NOT_AUTH': True,
+        'MENU_ONLY_AUTH': False,
         'ROUTE_PROFILE': False,
         'NAME_PROFILE': '',
         'THEME': 'default',

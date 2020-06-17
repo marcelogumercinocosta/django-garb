@@ -69,7 +69,7 @@
                         {% get_admin_log 10 as admin_log for_user user %}
                         {% if not admin_log %}
                             <div class=" m-5">
-                                {% trans 'None available' %}
+                                {% trans 'No record' %}
                             </div>
                         {% else %}
                             <table>

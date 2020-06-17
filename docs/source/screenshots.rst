@@ -56,7 +56,7 @@ History Page
 
 Index Page
 ^^^^^^^^^^
-.. image:: _static/delete.png
+.. image:: _static/index.png
     :alt: Django Garb Index
 
 Details

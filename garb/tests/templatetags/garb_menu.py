@@ -124,7 +124,7 @@ class GarbMenuTestCase(UserTestCaseMixin):
         self.assertEqual(menu[i].childrens[1].label, 'sub3')
 
 
-    def test_menu_not_authenticated(self):
+    def test_menu_only_authenticated(self):
         self.client.logout()
         self.get_response(url="/")
         mc = settings.GARB_CONFIG['MENU']

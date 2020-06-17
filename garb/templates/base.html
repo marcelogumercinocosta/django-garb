@@ -9,10 +9,11 @@
         <link href="https://fonts.googleapis.com/css?family=Dosis:400,500,700|Roboto&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.0/css/solid.css">
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.0/css/fontawesome.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/bootstrap.min.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.min.css' %}">
         {% block extrastyle %}{% endblock %}
         {% block extrahead %}{% endblock %}
+
     </head>
     <body class="{{ "THEME"|settings_value }}">
         {% block header %}
@@ -60,7 +61,7 @@
             <div class="wrapper">
                     {% if not is_popup %}
                         {% block sidebar %}
-                            {% if  "MENU_NOT_AUTH"|settings_value or user.is_authenticated %}
+                            {% if not "MENU_ONLY_AUTH"|settings_value or user.is_authenticated %}
                                 <aside>
                                     {% include 'garb/menu.html' %}
                                 </aside>
@@ -77,12 +78,12 @@
         {% endblock %}
     </body>
     <script src="{% static 'admin/js/vendor/jquery/jquery.min.js' %}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
-    <script src="{% static 'vendor/bootstrap-select/dist/js/bootstrap-select.min.js' %}" ></script>
-    <script src="{% static 'js/garb_select.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/popper.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/bootstrap.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap-select/js/bootstrap-select.min.js' %}" ></script>
     <script src="{% static 'vendor/jquery-toast-plugin/jquery.toast.min.js' %}" ></script>
     <script src="{% static 'vendor/pace/pace.min.js' %}" ></script>
+    <script src="{% static 'js/garb_select.js' %}"></script>
     <script type="text/javascript">
         {% block messages %}
             {% if messages %}
@@ -101,7 +102,7 @@
             {% endif %}
         {% endblock %}
     </script>
-    {% if  "MENU_NOT_AUTH"|settings_value or user.is_authenticated %}
+    {% if not "MENU_ONLY_AUTH"|settings_value or user.is_authenticated %}
         <script type="text/javascript">
             $('.collapsed').on('click', function () {
                 $('#menu .collapse').collapse('hide');

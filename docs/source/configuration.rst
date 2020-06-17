@@ -21,6 +21,7 @@ Configuration sample you can use as a start::
     'ADMIN_ACTIONS_ALL': True,
     'ADMIN_WIDGET_CAN': True,
     'THEME': 'hybrid',
+    'MENU_ONLY_AUTH': False,
     'LIST_PER_PAGE': 15,
     'ROUTE_PROFILE': False,
     'MENU': [
@@ -75,6 +76,16 @@ Select the theme for the admin::
 
   GARB_CONFIG = {
       'THEME': 'default' # 'hybrid','dark','light'
+  }
+  
+
+MENU_ONLY_AUTH
+^^^^^^^^^^^^^^
+
+The menu is visible only when authenticated::
+
+  GARB_CONFIG = {
+      'MENU_ONLY_AUTH': True # Default False
   }
 
 LIST_PER_PAGE

@@ -1,0 +1,2 @@
+jQuery JavaScript Library https://jquery.com/
+- https://github.com/jquery/jquery
