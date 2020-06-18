@@ -1,3 +1,4 @@
+{% load i18n static garb_tags %}
 <fieldset class="module aligned {{ fieldset.classes }}">
     {% if  forloop.first %}
         {% block form_top %}{% endblock %}
@@ -14,7 +15,7 @@
     {% endif %}
 
     {% for line in fieldset %}
-        <div class="form-row{% if line.fields|length_is:'1' and line.errors %} errors{% endif %}{% if not line.has_visible_field %} hidden{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %}">
+        <div class="form-row{% if line.fields|length_is:'1' and line.errors %} is-invalid{% endif %}{% if not line.has_visible_field %} hidden{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %}">
             {% for field in line %}
                 {% if not line.fields|length_is:'1' and not field.is_readonly %}{{ field.errors }}{% endif %}
                 {% if line.fields|length_is:'1' %}{{ line.errors }}{% endif %}
@@ -30,7 +31,13 @@
                         </div>
                         <div class="form-row-field">
                             {% if field.is_readonly %}
-                                <div class="readonly">{{ field.contents }}</div>
+                                {% if not "img" in field.contents %}
+                                    <div class="readonly">{{ field.contents }}</div>
+                                {% else %}
+                                    <div class=" form-row-checkbox">
+                                        <input type="checkbox" name="{{ field.field.field }}"  disabled="">
+                                    </div>
+                                {% endif %}
                             {% else %}
                                 {{ field.field }}
                             {% endif %}

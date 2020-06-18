@@ -28,4 +28,33 @@
         setTimeout(function(){ garb_select()}, 200);
     });
     garb_select();
+
+    $('input').on("keyup", function (e) {
+        if ($(this).parents( ".form-row" ).hasClass('is-invalid') ) {
+            $(this).parents( ".form-row" ).removeClass('is-invalid');
+        }
+    });
+
+    $('input').on("keyup", function (e) {
+        if ($(this).hasClass('is-invalid') ) {
+            $(this).removeClass('is-invalid');
+        }
+    });
+    
+    $('.dropdown-toggle').on("click", function (e) {
+        if ($(this).parents( ".form-row" ).hasClass('is-invalid') ) {
+            $(this).parents( ".form-row" ).removeClass('is-invalid');
+        }
+    });
+    
+    $('.dropdown-toggle').on("click", function (e) {
+        if ($(this).parents(".select").find('select').hasClass('is-invalid') ) {
+            $(this).parents(".select").find('select').removeClass('is-invalid');
+            $(this).parents(".form-group").find('.invalid-feedback').remove();
+        }
+
+        
+    });
+    
+
 })(jQuery);

@@ -64,9 +64,9 @@
                     width: 100%;
                 }
 
-                .form-row.errors .form-row-box .form-row-field input,
-                .form-row.errors .form-row-box .form-row-field textarea,
-                .form-row.errors .form-row-box .form-row-field .bootstrap-select>.dropdown-toggle {
+                .form-row.is-invalid .form-row-box .form-row-field input,
+                .form-row.is-invalid .form-row-box .form-row-field textarea,
+                .form-row.is-invalid .form-row-box .form-row-field .bootstrap-select>.dropdown-toggle {
                     @include errors();
                 }
 
@@ -123,6 +123,11 @@
                                 padding: 10px;
                                 width: 80%;
                                 cursor: not-allowed;
+                            }
+                            .readonly_boolean {
+                                height: 40px;
+                                padding: 10px;
+                                width: 80%;
                             }
 
                             .selector .selector-available h2,

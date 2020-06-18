@@ -28,13 +28,15 @@
                         <input type="submit" value="{% trans 'Log in' %}" class="button" />
                     </div>
                 </form>
-                {% if "password_reset"|garb_url_exists %} 
-                    <div class="forGotPassword">
-                        <div class="password-reset-link pl-3">
-                            <a href="{% url 'password_reset' %} ">{% trans 'Forgotten your password or username?' %}</a>
+                {% block password_reset %}
+                    {% if "password_reset"|garb_url_exists %} 
+                        <div class="forGotPassword">
+                            <div class="password-reset-link pl-3">
+                                <a href="{% url 'password_reset' %}">{% trans 'Forgotten your password or username?' %}</a>
+                            </div>
                         </div>
-                    </div>
-                {% endif %} 
+                    {% endif %} 
+                {% endblock %}
             </div>
             <br>
             {% if form.errors and not form.non_field_errors %}

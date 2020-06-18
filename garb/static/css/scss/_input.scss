@@ -150,7 +150,7 @@ input[type='radio'] {
     }
 
     &:disabled {
-        background: _(backgroundColor);
+        background: _(cTextOff);
         cursor: not-allowed;
         opacity: .9;
 
@@ -257,5 +257,13 @@ input[type='radio'] {
     }
     &:checked:after {
         transform: scale(.5);
+    }
+}
+
+input.is-invalid, select.is-invalid ~ .dropdown-toggle,input.is-invalid,input.has-error{
+
+    @include errors();
+    &:focus {
+        border-color: _(erro);  
     }
 }

@@ -75,6 +75,11 @@
                     @include content();
                 }
 
+                legend {
+                    border-bottom: _(bd);
+                    padding: 10px 0 0 0;
+                }
+
                 .module-header {
                     border-bottom: _(bd);
                     padding: 5px 0 5px 165px;
@@ -116,6 +121,28 @@
                         a {
                             margin-left: 10px;
                             height: 40px;
+                        }
+                    }
+                }
+                
+                .module-box {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: calc(100vh - 80px);
+                    .content-box {
+                        @include content();
+                        padding: 3em ;
+                        border-left: 6px solid _(cPrimary);
+                        margin-top:  -160px;
+                        width: calc(40vw + 230px);
+                        form {
+                            padding: 10px 3em;
+                        }
+                        p {
+                            padding: 20px 0 0 0 ;
+                            margin: 0;
+                            text-align: justify;
                         }
                     }
                 }
@@ -162,7 +189,7 @@
     }
 
     .site-name-azul {
-        color: _(bgcTitle);
+        color: _(cPrimary);
         font-family: "Exo", sans-serif;
         font-size: 1.5rem;
         font-style: italic;

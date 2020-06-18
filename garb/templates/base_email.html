@@ -53,17 +53,14 @@
                 padding-top: 4em;
             }
 
-            .emailboxes {
-                flex: 0 0 65%;
-            }
-
             .emailbox {
                 background-color: #fff;
                 border: 1px solid rgba(0, 0, 0, 0.15);
                 border-left: 6px solid #2196f3;
                 border-radius: 5px;
-                padding: 3em;
+                padding: 4em 2em;
                 width: 100%;
+                margin: 5% 10% auto 10%;
             }
 
             .site-name-azul {
@@ -76,13 +73,26 @@
                 text-align: center;
                 padding-bottom: 2em;
             }
-
-            .p {
+            h1,
+            h2,
+            h3,
+            h4,
+            p {
                 padding: 10px 3em 10px 3em;
                 margin: 0;
                 text-align: justify;
             }
-
+            table {
+                border-collapse: separate;
+                mso-table-lspace: 0pt;
+                mso-table-rspace: 0pt;
+                width: 100%; }
+            table td {
+                font-family: sans-serif;
+                font-size: 14px;
+                vertical-align: top;
+                padding: 5px!important; 
+            }
             .alert {
                 color: #d8000c;
                 background-color: #ffd2d2;
@@ -95,21 +105,60 @@
                 display: flex;
                 align-items: center;
             }
+            .align-center {
+                text-align: center;
+            }
+            .align-right {
+                text-align: right;
+            }
+            .align-left {
+                text-align: left;
+            }
+            .btn {
+                box-sizing: border-box;
+                width: 100%; }
+                .btn > tbody > tr > td {
+                padding-bottom: 15px; }
+                .btn table {
+                width: auto;
+            }
+                .btn table td {
+                background-color: #ffffff;
+                border-radius: 5px;
+                text-align: center;
+            }
+                .btn a {
+                background-color: #ffffff;
+                border: solid 1px #3498db;
+                border-radius: 5px;
+                box-sizing: border-box;
+                color: #3498db;
+                cursor: pointer;
+                display: inline-block;
+                font-size: 14px;
+                font-weight: bold;
+                margin: 0;
+                padding: 12px 25px;
+                text-decoration: none;
+            }
+            .btn-primary table td {
+                background-color: #3498db;
+            }
+            .btn-primary a {
+                background-color: #3498db;
+                border-color: #3498db;
+                color: #ffffff;
+            }
         </style>
     </head>
 
     <body>
         <div class="emailcontent">
-            <div class="emailboxes">
-                <div class="emailbox">
-                    {% block content %} {% endblock %}
-                    <div class="emailbutton">
-                        {% block button %}{% endblock %}
-                    </div>
-                </div>
-                <br>
-                <p class="site-name-azul m-0">{{ None|garb_title }}</p>
+            <div class="emailbox">
+                {% block content %} {% endblock %}
             </div>
+            <br>
+            <p class="site-name-azul m-0">{{ None|garb_title }}</p>
         </div>
     </body>
 </html>
