@@ -89,6 +89,7 @@ $map_update: $themes;
     padding: 0;
 }
 
+
 @each $theme-name, $map in $themes {
     $default:map-get($themes, 'default');
     $map_update:map-merge( $default, $map);

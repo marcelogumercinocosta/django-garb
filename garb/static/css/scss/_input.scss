@@ -133,6 +133,9 @@ input[type='radio'] {
     background: _(cInput);
     transition: _(cInput) .3s, border-color .3s, box-shadow .2s;
     width: 18px;
+    &:focus {
+        border-color: _(cPrimary);
+    }
 
     &:after {
         content: '';
@@ -266,4 +269,17 @@ input.is-invalid, select.is-invalid ~ .dropdown-toggle,input.is-invalid,input.ha
     &:focus {
         border-color: _(erro);  
     }
+}
+
+.button_click {
+    opacity:.5;
+}
+
+button, input, select, textarea {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }

@@ -12,7 +12,7 @@ Django Garb is alternative theme/skin/extension for `Django <http://www.djangopr
 Preview
 -------
 
-   .. image:: _static/preview.png
+   .. image:: _static/preview.gif
       :alt: Django Garb Preview
 
 

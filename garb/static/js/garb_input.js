@@ -35,26 +35,34 @@
         }
     });
 
-    $('input').on("keyup", function (e) {
+    $('input').on("keyup", function () {
         if ($(this).hasClass('is-invalid') ) {
             $(this).removeClass('is-invalid');
         }
     });
     
-    $('.dropdown-toggle').on("click", function (e) {
+    $('.dropdown-toggle').on("click", function () {
         if ($(this).parents( ".form-row" ).hasClass('is-invalid') ) {
             $(this).parents( ".form-row" ).removeClass('is-invalid');
         }
     });
     
-    $('.dropdown-toggle').on("click", function (e) {
+    $('.dropdown-toggle').on("click", function () {
         if ($(this).parents(".select").find('select').hasClass('is-invalid') ) {
             $(this).parents(".select").find('select').removeClass('is-invalid');
             $(this).parents(".form-group").find('.invalid-feedback').remove();
         }
-
-        
     });
-    
+
+    if(document.forms[0] != 'undefined') {
+        var form = $('form');
+        var initialState = form.serialize();
+        $(".btn-verify-form").click(function(e) {
+            if (initialState !== form.serialize()) {
+                e.preventDefault();
+                alert('Precisa salvar antes!');
+            }
+        });
+    }
 
 })(jQuery);
