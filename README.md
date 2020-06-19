@@ -4,7 +4,7 @@
 <h3 align="center">Modern theme for Django admin interface</h3>
 
 <h2 align="center">
-  <img src="https://repository-images.githubusercontent.com/254154082/9c28e800-af5c-11ea-994b-6e5ce19d8e31" float="center"/>
+  <img src="https://repository-images.githubusercontent.com/254154082/4cd40780-b23b-11ea-9642-82d6d011cc63" float="center"/>
 </h2>
 
 
