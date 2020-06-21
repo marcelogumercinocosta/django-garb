@@ -11,16 +11,18 @@
 
         .save-box {
             @include content();
+
             .btn {
                 margin-bottom: 5px;
                 width: 100%;
                 color: #ffffff;
+
                 &.btn-light {
                     color: #000000;
                     border: _(bd);
                 }
             }
-            
+
         }
     }
 
@@ -30,6 +32,7 @@
 
         .form-column-item {
             margin-bottom: 20px;
+            width: 100%;
 
             .alert {
                 border-radius: _(bdRadius);
@@ -37,7 +40,7 @@
                 padding: 10px;
                 margin: 10px 0;
             }
-            
+
             input[type="text"],
             input[type="number"],
             input[type="url"],
@@ -56,6 +59,7 @@
             fieldset {
                 @include content();
                 margin-bottom: 20px;
+
                 ul.errorlist {
                     margin-bottom: 2px;
                     margin-top: 0;
@@ -77,6 +81,7 @@
                 .form-row {
                     border-bottom: _(bd);
                     overflow: visible;
+
                     .vLargeTextField,
                     .vXMLLargeTextField {
                         width: 80%;
@@ -124,6 +129,7 @@
                                 width: 80%;
                                 cursor: not-allowed;
                             }
+
                             .readonly_boolean {
                                 height: 40px;
                                 padding: 10px;
@@ -196,6 +202,7 @@
                 .field-password .help {
                     margin: -15px 0 0 160px;
                 }
+
                 ul.errorlist {
                     color: _(erro);
                     padding-left: 5px;
@@ -204,16 +211,18 @@
             }
 
             .tabular fieldset {
-                
-                
-                
+
+
+
                 tr {
                     border-bottom: _(bd);
+
                     td {
                         color: _(cText);
                         background: _(bgcContent);
                         vertical-align: bottom;
                         padding: 5px 5px;
+
                         input[type="text"],
                         input[type="number"],
                         input[type="url"],
@@ -224,28 +233,34 @@
                         .bootstrap-select {
                             width: 100%;
                         }
+
                         textarea {
                             height: 40px;
                         }
+
                         .related-widget-wrapper {
                             float: left;
                             overflow: initial;
                             width: 100%;
                             display: flex;
                             align-items: center;
+
                             .select2-container {
-                                width: 100%!important;
+                                width: 100% !important;
                             }
+
                             .related-widget-wrapper-link {
                                 margin-left: 7px;
                             }
                         }
-                        
+
                     }
+
                     td.delete {
                         width: 100px;
                         text-align: center;
                         vertical-align: middle;
+
                         div a.inline-deletelink {
                             @extend .button;
                             background-color: _(erro);
@@ -254,13 +269,15 @@
                             width: 100%;
                             height: 100%;
                             text-indent: 0;
-                            min-width:90px;
+                            min-width: 90px;
                         }
                     }
+
                     th.original {
                         width: 10px;
                         padding: 0;
                     }
+
                     th.required:before {
                         content: '*';
                         display: inline-block;
@@ -273,11 +290,9 @@
                     th.delete {
                         text-align: center;
                     }
-                    
-        
                 }
                 tr.add-row td {
-                    background:_(bgcMenuSub);
+                    background: _(bgcMenuSub);
                     padding: 2px 20px;
                     border-bottom: _(bdMenu);
                     a {
@@ -288,15 +303,14 @@
             }
             .inline-group div.add-row {
                 color: _(cMenuFont);
-                background:_(bgcMenuSub);
+                background: _(bgcMenuSub);
                 padding: 2px 20px;
-                border-bottom:  _(bdMenu);
+                border-bottom: _(bdMenu);
                 a {
                     text-decoration: none;
                     color: _(cMenuFont);
                 }
             }
-            
         }
     }
 }

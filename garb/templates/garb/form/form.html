@@ -1,0 +1,14 @@
+{% block errors %}
+    {% if form.non_field_errors %}{{ form.non_field_errors }}{% endif %}
+{% endblock %}
+
+{% block fields %}
+    <div class="change-columns">
+        <div class="form-column">
+            {% with form as fields %}
+                {% include "garb/form/fields_as_lis.html" %}
+            {% endwith %}
+        </div>
+    </div>
+
+{% endblock %}
