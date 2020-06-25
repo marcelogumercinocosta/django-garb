@@ -1,18 +1,10 @@
-# -*- coding: utf-8 -*-
-"""
-templatetags for django-form-utils
-
-"""
-from __future__ import unicode_literals
-
-from django import forms
-from django import template
+from django import forms,  template, views, urls
 from django.template.loader import render_to_string
 from django.template import loader
-
 from garb.forms import GarbForm, GarbModelForm
 
 register = template.Library()
+
 
 
 def select_template_from_string(arg):
@@ -28,21 +20,9 @@ def select_template_from_string(arg):
 
 @register.filter
 def render(form, template_name=None):
-    default = 'garb/form/form.html'
-    if isinstance(form, (GarbForm, GarbModelForm)):
-        default = ','.join(['garb/form/garb_form.html', default])
+    default = 'garb/form/garb_form.html'
     tpl = select_template_from_string(template_name or default)
-
     return tpl.render({'form': form})
-
-
-@register.filter
-def label(boundfield, contents=None):
-    """Render label tag for a boundfield, optionally with given contents."""
-    label_text = contents or boundfield.label
-    id_ = boundfield.field.widget.attrs.get('id') or boundfield.auto_id
-    return render_to_string("garb/form/label.html", { "label_text": label_text, "id": id_, "field": boundfield})
-
 
 @register.filter
 def value_text(boundfield):
@@ -81,3 +61,10 @@ def is_select(boundfield):
 def is_radio(boundfield):
     return 'radio' in boundfield.field.widget.__class__.__name__.lower()
 
+
+@register.filter
+def label(boundfield, contents=None):
+    """Render label tag for a boundfield, optionally with given contents."""
+    label_text = contents or boundfield.label
+    id_ = boundfield.field.widget.attrs.get('id') or boundfield.auto_id
+    return render_to_string("garb/form/label.html", { "label_text": label_text, "id": id_, "field": boundfield})

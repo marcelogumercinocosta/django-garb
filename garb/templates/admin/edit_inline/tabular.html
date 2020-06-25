@@ -91,9 +91,7 @@
           {% empty %}
           <tr>
           <td></td>
-            {% for fieldset in inline_admin_formset.fields %}
-              {% if forloop.first and not field.widget.is_hidden %}<td>{% trans "None" %}</td> {%else %} <td></td> {% endif %} 
-            {% endfor %}
+            <td>{% trans "None" %}</td> 
           </tr>
           {% endfor %}
         </tbody>

@@ -1,5 +1,12 @@
-{% load i18n  %}
+{% load i18n garb_form static %}
 {% block fields %}
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}">
+    <script type="text/javascript" src="{% url 'garb:jsi18n' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/calendar.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/jquery.init.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/admin/DateTimeShortcuts.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/core.js' %}"></script>
     <div class="change-columns">
         <div class="form-column">
             <div class="form-column-item">
@@ -10,7 +17,7 @@
                     </div>
                 {% endif %}
                 {% for fieldset in form.fieldsets %}
-                    <fieldset class="module aligned" {{ fieldset.classes }}">
+                    <fieldset class="module aligned {{ fieldset.classes }}">
                         {% if fieldset.name  or fieldset.description %}
                             <div class="module-header">
                                 {% if fieldset.name %}
@@ -26,19 +33,19 @@
                                 {% if field.is_hidden %}
                                     {{ field }}
                                 {% else %}
-                                    <div class="form-row {% if field.name %} field-{{ field.name }}{% endif %} {% if field.errors %} errors is-invalid  {% endif %}">
-                                        {% if field.errors %}{{ field.errors }}{% endif %}
+                                    <div class="form-row {% if field.name %} field-{{ field.name }}{% endif %} {% if field.errors %} is-invalid  {% endif %}">
+                                        
                                         <div class="form-row-box fieldBox {% if field.name %} field-{{ field.name }}{% endif %}{% if not field.is_readonly and field.errors %} errors {% endif %}">
-                                            {% if field.is_checkbox %}
+                                            {% if field|is_checkbox or field|is_radio%}
                                                 <div class="form-row-label"></div>
-                                                <div class="form-row-checkbox">
-                                                    {{ field.field }}{{ field.label_tag }} 
+                                                <div class="form-row-checkbox form-row-field ">
+                                                    {{ field }}{{ field|label }}<div class="form-row-error"></div>
                                                 </div>
                                             {% else %}
                                                 <div class="form-row-label">
                                                     {{ field.label_tag }}
                                                 </div>
-                                                <div class="form-row-field">
+                                                <div class="form-row-field ">
                                                     {% if field.is_readonly %}
                                                         {% if not "img" in field.contents %}
                                                             <div class="readonly">{{ field.contents }}</div>
@@ -46,6 +53,9 @@
                                                     {% else %}
                                                         {{ field }}
                                                     {% endif %}
+                                                    <div class="form-row-error">
+                                                        {% if field.errors %}{{ field.errors }}{% endif %}
+                                                    </div>
                                                 </div>
                                             {% endif %}
                                         </div>
@@ -55,13 +65,11 @@
                         {% endwith %}
                     </fieldset>
                 {% endfor %}
-            </div>
-        </div>
-        <div class="box-column {% if errors %} error {% endif %}">
-            <div class="save-box">
-                <button type="submit" class="btn btn-info" name="_save">Enviar Informações <br>
-                </button>
+                <fieldset class="module aligned {{ fieldset.classes }} text-right pr-5">
+                    <button type="submit" class="btn btn-info btn-loading" name="_save">Enviar Informações </button>
+                </fieldset>
             </div>
         </div>
     </div>
+
 {% endblock fields %}

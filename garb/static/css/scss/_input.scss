@@ -63,6 +63,10 @@ textarea {
         transform: translateY(-3px);
         border-color: _(cPrimary);
     }
+
+    &:disabled {
+        cursor: not-allowed;
+    }
 }
 
 textarea {
@@ -263,11 +267,10 @@ input[type='radio'] {
     }
 }
 
-input.is-invalid, select.is-invalid ~ .dropdown-toggle,input.is-invalid,input.has-error{
-
+input.is-invalid, select.is-invalid ~ .dropdown-toggle, input.has-error{
     @include errors();
     &:focus {
-        border-color: _(erro);  
+        @include errors();
     }
 }
 

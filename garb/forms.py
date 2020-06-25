@@ -1,7 +1,10 @@
 
 from copy import deepcopy
+from dataclasses import fields
+
 from django import forms
-from django.forms.utils import flatatt, ErrorDict
+from django.forms.fields import DateField
+from django.forms.utils import ErrorDict, flatatt
 from django.utils.safestring import mark_safe
 
 
@@ -23,6 +26,11 @@ class Fieldset(object):
 
     def __iter__(self):
         for bf in self.boundfields:
+            if isinstance(bf.field, forms.fields.DateField):
+                if 'class' in bf.field.widget.attrs:
+                    bf.field.widget.attrs['class'] += ' vDateField'
+                else:
+                    bf.field.widget.attrs.update({'class':'vDateField'})
             yield _mark_row_attrs(bf, self.form)
 
     def __repr__(self):
@@ -54,7 +62,7 @@ class FieldsetCollection(object):
 
     def _gather_fieldsets(self):
         if not self.fieldsets:
-            self.fieldsets = (('main', {'fields': self.form.fields.keys(), 'legend': ''}),)
+            self.fieldsets = (('', {'fields': self.form.fields.keys(), 'legend': ''}),)
         for name, options in self.fieldsets:
             try:
                 field_names = [n for n in options['fields'] if n in self.form.fields]
@@ -62,7 +70,7 @@ class FieldsetCollection(object):
                 message = "Fieldset definition must include 'fields' option."
                 raise ValueError(message)
             boundfields = [forms.forms.BoundField(self.form, self.form.fields[n], n) for n in field_names]
-            self._cached_fieldsets.append(Fieldset(self.form, name, boundfields, options.get('legend', None), ' '.join(options.get('classes', ())), options.get('description', '')))
+            self._cached_fieldsets.append(Fieldset(self.form, name, boundfields, options.get('legend', None), ' '.join(options.get('classes', (''))), options.get('description', '')))
 
 
 def _get_meta_attr(attrs, attr, default):
@@ -122,7 +130,6 @@ def _mark_row_attrs(bf, form):
         row_attrs['class'] = row_attrs['class'] + ' ' + req_class
     else:
         row_attrs['class'] = req_class
-    bf.row_attrs = mark_safe(flatatt(row_attrs))
     return bf
 
 
