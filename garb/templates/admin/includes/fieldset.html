@@ -39,10 +39,12 @@
                             {% else %}
                                 {{ field.field }}
                             {% endif %}
-                            <div class="form-row-error">
-                                {% if not line.fields|length_is:'1' and not field.is_readonly %}{{ field.errors }}{% endif %}
-                                {% if line.fields|length_is:'1' %}{{ line.errors }}{% endif %}
-                            </div>
+                            {% if not field.field.field.widget.widget.allow_multiple_selected %}
+                                <div class="form-row-error">
+                                    {% if not line.fields|length_is:'1' and not field.is_readonly %}{{ field.errors }}{% endif %}
+                                    {% if line.fields|length_is:'1' %}{{ line.errors }}{% endif %}
+                                </div>
+                            {% endif %}
                         </div>
                     {% endif %}
                 </div>

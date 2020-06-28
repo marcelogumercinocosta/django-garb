@@ -139,16 +139,49 @@
                                 padding: 10px;
                             }
 
-                        }
-
-                        div.datetime {
-                            strong {
-                                padding-left: 10px;
-                                color: _(cTextOff);
+                            .datetime {
+                                width: 100%;
+                                strong {
+                                    padding-left: 10px;
+                                    color: _(cTextOff);
+                                }
+    
+                                .datetimeshortcuts {
+                                    margin-right: 40px;
+                                }
                             }
-
-                            .datetimeshortcuts {
-                                margin-right: 40px;
+                            
+                            .selector {
+                                .selector-available,
+                                .selector-chosen {
+                                    h2 {
+                                        font-size: 1rem;
+                                        padding: 5px;
+                                        text-align: center;
+                                        margin: 0;
+                                        span {
+                                            width: 20px;
+                                        }
+                                    }
+                                }
+                                .selector-chosen h2 {
+                                        background: _(cPrimary);
+                                        color: _(cInput);
+                                }
+                                .selector-available {
+                                    label {
+                                        float: left;
+                                    }
+                                    input {
+                                        margin: 0;
+                                        width: 90%;
+                                    }
+                                    h2 {
+                                        background: _(backgroundColor);
+                                        color: _(cText);
+                                    }
+                                }
+                                
                             }
                         }
                     }

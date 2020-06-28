@@ -118,6 +118,11 @@ def get_row_attrs(bases, attrs):
     return _get_meta_attr(attrs, 'row_attrs', {})
 
 
+def get_submit_text(bases, attrs):
+    """Get the row_attrs definition from the inner Meta class."""
+    return _get_meta_attr(attrs, 'submit_text', {})
+
+
 def _mark_row_attrs(bf, form):
     row_attrs = deepcopy(form._row_attrs.get(bf.name, {}))
     if bf.field.required:
@@ -141,6 +146,8 @@ class GarbFormBaseMetaclass(type):
             _get_meta_attr(attrs, 'exclude', None) is None):
             _set_meta_attr(attrs, 'fields', fields)
         attrs['base_row_attrs'] = get_row_attrs(bases, attrs)
+        attrs['submit_text'] = get_submit_text(bases, attrs)
+
 
         new_class = super(GarbFormBaseMetaclass, cls).__new__(cls, name, bases, attrs)
         return new_class

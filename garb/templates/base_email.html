@@ -11,154 +11,216 @@
                 padding: 0;
             }
             body {
-                -webkit-font-smoothing: antialiased;
-                background-color: #f1f6f6;
-                font-family: "Inter", "Roboto", sans-serif;
+                margin: 0;
+                padding: 0;
+                mso-line-height-rule: exactly;
+                min-width: 100%;
+            }
+            .wrapper {
+                display: table;
+                table-layout: fixed;
+                width: 100%;
+                min-width: 820px;
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
                 font-size: 14px;
                 font-weight: 400;
                 line-height: 1.43;
-            }
-            a {
-                text-decoration: none;
-                color: #000;
-            }
-            .button {
-                background-color: #2196f3;
-                color: #ffffff;
-                border-radius: 5px;
-                border: 1px solid rgba(0, 0, 0, 0.15);
-                display: block;
-                font-size: 16px;
-                min-width: 10rem;
-                padding: 10px 25px;
-                text-decoration: none;
-                cursor: pointer;
-                width: 30%;
-                text-align: center;
+                padding-top:40px;
             }
 
-            .button:hover {
-                color: #ffffff;
-                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-                transform: translateY(-2px);
+            body, .wrapper {
+                background-color: #eee;
             }
 
-            .emailcontent {
-                align-items: top;
-                justify-content: center;
-                display: flex;
-                flex-flow: row;
-                flex-wrap: wrap;
-                height: 100vh;
-                padding-top: 4em;
-            }
-
-            .emailbox {
-                background-color: #fff;
-                border: 1px solid rgba(0, 0, 0, 0.15);
-                border-left: 6px solid #2196f3;
-                border-radius: 5px;
-                padding: 4em 2em;
-                width: 100%;
-                margin: 5% 10% auto 10%;
-            }
-
-            .site-name-azul {
-                color: #21125e;
-                font-family: "Exo", sans-serif;
-                font-size: 1rem;
-                font-style: italic;
-                font-weight: 900;
-                margin: 0px;
-                text-align: center;
-                padding-bottom: 2em;
-            }
-            h1,
-            h2,
-            h3,
-            h4,
-            p {
-                padding: 10px 3em 10px 3em;
-                margin: 0;
-                text-align: justify;
-            }
+            /* Basic */
             table {
-                border-collapse: separate;
-                mso-table-lspace: 0pt;
-                mso-table-rspace: 0pt;
-                width: 100%; }
-            table td {
-                font-family: sans-serif;
-                font-size: 14px;
-                vertical-align: top;
-                padding: 5px!important; 
+                border-collapse: collapse;
+                border-spacing: 0;
             }
-            .alert {
-                color: #d8000c;
-                background-color: #ffd2d2;
-                padding: 4px;
-                border-radius: 5px;
+            table.center {
+                margin: 80px auto 0 auto;
+                width: 720px;
+            }
+            table.footer {
+                margin: 0 auto;
+                width: 720px;
+            }
+            td {
+                padding: 0;
+                vertical-align: top;
+            }
+            p {
+                text-indent:1em;
             }
 
-            .emailbutton {
-                justify-content: center;
-                display: flex;
-                align-items: center;
+            .spacer,
+            .border {
+                font-size: 1px;
+                line-height: 1px;
             }
-            .align-center {
-                text-align: center;
+            .spacer {
+                width: 100%;
+                line-height: 16px
             }
-            .align-right {
-                text-align: right;
+            .border {
+                border: none;
             }
-            .align-left {
-                text-align: left;
+
+            .padded {
+                padding: 30px;
+            }
+            strong, .strong {
+                font-weight: 700;
+            }
+            h1, h2, h3, p, ol, ul, li {
+                margin-top: 0;
+            }
+            ol, ul, li {
+                padding-left: 0;
+            }
+
+            a {
+                text-indent:0;
+                text-decoration: none;
+                color: #616161;
             }
             .btn {
-                box-sizing: border-box;
-                width: 100%; }
-                .btn > tbody > tr > td {
-                padding-bottom: 15px; }
-                .btn table {
-                width: auto;
-            }
-                .btn table td {
-                background-color: #ffffff;
-                border-radius: 5px;
-                text-align: center;
-            }
-                .btn a {
-                background-color: #ffffff;
-                border: solid 1px #3498db;
-                border-radius: 5px;
-                box-sizing: border-box;
-                color: #3498db;
-                cursor: pointer;
-                display: inline-block;
-                font-size: 14px;
-                font-weight: bold;
+                background-color:#216BB8;
+                border:1px solid #216BB8;
+                color:#ffffff;
+                display:inline-block;
+                font-family:Roboto, Helvetica, sans-serif;
+                font-size:14px;
+                font-weight:400;
+                line-height:36px;
+                text-align:center;
+                text-decoration:none;
+                text-transform:uppercase;
+                width: 250px;
+                height: 40px;
+                padding: 0px 8px;
                 margin: 0;
-                padding: 12px 25px;
-                text-decoration: none;
+                outline: 0;
+                outline-offset: 0;
+                -webkit-text-size-adjust:none;
+                mso-hide:all;
+                border-radius: 5px;
             }
-            .btn-primary table td {
-                background-color: #3498db;
+
+            /* Top panel */
+            .title {
+                text-align: left;
             }
-            .btn-primary a {
-                background-color: #3498db;
-                border-color: #3498db;
-                color: #ffffff;
+
+            .subject {
+                text-align: right;
+            }
+
+            .title {
+                width: 360px;
+                padding: 20px 50px;
+                color: #216BB8;
+                font-family: Roboto, Helvetica, sans-serif;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 18px;
+            }
+
+            /* Header */
+            .logo {
+                padding: 16px 0;
+            }
+
+
+            /* Main */
+            .main {
+                -webkit-box-shadow: 0 2px 0 rgba(90,97,105,.11),0 4px 8px rgba(90,97,105,.12),0 10px 10px rgba(90,97,105,.06),0 7px 10px rgba(90,97,105,.1);
+                -moz-box-shadow: 0 2px 0 rgba(90,97,105,.11),0 4px 8px rgba(90,97,105,.12),0 10px 10px rgba(90,97,105,.06),0 7px 10px rgba(90,97,105,.1);
+                box-shadow: 0 2px 0 rgba(90,97,105,.11),0 4px 8px rgba(90,97,105,.12),0 10px 10px rgba(90,97,105,.06),0 7px 10px rgba(90,97,105,.1);
+                border-radius: 5px;
+                background-color: #fff;
+                border-left: 6px solid #216BB8;
+                margin-top:40px;
+            }
+            .content {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .column-bottom {
+                font-size: 8px;
+                line-height: 8px;
+            }
+            .content h1 {
+                margin-top: 0;
+                margin-bottom: 16px;
+                color: #212121;
+                font-family: Roboto, Helvetica, sans-serif;
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 28px;
+            }
+            .content p {
+                margin-top: 0;
+                margin-bottom: 16px;
+                color: #212121;
+                font-family: Roboto, Helvetica, sans-serif;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 24px;
+            }
+            .content .caption {
+                color: #616161;
+                font-size: 12px;
+                line-height: 20px;
+            }
+
+            /* Footer */
+            .signature, .subscription {
+                vertical-align: bottom;
+                width: 360px;
+                padding: 20px 50px;
+                text-align: right;
             }
         </style>
     </head>
-
     <body>
-        <div class="emailcontent">
-            <div class="emailbox">
-                {% block content %} {% endblock %}
-            </div>
+        <div class="wrapper center">
+            <table class="main center">
+                <tbody>
+                    <tr>
+                        <td class="column">
+                            <div class="column-top">&nbsp;</div>
+                            <table class="content" >
+                                <tbody>
+                                    <tr>
+                                        <td class="padded">
+                                            {% block content %} {% endblock %}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="column-bottom">&nbsp;</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="spacer">&nbsp;</div>
+
+            <table class="footer ">
+                <tbody>
+                    <tr>
+                        <td class="border" colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="title" width="360">{{ title|default_if_none:None|garb_title }}</td>
+                        <td class="subscription" width="360">  {% block rodape-direita %} {% endblock %} </td>
+                    </tr>
+                </tbody>
+            </table>
             <br>
-            <p class="site-name-azul m-0">{{ None|garb_title }}</p>
         </div>
     </body>
 </html>
