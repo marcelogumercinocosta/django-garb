@@ -220,7 +220,7 @@ input[type='checkbox'] {
         padding: 0 0 0px 5px;
     }
     input[type='checkbox'] {
-        width: 38px;
+        min-width: 38px;
         height: 21px;
         border-radius: 11px;
         margin-top: 5px;

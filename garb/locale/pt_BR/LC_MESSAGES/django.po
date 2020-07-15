@@ -24,6 +24,8 @@ msgstr "Nenhum registro"
 msgid "Back"
 msgstr "Voltar"
 
-
 msgid "You may edit it again below."
 msgstr "Você pode editá-lo novamente."
+
+msgid "Please enter your old password, for security’s sake, and then enter your new password twice so we can verify you typed it in correctly."
+msgstr "Por favor, digite sua senha antiga, por motivos de segurança, e digite sua nova senha duas vezes para que possamos verificar se você a digitou corretamente."

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load i18n static garb_tags %}
+
+{% block header %} {% endblock %}
+{% block breadcrumbs  %} 
+<div class="breadcrumbs">
+<div class="breadcrumbs">
+    <ul class="breadcrumb login">
+        <li>
+        <a href="/"> {{ None|garb_title }} </a>
+        <span class="divider">/</span>
+        </li>
+        <li class="active">
+            {% block title %}{% endblock %}
+        </li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block content %} 
+<div class='page_error'>
+    <div class='number_error' >
+        {% block error %} 404{% endblock %}
+    </div>
+    <div class='mensage_error'>
+        {% block message %}{% endblock %}
+    </div>
+<div>
+
+{% endblock %}
+
+{% block sidebar %}
+    <div class="login_bar">
+    </div>
+{% endblock %}

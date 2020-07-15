@@ -74,7 +74,20 @@
                 .content {
                     @include content();
                 }
-
+                .page_error {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: calc(100vh - 280px);
+                    flex-direction: column;
+                    color: _(cPrimary);
+                    .number_error {
+                        font-size: 20em;
+                    }
+                    .mensage_error {
+                        font-size: 1.5em;
+                    }
+                }
                 legend {
                     border-bottom: _(bd);
                     padding: 10px 0 0 0;
@@ -88,7 +101,6 @@
                     justify-content: flex-end;
                     align-items: baseline;
                     flex-direction: column;
-
                     .legend {
                         font-size: 1.4rem;
                     }
@@ -181,6 +193,9 @@
                     padding: 0 5px;
                 }
             }
+            .breadcrumb.column-center {
+                padding-left: 12%;
+            } 
         }
     }
 
@@ -201,3 +216,4 @@
     i.fas {
         margin-right: 5px;
     }
+

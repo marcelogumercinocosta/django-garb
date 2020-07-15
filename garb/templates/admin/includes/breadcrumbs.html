@@ -1,14 +1,14 @@
 {% load i18n  admin_urls  %}
 <div class="breadcrumbs">
   {% if nivel == 1 %}
-      <ul class="breadcrumb">
+      <ul class="breadcrumb {{ align }}">
         <li class="active">{% trans breadcrumbs_action|upper  %}</li>
       </ul>
   {% endif %}
 
 
   {% if nivel == 2 %}
-    <ul class="breadcrumb">
+    <ul class="breadcrumb {{ align }}">
         <li>
           <a href="{% url opts|admin_urlname:'changelist' %}"> {{ opts.verbose_name_plural|upper }} </a>
           <span class="divider">/</span>
@@ -20,7 +20,7 @@
   {% endif %}
 
   {% if nivel == 3 %}
-      <div class="breadcrumb">
+      <div class="breadcrumb {{ align }}">
         <li>
           <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|upper }}</a>
           <span class="divider">/</span>
@@ -38,7 +38,7 @@
   {% endif %}
 
   {% if nivel == "apps" %}
-    <ul class="breadcrumb">
+    <ul class="breadcrumb {{ align }}">
       <li>
         <a href="{% url 'admin:index' %}">APPS</a>
         <span class="divider">/</span>

@@ -114,8 +114,9 @@
 
         thead {
             tr th {
-                border-bottom: _(bd);
-                border-top: _(bd);
+                background-color: _(backgroundColor);
+                border-bottom: none;
+                border-top: none;
             }
 
             .th-col {

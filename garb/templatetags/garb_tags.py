@@ -3,6 +3,7 @@ from builtins import object
 from django import template
 from django.urls import NoReverseMatch, Resolver404, resolve, reverse
 from garb.config import get_config
+from django.http import HttpRequest
 
 register = template.Library()
 
