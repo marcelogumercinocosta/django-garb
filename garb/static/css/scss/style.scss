@@ -24,7 +24,7 @@ $themes: (
         cTextContrast: #fff,
         cTextOff: #666666,
         erro: #D8000C,
-        marginVw:2vw
+        marginVw:4vw
     ),
     hybrid: (
         bdMenu: 1px solid #E9E9E9,
@@ -112,6 +112,7 @@ $map_update: $themes;
         @import "boostrap_select";
         @import "menu";
         @import "login";
+        @import "export";
         @import "jquery_toast_select";
         @import "pace";
         @import "change_list";

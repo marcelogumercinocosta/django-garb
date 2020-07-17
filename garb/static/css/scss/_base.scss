@@ -88,10 +88,6 @@
                         font-size: 1.5em;
                     }
                 }
-                legend {
-                    border-bottom: _(bd);
-                    padding: 10px 0 0 0;
-                }
 
                 .module-header {
                     border-bottom: _(bd);
@@ -118,21 +114,20 @@
                 .module-footer {
                     border-top: _(bd);
                     margin-top: 0px;
-                    padding: 10px 170px;
+                    padding: 10px 5%;
                     min-height: 50px;
 
                     .buttons {
                         align-items: center;
                         display: flex;
                         justify-content: flex-end;
-
+                        text-align: right;
                         input {
                             height: 40px;
                         }
-
-                        a {
-                            margin-left: 10px;
+                        a, button {
                             height: 40px;
+                            margin: 0 5px;
                         }
                     }
                 }

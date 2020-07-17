@@ -1,0 +1,29 @@
+.box-alert {
+    border-radius: _(bdRadius);
+    box-shadow: _(boxShadow);
+    background-color: _(bgcMenuHover);
+    position: relative;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.box-garb {
+    @include content();
+    margin: 1rem;
+    p {
+        margin: 10px 20px;
+    }
+}
+
+legend {
+    border-bottom: _(bd);
+    padding: 10px 0 0 0;
+}
+
+.collapse legend {
+    padding: 15px 0 0px 60px;
+    border: none;
+    font-size: 1.1em;
+    margin: 0;
+    font-weight: bold;
+}

@@ -8,8 +8,8 @@
     <script type="text/javascript" src="{% static 'admin/js/admin/DateTimeShortcuts.js' %}"></script>
     <script type="text/javascript" src="{% static 'admin/js/core.js' %}"></script>
     <div class="change-columns">
-        <div class="form-column-center">
-            <div class="form-column-item">
+        <div class="main-column-center">
+            <div class="main-column-item">
                 {% if form.non_field_errors %}
                     <div class="alert alert-danger" role="alert">
                         {% if errors|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
@@ -34,7 +34,6 @@
                                     {{ field }}
                                 {% else %}
                                     <div class="form-row {% if field.name %} field-{{ field.name }}{% endif %} {% if field.errors %} is-invalid  {% endif %}">
-                                        
                                         <div class="form-row-box fieldBox {% if field.name %} field-{{ field.name }}{% endif %}{% if not field.is_readonly and field.errors %} errors {% endif %}">
                                             {% if field|is_checkbox or field|is_radio%}
                                                 <div class="form-row-label"></div>
