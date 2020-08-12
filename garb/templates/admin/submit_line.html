@@ -8,7 +8,6 @@
 {% if show_save_and_add_another %}<button type="submit" name="_addanother" class="btn btn-secondary">{% trans 'Save and add another' %}</button>{% endif %}
 {% if show_delete_link %}
       {% url opts|admin_urlname:'delete' original.pk|admin_urlquote as delete_url %}
-
       <a href="{% add_preserved_filters delete_url %}" class="text-error deletelink btn btn-danger">{% trans "Delete" %}</a>
 {% endif %}
 {% block object-tools %}

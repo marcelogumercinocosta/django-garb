@@ -18,7 +18,7 @@
 		padding: 3em 0 3.5em 0;
 		border-left: 6px solid _(cPrimary);
 		margin-top:  -160px;
-		width: calc(12vw + 230px);
+		width: calc(12vw + 250px);
 		form {
 			padding: 10px 3em;
 		}
@@ -104,7 +104,7 @@
 	.loginbox_error {
 		@include content();
 		border-left: 6px solid _(erro);
-		width: calc(12vw + 230px);
+		width: calc(12vw + 250px);
 		.alert {
 			margin-bottom: 0;
 		}
@@ -135,7 +135,7 @@
 		}
 
 		.dropdown-toggle {
-			width: 230px;
+			width: 250px;
 			text-align: right;
 			box-shadow: _(boxShadow);
 			border: _(bdMenu);
@@ -174,7 +174,7 @@
 			font-size: 14px;
 			margin: 0.15rem 0 0 0;
 			padding: 5px;
-			width: 230px;
+			width: 250px;
 			box-shadow: _(boxShadow);
 		}
 

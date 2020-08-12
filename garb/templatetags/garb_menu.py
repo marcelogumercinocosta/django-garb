@@ -44,8 +44,8 @@ class ItemLink(object):
     def get_active(self):
         array_path = str(self.path_info).split('/')
         # if self.route:
-            # print( reverse(self.route),  ('/'.join(array_path[0:4]) + "/").replace("//", "/") )
-        if self.route and ('/'.join(array_path[0:4]) + "/").replace("//", "/") == reverse(self.route):
+        #     print( reverse(self.route).replace("//", "/"),  ('/'.join(array_path[0:4]) + "/").replace("//", "/") )
+        if self.route and ('/'.join(array_path[0:4]) + "/").replace("//", "/") == f"{reverse(self.route)}/".replace("//", "/"):
             return True
         return False
     
@@ -86,7 +86,7 @@ class ItemLinkModel(ItemLink):
             raise Exception(msg_erro.format(type(ex).__name__, ex.args))
 
     def check_perms(self):
-        if self.user.has_perms('admin:{0}_{1}_changelist'.format(self.app_name, self.model_name)):
+        if self.user.has_perm(f'{self.app_name}.view_{ self.model_name}'):
             return self
 
 

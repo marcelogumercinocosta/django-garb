@@ -210,20 +210,21 @@
                     </tr>
                 </tbody>
             </table>
-
             <div class="spacer">&nbsp;</div>
-
-            <table class="footer ">
-                <tbody>
-                    <tr>
-                        <td class="border" colspan="2">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="title" width="360">{{ title|default_if_none:None|garb_title }}</td>
-                        <td class="subscription" width="360">  {% block rodape-direita %} {% endblock %} </td>
-                    </tr>
-                </tbody>
-            </table>
+                <table class="footer ">
+                    <tbody>
+                        <tr>
+                            <td class="border" colspan="2">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="title" width="360">{{ title|default_if_none:None|garb_title }}</td>
+                            <td class="subscription" width="360"> 
+                                {% include "base_email_rodape.html" %}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
             <br>
         </div>
     </body>

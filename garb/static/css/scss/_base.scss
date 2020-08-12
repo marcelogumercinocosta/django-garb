@@ -83,6 +83,21 @@
                     color: _(cPrimary);
                     .number_error {
                         font-size: 20em;
+                        span {
+                            display: inline-block;
+                            animation: animate 2s ease-in-out infinite;
+                        }
+                        span:nth-child(even) {
+                            animation-delay: -1s;
+                        }                        
+                        @keyframes animate {
+                            0%, 100% {
+                                transform:translateY(-10px);
+                            }
+                            50% {
+                                transform:translateY(10px);
+                            }
+                        }
                     }
                     .mensage_error {
                         font-size: 1.5em;
@@ -91,14 +106,20 @@
 
                 .module-header {
                     border-bottom: _(bd);
-                    padding: 5px 0 5px 165px;
+                    padding: 5px 0 5px 15px;
                     min-height: 51px;
                     display: flex;
                     justify-content: flex-end;
                     align-items: baseline;
                     flex-direction: column;
+                    
+                    a {
+                        width: 100%;
+                    }
+
                     .legend {
                         font-size: 1.4rem;
+                        width: 100%;
                     }
 
                     .description {
@@ -110,6 +131,9 @@
                         font-size: 1rem;
                     }
                 }
+                form .module-header {
+                    padding: 5px 0 5px 165px;
+                } 
 
                 .module-footer {
                     border-top: _(bd);
@@ -128,6 +152,8 @@
                         a, button {
                             height: 40px;
                             margin: 0 5px;
+                            padding-left:10px;
+                            padding-right: 10px;
                         }
                     }
                 }

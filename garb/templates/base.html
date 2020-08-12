@@ -104,7 +104,7 @@
     </script>
     {% if not "MENU_ONLY_AUTH"|settings_value or user.is_authenticated %}
         <script type="text/javascript">
-            $('.collapsed').on('click', function () {
+            $('#menu .collapsed').on('click', function () {
                 $('#menu .collapse').collapse('hide');
             });
         </script>

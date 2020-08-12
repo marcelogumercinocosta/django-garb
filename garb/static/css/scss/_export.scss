@@ -9,7 +9,7 @@
 
 .box-garb {
     @include content();
-    margin: 1rem;
+    margin-bottom: 20px;
     p {
         margin: 10px 20px;
     }
@@ -20,10 +20,16 @@ legend {
     padding: 10px 0 0 0;
 }
 
-.collapse legend {
+.panel-collapse legend {
     padding: 15px 0 0px 60px;
     border: none;
     font-size: 1.1em;
     margin: 0;
+    font-weight: bold;
+}
+
+// form.as_p para Modal
+.modal-body p label{
+    margin-bottom: 0;
     font-weight: bold;
 }
