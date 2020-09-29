@@ -1,7 +1,5 @@
 @use "sass:map";
-$themes: (
-    default: (
-        backgroundColor: #eee,
+$themes: (default: (backgroundColor: #eee,
         bd: 1px solid #D9D9D9,
         bdMenu: 1px solid #2059BD,
         bdRadius: 5px,
@@ -11,23 +9,22 @@ $themes: (
         bgcMenuHover: #0F4DB8,
         bgcMenuItem:#0B3A8D,
         bgcMenuSub: #0D42A0,
-        boxShadow: (0 2px 0 rgba(90,97,105,.11),0 4px 8px rgba(90,97,105,.12),0 10px 10px rgba(90,97,105,.06),0 7px 10px rgba(90,97,105,.1)),
+        boxShadow: (0 2px 0 rgba(90, 97, 105, .11), 0 4px 8px rgba(90, 97, 105, .12), 0 10px 10px rgba(90, 97, 105, .06), 0 7px 10px rgba(90, 97, 105, .1)),
         boxShadowMenu: (0 .125rem 9.375rem rgba(90, 97, 105, .1), 0 .25rem .5rem rgba(90, 97, 105, .12), 0 .9375rem 1.375rem rgba(90, 97, 105, .1), 0 .4375rem 2.1875rem rgba(165, 182, 201, .1)),
         cMenuFont: #fff,
         cMenuFontHover: #fff,
         cMenuActive: #fff,
         cInput:#FFFFFF,
-        bgcTitle:  #081296,
+        bgcTitle: #081296,
         cTitle: #fff,
         cPrimary: #0F4DB8,
         cText: #212529,
         cTextContrast: #fff,
         cTextOff: #666666,
+        btnSecondary:#6c757d,
         erro: #D8000C,
-        marginVw:4vw
-    ),
-    hybrid: (
-        bdMenu: 1px solid #E9E9E9,
+        marginVw:4vw),
+    hybrid: (bdMenu: 1px solid #E9E9E9,
         bgcMenu: #0D47A1,
         bgcMenu2:#090979,
         bgcMenuHover: #E9E9E9,
@@ -37,10 +34,20 @@ $themes: (
         cMenuFont: #000,
         cMenuFontHover: #0068FF,
         bgcTitle: #fff,
-        cPrimary: #216BB8
-    ),
-    light: (
-        bdMenu: 1px solid #E6ECF0,
+        cPrimary: #216BB8),
+    alive: (bdMenu: 1px solid #E9E9E9,
+        bgcMenu: #8A05BE,
+        bgcMenu2:#471E5F,
+        bgcMenuHover: #E9E9E9,
+        bgcMenuItem: #FFFFFF,
+        bgcMenuSub: #FBFBFB,
+        cMenuActive: #471E5F,
+        cMenuFont: #700099,
+        cMenuFontHover: #700099,
+        bgcTitle: #fff,
+        btnSecondary:#8E41A8,
+        cPrimary: #9b23ca),
+    light: (bdMenu: 1px solid #E6ECF0,
         bgcMenu: #ffffff,
         bgcMenu2:#dddddd,
         bgcMenuHover: #EDF0F2,
@@ -50,11 +57,9 @@ $themes: (
         cMenuFont: #000,
         cMenuFontHover: #000,
         bgcTitle: #fff,
-        cTitle:  #081296,
-        cPrimary: #216BB8
-    ),
-    dark: (
-        backgroundColor: #282A36,
+        cTitle: #081296,
+        cPrimary: #216BB8),
+    dark: (backgroundColor: #282A36,
         bd: 1px solid #38444D,
         bdMenu: 1px solid #38444D,
         bgcContent:#000000,
@@ -78,6 +83,7 @@ $themes: (
 );
 
 $map_update: $themes;
+
 @function _($key) {
     @return map-get($map_update, $key);
 }
@@ -90,9 +96,11 @@ $map_update: $themes;
 }
 
 
-@each $theme-name, $map in $themes {
-    $default:map-get($themes, 'default');
-    $map_update:map-merge( $default, $map);
+@each $theme-name,
+$map in $themes {
+    $default: map-get($themes, 'default');
+    $map_update: map-merge($default, $map);
+
     body.#{$theme-name} {
         -webkit-font-smoothing: antialiased;
         background-color: _(backgroundColor);
@@ -101,10 +109,16 @@ $map_update: $themes;
         font-weight: 400;
         line-height: 1.43;
         color: _(cText);
+
         a {
             text-decoration: none;
             color: _(cText);
         }
+
+        .bg_cor_primaria {
+            background-color: _(cPrimary);
+        }
+
         @import "variables";
         @import "base";
         @import "input";
@@ -120,3 +134,5 @@ $map_update: $themes;
         @import "index";
     }
 }
+
+@import "color";

@@ -1,6 +1,6 @@
 {% load i18n admin_urls admin_modify %}
 {% if not is_popup %}
-      <a href="{% url opts|admin_urlname:'changelist' %}" class="btn btn-light black btn-back">{% trans 'Back' %}</a>
+      <a href="{% url opts|admin_urlname:'changelist' %}" class="btn btn-light">{% trans 'Back' %}</a>
 {% endif %}
 {% if show_save %}<button type="submit" class="btn btn-info" name="_save">{% trans 'Save' %}</button>{% endif %}
 {% if show_save_and_continue %}<button type="submit" name="_continue" class=" btn btn-secondary">{% trans 'Save and continue editing' %}</button>{% endif %}

@@ -70,7 +70,9 @@
                     {% if field.is_readonly or not field.field.is_hidden %}
                       <td{% if field.field.name %} class="field-{{ field.field.name }}"{% endif %}>
                         {% if field.is_readonly %}
-                          {{ field.contents }}
+                          <div class="tabular-inline">
+                            {{ field.contents }} 
+                          </div>
                         {% else %}
                           {{ field.field.errors.as_ul }}
                           {{ field.field }}

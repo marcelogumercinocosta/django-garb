@@ -22,7 +22,15 @@
                     border: _(bd);
                 }
             }
-
+        }
+        .btn-secondary {
+            color: #fff;
+            background-color: _(btnSecondary);
+            border-color:_(btnSecondary);
+            &:hover {
+                background-color: darken(_(btnSecondary),10%);
+                border-color: darken(_(btnSecondary),10%);
+            }
         }
     }
     .main-column {
@@ -243,6 +251,20 @@
                             }
                             .related-widget-wrapper-link {
                                 margin-left: 7px;
+                            }
+                        }
+                        .tabular-inline{
+                            font-size: 15px;
+                            padding: 5px;
+                        }
+                        ul.errorlist {
+                            padding:0;
+                            margin: 0;
+                            li {
+                                padding-left: 5px;
+                                color: _(erro);
+                                margin-bottom: 3px;
+                                list-style-type: none;
                             }
                         }
                     }

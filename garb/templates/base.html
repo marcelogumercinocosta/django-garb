@@ -9,6 +9,7 @@
         <link href="https://fonts.googleapis.com/css?family=Dosis:400,500,700|Roboto&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.0/css/solid.css">
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.0/css/fontawesome.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/bootstrap-reboot.min.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/bootstrap.min.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.min.css' %}">
         {% block extrastyle %}{% endblock %}
@@ -25,36 +26,38 @@
                         </a>
                     </div>
                 </div>
-                {% if not is_popup %}
-                    {% block login %}
-                        <div class="headerlogin dropdown show">
-                            {% if user.is_authenticated %}
-                                <div class="loginmenu">
-                                    <a class="button dropdown-toggle" href="/#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        {{ user.username }}
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        {% if "ROUTE_PROFILE"|settings_value %} 
-                                            <a class="dropdown-item button" href="{% url "ROUTE_PROFILE"|settings_value %}"><i class="fas fa-user-circle"></i>
-                                                {% if "NAME_PROFILE"|settings_value %} 
-                                                    {{ "NAME_PROFILE"|settings_value|title }}
-                                                {% else %}
-                                                    {% trans 'Account' %}
-                                                {% endif %}
-                                            </a>
-                                        {% endif %}
-                                        <a class="dropdown-item button" href="{% url 'admin:password_change' %}"><i class="fas fa-key"></i>{% trans 'Change password' %}</a>
-                                        <a class="dropdown-item button" href="{% url 'admin:logout' %}"><i class="fas fa-sign-out-alt"></i>{% trans 'Log out' %}</a>
+                {% block header_login %}
+                    {% if not is_popup %}
+                        {% block login %}
+                            <div class="headerlogin dropdown show">
+                                {% if user.is_authenticated %}
+                                    <div class="loginmenu">
+                                        <a class="button dropdown-toggle" href="/#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {{ user.username }}
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            {% if "ROUTE_PROFILE"|settings_value %} 
+                                                <a class="dropdown-item button" href="{% url "ROUTE_PROFILE"|settings_value %}"><i class="fas fa-user-circle"></i>
+                                                    {% if "NAME_PROFILE"|settings_value %} 
+                                                        {{ "NAME_PROFILE"|settings_value|title }}
+                                                    {% else %}
+                                                        {% trans 'Account' %}
+                                                    {% endif %}
+                                                </a>
+                                            {% endif %}
+                                            <a class="dropdown-item button" href="{% url 'admin:password_change' %}"><i class="fas fa-key"></i>{% trans 'Change password' %}</a>
+                                            <a class="dropdown-item button" href="{% url 'admin:logout' %}"><i class="fas fa-sign-out-alt"></i>{% trans 'Log out' %}</a>
+                                        </div>
                                     </div>
-                                </div>
-                            {% else %}
-                                <a class="button" href="{% url 'admin:login' %}" >
-                                    <i class="fas fa-sign-in-alt"></i>{% trans 'Log in' %}
-                                </a>
-                            {% endif %}
-                        </div>
-                    {% endblock %}
-                {% endif %}
+                                {% else %}
+                                    <a class="button" href="{% url 'admin:login' %}" >
+                                        <i class="fas fa-sign-in-alt"></i>{% trans 'Log in' %}
+                                    </a>
+                                {% endif %}
+                            </div>
+                        {% endblock %}
+                    {% endif %}
+                {% endblock %}
             </header>
         {% endblock %}
         {% block wrapper %}
@@ -69,7 +72,9 @@
                         {% endblock %}
                     {% endif %}
                 <main  {% if is_popup %} class="margin-is-popup" {% endif %}>
-                    {% block breadcrumbs %} {% endblock %}
+                    {% block breadcrumbs %}
+                        {% include "admin/includes/breadcrumbs.html" with nivel=1 breadcrumbs_action=title|default_if_none:None %} 
+                    {% endblock %}
                     <div class="content-extend" >
                         {% block content %}  {% endblock %}
                     </div>

@@ -32,8 +32,8 @@
                                 {% if not "img" in field.contents %}
                                     <div class="readonly">{{ field.contents }}</div>
                                 {% else %}
-                                    <div class=" form-row-checkbox">
-                                        <input type="checkbox" name="{{ field.field.field }}"  disabled="">
+                                    <div class="form-row-checkbox-read">
+                                        {{  field.contents }}
                                     </div>
                                 {% endif %}
                             {% else %}
