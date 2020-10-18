@@ -15,7 +15,7 @@
     {% trans 'Add' as breadcrumb_title %}
     {% include "admin/includes/breadcrumbs.html" with nivel=2 breadcrumbs_action=breadcrumb_title|concatene:opts.verbose_name %}
   {% else %}
-    {% include "admin/includes/breadcrumbs.html" with nivel=2 breadcrumbs_action=original %}
+    {% include "admin/includes/breadcrumbs.html" with nivel=2 breadcrumbs_action=original %} 
   {% endif %}
 {% endblock %}
 
@@ -71,6 +71,9 @@
           {% block save-box %}
             <div class="save-box">
               {% block submit_buttons_bottom %}
+                {% if not is_popup %}
+                  <a href="{% url opts|admin_urlname:'changelist' %}" class="btn btn-light">{% trans 'Back' %}</a>
+                {% endif %}
                 {% if not adminform.readonly_fields|get_for_one_string == adminform.fieldsets|get_for_two_string %}
                   {% submit_row %}
                 {% endif %}

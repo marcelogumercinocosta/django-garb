@@ -80,7 +80,7 @@
                     align-items: center;
                     height: calc(100vh - 280px);
                     flex-direction: column;
-                    color: _(cPrimary);
+                    color: _(cBreadcrumb);
                     .number_error {
                         font-size: 20em;
                         span {
@@ -197,10 +197,10 @@
                 }
 
                 li {
-                    color: _(cPrimary);
+                    color: _(cBreadcrumb);
 
                     a {
-                        color: _(cPrimary);
+                        color: _(cBreadcrumb);
                         text-decoration: none;
 
                         &:hover {
@@ -210,7 +210,7 @@
                 }
 
                 .divider {
-                    color: _(cPrimary);
+                    color: _(cBreadcrumb);
                     padding: 0 5px;
                 }
             }

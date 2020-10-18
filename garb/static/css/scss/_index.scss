@@ -52,9 +52,11 @@
         table {
             @include table-index();
             tr {
-                th:first-child {
-                    width: 55%;
-                    padding-left: 10%;
+                th {
+                    padding-left: 5%;
+                }
+                td {
+                    padding-left: 3%;
                 }
             }
         }

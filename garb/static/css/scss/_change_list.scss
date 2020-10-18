@@ -114,7 +114,7 @@
 
         thead {
             tr th {
-                background-color: _(backgroundColor);
+                background-color: _(bgcHeadMenu);
                 border-bottom: none;
                 border-top: none;
             }
@@ -236,7 +236,7 @@
 .list-info {
     border-radius: _(bdRadius);
     border: _(bd);
-    background-color: _(backgroundColor);
+    background-color: _(bgcHeadMenu);
     margin: 0;
     padding: 0.5rem 0.75rem;
     line-height: 1.25;
