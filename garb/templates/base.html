@@ -45,7 +45,9 @@
                                                     {% endif %}
                                                 </a>
                                             {% endif %}
-                                            <a class="dropdown-item button" href="{% url 'admin:password_change' %}"><i class="fas fa-key"></i>{% trans 'Change password' %}</a>
+                                            {% block password_change %}
+                                                <a class="dropdown-item button" href="{% url 'admin:password_change' %}"><i class="fas fa-key"></i>{% trans 'Change password' %}</a>
+                                            {% endblock %}
                                             <a class="dropdown-item button" href="{% url 'admin:logout' %}"><i class="fas fa-sign-out-alt"></i>{% trans 'Log out' %}</a>
                                         </div>
                                     </div>
