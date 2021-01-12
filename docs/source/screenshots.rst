@@ -25,6 +25,11 @@ dark
 .. image:: _static/theme4.png
     :alt: Django Garb Theme Preview
 
+alive
+^^^^^
+.. image:: _static/theme5.png
+    :alt: Django Garb Theme Preview
+
 
 Pages
 -----

@@ -24,6 +24,7 @@ Getting Started
 
    getting_started
    configuration
+   facilities
 
 
 Screenshots

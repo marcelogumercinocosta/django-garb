@@ -75,7 +75,7 @@ THEME
 Select the theme for the admin::
 
   GARB_CONFIG = {
-      'THEME': 'default' # 'hybrid','dark','light'
+      'THEME': 'default' # 'hybrid','dark','light','alive'
   }
   
 

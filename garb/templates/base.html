@@ -52,7 +52,7 @@
                                         </div>
                                     </div>
                                 {% else %}
-                                    <a class="button" href="{% url 'admin:login' %}" >
+                                    <a class="button" href="{% block login_link %} {% url 'admin:login' %}{% endblock %}" >
                                         <i class="fas fa-sign-in-alt"></i>{% trans 'Log in' %}
                                     </a>
                                 {% endif %}

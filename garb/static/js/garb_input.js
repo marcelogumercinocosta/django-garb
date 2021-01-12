@@ -13,12 +13,11 @@
                     }
                 }
             }
-
-            if ( ! $('select').attr("multiple") && prefixElement) {
-                $.fn.selectpicker.Constructor.DEFAULTS.styleBase = null;
-                $.fn.selectpicker.Constructor.DEFAULTS.noneSelectedText = '---------'
-                $(this).selectpicker();
-            }
+                if ((! $(this).is('[multiple]')) && prefixElement) {
+                    $.fn.selectpicker.Constructor.DEFAULTS.styleBase = null;
+                    $.fn.selectpicker.Constructor.DEFAULTS.noneSelectedText = '---------'
+                    $(this).selectpicker();
+                }
         });
     } 
     $(document).on("mousedown",'.add-row td a',function() {
