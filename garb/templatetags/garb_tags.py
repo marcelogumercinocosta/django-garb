@@ -50,3 +50,8 @@ def get_for_two_string(lista):
 @register.filter(name='settings_value')
 def settings_value(name):
     return get_config(name)
+
+
+@register.simple_tag
+def get_verbose_name_field(object, fieldnm): 
+    return object._meta.get_field(fieldnm).verbose_name
