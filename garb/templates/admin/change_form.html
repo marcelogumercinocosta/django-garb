@@ -86,3 +86,8 @@
     </form>
   </div>
 {% endblock %}
+
+{% block extrajs %}
+    {{ block.super }}
+    <script type="text/javascript"> $('.help-tooltip').tooltip() </script>
+{% endblock %}

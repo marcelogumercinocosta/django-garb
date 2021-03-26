@@ -1,3 +1,5 @@
+
+
 .change-columns {
     @include flex-row();
     align-items: flex-start;
@@ -271,7 +273,6 @@
                         width: 100px;
                         text-align: center;
                         vertical-align: middle;
-
                         div a.inline-deletelink {
                             @extend .button;
                             background-color: _(erro);
@@ -283,7 +284,6 @@
                             min-width: 90px;
                         }
                     }
-
                     th.original {
                         width: 10px;
                         padding: 0;
