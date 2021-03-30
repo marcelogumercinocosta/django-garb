@@ -68,6 +68,7 @@
                 <br>
                 <h4>{% trans "Objects" %}</h2>
                 <ul>{{ deleted_objects|unordered_list }}</ul>
+                {% block extra_delete %}{% endblock %}
             </div>
             <div class="module-footer">
                 <div class="buttons">
