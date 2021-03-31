@@ -73,11 +73,11 @@
                 .form-row {
                     border-bottom: none;
                     overflow: visible;
+                    display: table-row;
                     .vLargeTextField,
                     .vXMLLargeTextField {
                         width: 80%;
                     }
-
                     .vDateField,
                     .vTimeField {
                         width: 20%;
