@@ -69,11 +69,9 @@
                 .form-row:last-child {
                     border-bottom: none;
                 }
-
                 .form-row {
                     border-bottom: none;
                     overflow: visible;
-                    display: table-row;
                     .vLargeTextField,
                     .vXMLLargeTextField {
                         width: 80%;
@@ -226,12 +224,21 @@
                 .field-password .help {
                     margin: -15px 0 0 160px;
                 }
+                
+                
             }
 
             .tabular fieldset {
+                .form-row-tabular {
+                    display: table-row;
+                }
+                .empty-form {
+                    display:none;
+                }
                 tr {
                     border-bottom: none;
                     td {
+                        
                         color: _(cText);
                         background: _(bgcContent);
                         vertical-align: bottom;
