@@ -72,10 +72,6 @@
                 .form-row {
                     border-bottom: none;
                     overflow: visible;
-                    .vLargeTextField,
-                    .vXMLLargeTextField {
-                        width: 80%;
-                    }
                     .vDateField,
                     .vTimeField {
                         width: 20%;
@@ -113,6 +109,13 @@
                                 width: auto;
                                 margin-bottom: 0;
                                 padding: 5px 5px 0 5px;
+                            }
+                            p.file-upload {
+                                margin-left: 0px;
+                                font-size: 13px;
+                                a {
+                                    color: _(cPrimary);
+                                }
                             }
                             .form-row-error {
                                 margin-bottom: 2px;
