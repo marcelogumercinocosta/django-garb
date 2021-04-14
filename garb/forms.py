@@ -69,7 +69,7 @@ class FieldsetCollection(object):
             except KeyError:
                 message = "Fieldset definition must include 'fields' option."
                 raise ValueError(message)
-            boundfields = [forms.forms.BoundField(self.form, self.form.fields[n], n) for n in field_names]
+            boundfields = [forms.BoundField(self.form, self.form.fields[n], n) for n in field_names]
             self._cached_fieldsets.append(Fieldset(self.form, name, boundfields, options.get('legend', None), ' '.join(options.get('classes', (''))), options.get('description', '')))
 
 
