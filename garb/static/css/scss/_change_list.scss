@@ -37,16 +37,15 @@
     }
 
     .pagination-block {
-        @include flex-row();
+        @include flex-row(); 
 
         .pagination-list {
             margin: 0;
-
             li.disabled a,
             li.disabled span {
                 border: _(bd);
                 &:hover {
-                    background-color: _(cText);
+                    background-color: _(bgcMenuSub);
                 }
             }
 

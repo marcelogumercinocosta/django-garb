@@ -21,32 +21,33 @@ def paginator_number(cl, i):
     """
     Generates an individual page index link in a paginated list.
     """
-
     if i == DOT:
         return mark_safe(
-            '<li class="disabled"><a href="#" onclick="return false;">...</a></li>'
-        )
-    elif i == cl.page_num:
-        i = i + 1
-        return mark_safe(
-            '<li class="active"><a %s %s href="">%d</a></li> '
-            % (
-                (i == cl.paginator.num_pages + 1 and ' class="end"' or ""),
-                (i == 1 and ' class="start"' or ""),
-                i,
-            )
+            '<li class="disabled page_dot"><a href="#" onclick="return false;">...</a></li>'
         )
     else:
         i = i + 1
-        return mark_safe(
-            '<li><a href="%s" %s %s>%d</a></li> '
-            % (
-                escape(cl.get_query_string({PAGE_VAR: i})),
-                (i == cl.paginator.num_pages and ' class="end"' or ""),
-                (i == 1 and ' class="start"' or ""),
-                i,
+        if i == cl.page_num:
+            return mark_safe(
+                '<li class="active"><a %s %s href="">%d</a></li> '
+                % (
+                    (i == cl.paginator.num_pages + 1 and ' class="end"' or ""),
+                    (i == 1 and ' class="start"' or ""),
+                    i,
+                )
             )
-        )
+        elif i > cl.paginator.num_pages:
+            return ""
+        else:
+            return mark_safe(
+                '<li><a href="%s" %s %s>%d</a></li> '
+                % (
+                    escape(cl.get_query_string({PAGE_VAR: i})),
+                    (i == cl.paginator.num_pages and ' class="end"' or ""),
+                    (i == 1 and ' class="start"' or ""),
+                    i,
+                )
+            )
 
 
 @register.simple_tag
@@ -78,7 +79,7 @@ def pagination(cl):
     if not pagination_required:
         page_range = []
     else:
-        ON_EACH_SIDE = 1
+        ON_EACH_SIDE = 2
         ON_ENDS = 1
 
         # If there are 10 or fewer pages, display links to every page.
@@ -100,7 +101,7 @@ def pagination(cl):
                 page_range.extend(range(0, page_num + 1))
             if page_num < (paginator.num_pages - ON_EACH_SIDE - ON_ENDS - 1):
                 page_range += [
-                    *range(page_num + 1, page_num + ON_EACH_SIDE + 1),
+                    *range(page_num + 1, page_num + ON_EACH_SIDE - 1),
                     DOT,
                     *range(paginator.num_pages - ON_ENDS, paginator.num_pages),
                 ]
