@@ -21,12 +21,13 @@ def paginator_number(cl, i):
     """
     Generates an individual page index link in a paginated list.
     """
-    i = i + 1
+
     if i == DOT:
         return mark_safe(
             '<li class="disabled"><a href="#" onclick="return false;">...</a></li>'
         )
     elif i == cl.page_num:
+        i = i + 1
         return mark_safe(
             '<li class="active"><a %s %s href="">%d</a></li> '
             % (
@@ -36,6 +37,7 @@ def paginator_number(cl, i):
             )
         )
     else:
+        i = i + 1
         return mark_safe(
             '<li><a href="%s" %s %s>%d</a></li> '
             % (
