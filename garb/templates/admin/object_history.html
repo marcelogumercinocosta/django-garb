@@ -9,18 +9,18 @@
     <div class="content history-show" >
         {% if action_list %}
             <br>
-            <table id="change-history ">
+            <table id="change-history " >
                 <thead>
                 <tr>
-                    <th scope="col">{% trans 'Date/time' %}</th>
-                    <th scope="col">{% trans 'User' %}</th>
-                    <th scope="col">{% trans 'Action' %}</th>
+                    <th class="w-25">{% trans 'Date/time' %}</th>
+                    <th class="w-25">{% trans 'User' %}</th>
+                    <th>{% trans 'Action' %}</th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for action in action_list %}
                 <tr>
-                    <td scope="row"> <i class="fas fa-history"></i>  {{ action.action_time|date:"DATETIME_FORMAT" }}</td>
+                    <td>  <i class="fas fa-history"></i>  {{ action.action_time|date:"DATETIME_FORMAT" }}</td>
                     <td>{{ action.user.get_username }}{% if action.user.get_full_name %} ({{ action.user.get_full_name }}){% endif %}</td>
                     <td>{{ action.get_change_message }}</td>
                 </tr>
