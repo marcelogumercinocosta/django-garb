@@ -39,7 +39,7 @@
                             {% else %}
                                 {{ field.field }}
                             {% endif %}
-                            {% if not field.field.field.widget.widget.allow_multiple_selected %}
+                            {% if not field.field.field.widget|to_class_name == "FilteredSelectMultiple" and   not  field.field.field.widget.widget|to_class_name == "FilteredSelectMultiple" %}
                                 <div class="form-row-error">
                                     {% if not line.fields|length_is:'1' and not field.is_readonly %}{{ field.errors }}{% endif %}
                                     {% if line.fields|length_is:'1' %}{{ line.errors }}{% endif %}

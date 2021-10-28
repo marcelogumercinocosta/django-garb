@@ -55,3 +55,7 @@ def settings_value(name):
 @register.simple_tag
 def get_verbose_name_field(object, fieldnm): 
     return object._meta.get_field(fieldnm).verbose_name
+
+@register.filter
+def to_class_name(value):
+    return value.__class__.__name__

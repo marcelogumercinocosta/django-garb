@@ -66,6 +66,12 @@
                 .form-row.is-invalid .form-row-box .form-row-field .bootstrap-select>.dropdown-toggle {
                     @include errors();
                 }
+                ul.errorlist {
+                    color: _(erro);
+                    padding: 0px;
+                    margin: 10px 0px 5px 10px;
+                    list-style-type: none;
+                }
                 .form-row:last-child {
                     border-bottom: none;
                 }
@@ -79,7 +85,7 @@
                     ul.errorlist {
                         color: _(erro);
                         padding: 0px;
-                        margin:0px 0px 5px 160px;
+                        margin: px 0px 5px 160px;
                     }
 
                     .form-row-box {
@@ -203,6 +209,9 @@
                                 }
                                 
                             }
+                            select[multiple] {
+                                height: 250px;
+                            }
                         }
                     }
 
@@ -270,7 +279,7 @@
                         }
                         ul.errorlist {
                             padding:0;
-                            margin: 0;
+                            margin: 5px 0px 5px 10px;
                             li {
                                 padding-left: 5px;
                                 color: _(erro);
