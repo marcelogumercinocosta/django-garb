@@ -30,7 +30,7 @@
                         <div class="form-row-field">
                             {% if field.is_readonly %}
                                 {% if not "img" in field.contents %}
-                                    <div class="readonly">{{ field.contents }}</div>
+                                    <div class="readonly">{{ field.contents|remove_tags|safe  }}</div>
                                 {% else %}
                                     <div class="form-row-checkbox-read">
                                         {{  field.contents }}

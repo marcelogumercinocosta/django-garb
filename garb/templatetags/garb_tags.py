@@ -4,6 +4,7 @@ from django import template
 from django.urls import NoReverseMatch, Resolver404, resolve, reverse
 from garb.config import get_config
 from django.http import HttpRequest
+import re
 
 register = template.Library()
 
@@ -59,3 +60,7 @@ def get_verbose_name_field(object, fieldnm):
 @register.filter
 def to_class_name(value):
     return value.__class__.__name__
+
+@register.filter
+def remove_tags(value):
+    return re.compile(r'<[^>]+>').sub('', value)

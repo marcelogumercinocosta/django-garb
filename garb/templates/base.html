@@ -6,7 +6,7 @@
         <link rel="icon" href="#" />
         <title>{% block title %}{{ title|default_if_none:None|garb_title }}{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link href="https://fonts.googleapis.com/css?family=Dosis:400,500,700|Roboto&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Sora:400,500,700|Roboto&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.0/css/solid.css">
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.0/css/fontawesome.css">
         <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/bootstrap-reboot.min.css' %}">
@@ -26,6 +26,7 @@
                         </a>
                     </div>
                 </div>
+                {% block header_msg %} {% endblock %}
                 {% block header_login %}
                     {% if not is_popup %}
                         {% block login %}
