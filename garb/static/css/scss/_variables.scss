@@ -20,5 +20,12 @@
     border-color: #f2a1a6;
     background-color:  #F2DEDE;
     color: _(erro);
-    font-weight: bold;
+}
+
+
+@mixin errorlist() {
+    color: _(boxShadow);
+    padding: 0px;
+    margin: 10px 0px 5px 10px;
+    list-style-type: none;
 }

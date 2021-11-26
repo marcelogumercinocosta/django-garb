@@ -55,6 +55,9 @@
                 box-shadow: _(boxShadow);
                 padding: 10px;
                 margin: 10px 0;
+                ul.errorlist {
+                    @include errorlist();
+                }
             }
 
             fieldset {
@@ -67,10 +70,7 @@
                     @include errors();
                 }
                 ul.errorlist {
-                    color: _(erro);
-                    padding: 0px;
-                    margin: 10px 0px 5px 10px;
-                    list-style-type: none;
+                    @include errorlist();
                 }
                 .form-row:last-child {
                     border-bottom: none;

@@ -35,7 +35,6 @@
                 {% if errors|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
                 {{ adminform.form.non_field_errors }}
               </div>
-                {{ adminform.form.non_field_errors }}
             {% endif %}
             {% block field_sets %}
               {% for fieldset in adminform %}
@@ -74,9 +73,7 @@
                 {% if not is_popup %}
                   <a href="{% url opts|admin_urlname:'changelist' %}" class="btn btn-light">{% trans 'Back' %}</a>
                 {% endif %}
-                {% if not adminform.readonly_fields|get_for_one_string == adminform.fieldsets|get_for_two_string %}
-                  {% submit_row %}
-                {% endif %}
+                {% submit_row %}
                 {% block submit_buttons_extra_bottom %} {% endblock %}
               {% endblock %}
             </div>

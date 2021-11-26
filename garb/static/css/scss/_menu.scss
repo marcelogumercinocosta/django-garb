@@ -3,7 +3,6 @@
         height: 100%;
         background-color: _(bgcMenu);
         background: linear-gradient(180deg, _(bgcMenu) 0%, _(bgcMenu2) 100%);
-        border-top: 2px solid _(cMenuActive);
         font-size: 1.2em;
         font-weight: 500;
         overflow: auto;
@@ -11,6 +10,13 @@
         top: 0;
         visibility: visible;
 
+        div.menu_detalhe {
+            max-width: 250px;
+            padding: 1rem;
+            position: relative;
+            background: _(bgMenuDetail);
+            padding: 4px;
+        }
         a {
             &:hover {
                 background-color: _(bgcMenuHover);
