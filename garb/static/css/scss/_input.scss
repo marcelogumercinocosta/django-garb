@@ -282,6 +282,15 @@ input.is-invalid, select.is-invalid ~ .dropdown-toggle, input.has-error{
     opacity:.5;
 }
 
-.clockbox.module {
-    background-color: _(backgroundColor)!important;
+
+.clockbox.module h2 {
+    font-size: 1rem;
 }
+
+.clockbox.module {
+    background-color: _(bgcMenuItem)!important;
+} 
+
+.calendarbox.module {
+    background-color: _(bgcMenuItem)!important;
+} 
