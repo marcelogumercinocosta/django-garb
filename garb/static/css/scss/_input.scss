@@ -281,3 +281,7 @@ input.is-invalid, select.is-invalid ~ .dropdown-toggle, input.has-error{
 .button_click {
     opacity:.5;
 }
+
+.clockbox.module {
+    background-color: _(backgroundColor)!important;
+}
