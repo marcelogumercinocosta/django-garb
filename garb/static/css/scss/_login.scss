@@ -134,6 +134,12 @@
 			}
 		}
 
+		button {
+			background-color: _(bgcMenuItem);
+			color: _(cMenuFont);
+			padding: 8px 25px!important;
+		}
+
 		.dropdown-toggle {
 			width: 250px;
 			text-align: right;

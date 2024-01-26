@@ -47,7 +47,7 @@ $themes: (default: (backgroundColor: #eee,
         bgcMenuItem: #FFFFFF,
         bgcMenuSub: #FBFBFB,
         cMenuActive: #2096F3,
-        bgMenuDetail: linear-gradient(90deg, rgba(251,206,10,1) 0%, rgba(251,206,10,1) 10%, rgba(247,148,32,1) 20%, rgba(228,82,53,1) 30%, rgba(215,57,147,1) 40%, rgba(154,79,158,1) 50%, rgba(92,81,160,1) 60%, rgba(61,130,192,1) 70%, rgba(53,193,219,1) 80%, rgba(88,190,150,1) 90%, rgba(83,184,72,1) 100%),
+        bgMenuDetail: linear-gradient(90deg, rgba(251, 206, 10, 1) 0%, rgba(251, 206, 10, 1) 10%, rgba(247, 148, 32, 1) 20%, rgba(228, 82, 53, 1) 30%, rgba(215, 57, 147, 1) 40%, rgba(154, 79, 158, 1) 50%, rgba(92, 81, 160, 1) 60%, rgba(61, 130, 192, 1) 70%, rgba(53, 193, 219, 1) 80%, rgba(88, 190, 150, 1) 90%, rgba(83, 184, 72, 1) 100%),
         cMenuFont: #000,
         cMenuFontHover: #0068FF,
         bgcTitle: #fff,
@@ -63,7 +63,7 @@ $themes: (default: (backgroundColor: #eee,
         cMenuFont: #700099,
         cMenuFontHover: #700099,
         btnSecondary:#8E41A8,
-        backgroundColor:#8903BE, 
+        backgroundColor:#8903BE,
         bgcHeadMenu:rgb(248, 248, 248),
         bgcMenu:#4F1274,
         cBreadcrumb:#FFFFFF,
@@ -72,8 +72,7 @@ $themes: (default: (backgroundColor: #eee,
         bgcMenu: #ffffff,
         bgcMenu2:#dddddd,
         bgcMenuHover: #EDF0F2,
-        bgcMenuItem: #ffffff,s
-        bgcMenuSub: #F5F8FA,
+        bgcMenuItem: #ffffff, s bgcMenuSub: #F5F8FA,
         cMenuActive: #216BB8,
         bgMenuDetail: #216BB8,
         cMenuFont: #000,
@@ -148,21 +147,21 @@ $map in $themes {
         .txt_cor_primaria {
             color: _(cPrimary);
         }
-        
-        @import "variables";
-        @import "base";
-        @import "input";
-        @import "button";
-        @import "boostrap_select";
-        @import "menu";
-        @import "login";
-        @import "export";
-        @import "jquery_toast_select";
-        @import "pace";
-        @import "change_list";
-        @import "change_form";
-        @import "index";
+
+        @import "scss/variables";
+        @import "scss/base";
+        @import "scss/input";
+        @import "scss/button";
+        @import "scss/boostrap_select";
+        @import "scss/menu";
+        @import "scss/login";
+        @import "scss/export";
+        @import "scss/jquery_toast_select";
+        @import "scss/pace";
+        @import "scss/change_list";
+        @import "scss/change_form";
+        @import "scss/index";
     }
 }
 
-@import "color";
+@import "scss/color";
