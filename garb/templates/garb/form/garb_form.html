@@ -1,4 +1,4 @@
-{% load i18n garb_form static %}
+{% load i18n garb_form garb_tags static %}
 {% block fields %}
     <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}">
     <script type="text/javascript" src="{% url 'garb:jsi18n' %}"></script>
@@ -7,6 +7,10 @@
     <script type="text/javascript" src="{% static 'admin/js/jquery.init.js' %}"></script>
     <script type="text/javascript" src="{% static 'admin/js/admin/DateTimeShortcuts.js' %}"></script>
     <script type="text/javascript" src="{% static 'admin/js/core.js' %}"></script>
+    <script src="{% static '/admin/js/core.js' %}" /></script>
+    <script src="{% static '/admin/js/SelectBox.js' %}" /></script>
+    <script src="{% static '/admin/js/SelectFilter2.js' %}" /></script>
+
     <div class="change-columns">
         <div class="main-column-center">
             <div class="main-column-item">
@@ -43,6 +47,11 @@
                                             {% else %}
                                                 <div class="form-row-label">
                                                     {{ field.label_tag }}
+                                                    {% if field.field.widget|to_class_name == "FilteredSelectMultiple" or field.field.widget|to_class_name == "FilteredSelectMultiple" %}
+                                            <div class="form-row-error">
+                                                {% if field.errors %}{{ field.errors }}{% endif %}
+                                            </div>
+                                        {% endif %}
                                                 </div>
                                                 <div class="form-row-field ">
                                                     {% if field.is_readonly %}
@@ -52,15 +61,18 @@
                                                     {% else %}
                                                         {{ field }}
                                                     {% endif %}
-                                                    <div class="form-row-error">
-                                                        {% if field.errors %}{{ field.errors }}{% endif %}
-                                                    </div>
+                                                    {% if not field.field.widget|to_class_name == "FilteredSelectMultiple" and not field.field.widget|to_class_name == "FilteredSelectMultiple" %}
+                                                        <div class="form-row-error">
+                                                            {% if field.errors %}{{ field.errors }}{% endif %}
+                                                        </div>
+                                                    {% endif %}
                                                 </div>
                                             {% endif %}
                                         </div>
                                         {% if field.field.help_text %}
                                             <div class="help">{{ field.field.help_text|safe }}</div>
                                         {% endif %}
+
                                     </div>
                                 {% endif %}
                             {% endfor %}
