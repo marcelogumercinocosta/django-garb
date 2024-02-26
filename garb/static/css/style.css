@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @use "sass:map";
 * {
   box-sizing: border-box;
@@ -2386,7 +2387,7 @@ body.default .change-columns .main-column .main-column-item fieldset .form-row .
 
 body.default .change-columns .main-column .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly, body.default .change-columns .main-column-center .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly {
   background: #FFFFFF;
-  height: 40px;
+  min-height: 40px;
   border: 1px solid #D9D9D9;
   border-radius: 3px;
   color: #666666;
@@ -2399,7 +2400,7 @@ body.default .change-columns .main-column .main-column-item fieldset .form-row .
 }
 
 body.default .change-columns .main-column .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly_boolean, body.default .change-columns .main-column-center .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly_boolean {
-  height: 40px;
+  min-height: 40px;
   padding: 10px;
 }
 
@@ -2469,6 +2470,16 @@ body.default .change-columns .main-column .main-column-item fieldset .form-row .
 body.default .change-columns .main-column .main-column-item fieldset .form-row .related-widget-wrapper, body.default .change-columns .main-column-center .main-column-item fieldset .form-row .related-widget-wrapper {
   float: left;
   overflow: initial;
+}
+
+body.default .change-columns .main-column .main-column-item fieldset .form-row .form-row-box .form-row-field, body.default .change-columns .main-column-center .main-column-item fieldset .form-row .form-row-box .form-row-field {
+  margin-bottom: 10px;
+}
+
+body.default .change-columns .main-column .main-column-item fieldset .form-row .checkbox-row + .help, body.default .change-columns .main-column-center .main-column-item fieldset .form-row .checkbox-row + .help {
+  /* Estilos para a div .help que vem imediatamente após a div .checkbox-row */
+  /* Por exemplo: */
+  padding-left: 160px !important;
 }
 
 body.default .change-columns .main-column .main-column-item fieldset .field-password .help, body.default .change-columns .main-column-center .main-column-item fieldset .field-password .help {
@@ -5072,7 +5083,7 @@ body.hybrid .change-columns .main-column .main-column-item fieldset .form-row .f
 
 body.hybrid .change-columns .main-column .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly, body.hybrid .change-columns .main-column-center .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly {
   background: #FFFFFF;
-  height: 40px;
+  min-height: 40px;
   border: 1px solid #D9D9D9;
   border-radius: 3px;
   color: #666666;
@@ -5085,7 +5096,7 @@ body.hybrid .change-columns .main-column .main-column-item fieldset .form-row .f
 }
 
 body.hybrid .change-columns .main-column .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly_boolean, body.hybrid .change-columns .main-column-center .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly_boolean {
-  height: 40px;
+  min-height: 40px;
   padding: 10px;
 }
 
@@ -5155,6 +5166,16 @@ body.hybrid .change-columns .main-column .main-column-item fieldset .form-row .h
 body.hybrid .change-columns .main-column .main-column-item fieldset .form-row .related-widget-wrapper, body.hybrid .change-columns .main-column-center .main-column-item fieldset .form-row .related-widget-wrapper {
   float: left;
   overflow: initial;
+}
+
+body.hybrid .change-columns .main-column .main-column-item fieldset .form-row .form-row-box .form-row-field, body.hybrid .change-columns .main-column-center .main-column-item fieldset .form-row .form-row-box .form-row-field {
+  margin-bottom: 10px;
+}
+
+body.hybrid .change-columns .main-column .main-column-item fieldset .form-row .checkbox-row + .help, body.hybrid .change-columns .main-column-center .main-column-item fieldset .form-row .checkbox-row + .help {
+  /* Estilos para a div .help que vem imediatamente após a div .checkbox-row */
+  /* Por exemplo: */
+  padding-left: 160px !important;
 }
 
 body.hybrid .change-columns .main-column .main-column-item fieldset .field-password .help, body.hybrid .change-columns .main-column-center .main-column-item fieldset .field-password .help {
@@ -7758,7 +7779,7 @@ body.magalu .change-columns .main-column .main-column-item fieldset .form-row .f
 
 body.magalu .change-columns .main-column .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly, body.magalu .change-columns .main-column-center .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly {
   background: #FFFFFF;
-  height: 40px;
+  min-height: 40px;
   border: 1px solid #D9D9D9;
   border-radius: 3px;
   color: #666666;
@@ -7771,7 +7792,7 @@ body.magalu .change-columns .main-column .main-column-item fieldset .form-row .f
 }
 
 body.magalu .change-columns .main-column .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly_boolean, body.magalu .change-columns .main-column-center .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly_boolean {
-  height: 40px;
+  min-height: 40px;
   padding: 10px;
 }
 
@@ -7841,6 +7862,16 @@ body.magalu .change-columns .main-column .main-column-item fieldset .form-row .h
 body.magalu .change-columns .main-column .main-column-item fieldset .form-row .related-widget-wrapper, body.magalu .change-columns .main-column-center .main-column-item fieldset .form-row .related-widget-wrapper {
   float: left;
   overflow: initial;
+}
+
+body.magalu .change-columns .main-column .main-column-item fieldset .form-row .form-row-box .form-row-field, body.magalu .change-columns .main-column-center .main-column-item fieldset .form-row .form-row-box .form-row-field {
+  margin-bottom: 10px;
+}
+
+body.magalu .change-columns .main-column .main-column-item fieldset .form-row .checkbox-row + .help, body.magalu .change-columns .main-column-center .main-column-item fieldset .form-row .checkbox-row + .help {
+  /* Estilos para a div .help que vem imediatamente após a div .checkbox-row */
+  /* Por exemplo: */
+  padding-left: 160px !important;
 }
 
 body.magalu .change-columns .main-column .main-column-item fieldset .field-password .help, body.magalu .change-columns .main-column-center .main-column-item fieldset .field-password .help {
@@ -10444,7 +10475,7 @@ body.alive .change-columns .main-column .main-column-item fieldset .form-row .fo
 
 body.alive .change-columns .main-column .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly, body.alive .change-columns .main-column-center .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly {
   background: #FFFFFF;
-  height: 40px;
+  min-height: 40px;
   border: 1px solid #D9D9D9;
   border-radius: 3px;
   color: #666666;
@@ -10457,7 +10488,7 @@ body.alive .change-columns .main-column .main-column-item fieldset .form-row .fo
 }
 
 body.alive .change-columns .main-column .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly_boolean, body.alive .change-columns .main-column-center .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly_boolean {
-  height: 40px;
+  min-height: 40px;
   padding: 10px;
 }
 
@@ -10527,6 +10558,16 @@ body.alive .change-columns .main-column .main-column-item fieldset .form-row .he
 body.alive .change-columns .main-column .main-column-item fieldset .form-row .related-widget-wrapper, body.alive .change-columns .main-column-center .main-column-item fieldset .form-row .related-widget-wrapper {
   float: left;
   overflow: initial;
+}
+
+body.alive .change-columns .main-column .main-column-item fieldset .form-row .form-row-box .form-row-field, body.alive .change-columns .main-column-center .main-column-item fieldset .form-row .form-row-box .form-row-field {
+  margin-bottom: 10px;
+}
+
+body.alive .change-columns .main-column .main-column-item fieldset .form-row .checkbox-row + .help, body.alive .change-columns .main-column-center .main-column-item fieldset .form-row .checkbox-row + .help {
+  /* Estilos para a div .help que vem imediatamente após a div .checkbox-row */
+  /* Por exemplo: */
+  padding-left: 160px !important;
 }
 
 body.alive .change-columns .main-column .main-column-item fieldset .field-password .help, body.alive .change-columns .main-column-center .main-column-item fieldset .field-password .help {
@@ -13130,7 +13171,7 @@ body.light .change-columns .main-column .main-column-item fieldset .form-row .fo
 
 body.light .change-columns .main-column .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly, body.light .change-columns .main-column-center .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly {
   background: #FFFFFF;
-  height: 40px;
+  min-height: 40px;
   border: 1px solid #D9D9D9;
   border-radius: 3px;
   color: #666666;
@@ -13143,7 +13184,7 @@ body.light .change-columns .main-column .main-column-item fieldset .form-row .fo
 }
 
 body.light .change-columns .main-column .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly_boolean, body.light .change-columns .main-column-center .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly_boolean {
-  height: 40px;
+  min-height: 40px;
   padding: 10px;
 }
 
@@ -13213,6 +13254,16 @@ body.light .change-columns .main-column .main-column-item fieldset .form-row .he
 body.light .change-columns .main-column .main-column-item fieldset .form-row .related-widget-wrapper, body.light .change-columns .main-column-center .main-column-item fieldset .form-row .related-widget-wrapper {
   float: left;
   overflow: initial;
+}
+
+body.light .change-columns .main-column .main-column-item fieldset .form-row .form-row-box .form-row-field, body.light .change-columns .main-column-center .main-column-item fieldset .form-row .form-row-box .form-row-field {
+  margin-bottom: 10px;
+}
+
+body.light .change-columns .main-column .main-column-item fieldset .form-row .checkbox-row + .help, body.light .change-columns .main-column-center .main-column-item fieldset .form-row .checkbox-row + .help {
+  /* Estilos para a div .help que vem imediatamente após a div .checkbox-row */
+  /* Por exemplo: */
+  padding-left: 160px !important;
 }
 
 body.light .change-columns .main-column .main-column-item fieldset .field-password .help, body.light .change-columns .main-column-center .main-column-item fieldset .field-password .help {
@@ -15816,7 +15867,7 @@ body.dark .change-columns .main-column .main-column-item fieldset .form-row .for
 
 body.dark .change-columns .main-column .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly, body.dark .change-columns .main-column-center .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly {
   background: #263341;
-  height: 40px;
+  min-height: 40px;
   border: 1px solid #38444D;
   border-radius: 3px;
   color: #666666;
@@ -15829,7 +15880,7 @@ body.dark .change-columns .main-column .main-column-item fieldset .form-row .for
 }
 
 body.dark .change-columns .main-column .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly_boolean, body.dark .change-columns .main-column-center .main-column-item fieldset .form-row .form-row-box .form-row-field .readonly_boolean {
-  height: 40px;
+  min-height: 40px;
   padding: 10px;
 }
 
@@ -15899,6 +15950,16 @@ body.dark .change-columns .main-column .main-column-item fieldset .form-row .hel
 body.dark .change-columns .main-column .main-column-item fieldset .form-row .related-widget-wrapper, body.dark .change-columns .main-column-center .main-column-item fieldset .form-row .related-widget-wrapper {
   float: left;
   overflow: initial;
+}
+
+body.dark .change-columns .main-column .main-column-item fieldset .form-row .form-row-box .form-row-field, body.dark .change-columns .main-column-center .main-column-item fieldset .form-row .form-row-box .form-row-field {
+  margin-bottom: 10px;
+}
+
+body.dark .change-columns .main-column .main-column-item fieldset .form-row .checkbox-row + .help, body.dark .change-columns .main-column-center .main-column-item fieldset .form-row .checkbox-row + .help {
+  /* Estilos para a div .help que vem imediatamente após a div .checkbox-row */
+  /* Por exemplo: */
+  padding-left: 160px !important;
 }
 
 body.dark .change-columns .main-column .main-column-item fieldset .field-password .help, body.dark .change-columns .main-column-center .main-column-item fieldset .field-password .help {

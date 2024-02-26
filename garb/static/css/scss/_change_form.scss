@@ -148,7 +148,7 @@
 
                             .readonly {
                                 background: _(cInput);
-                                height: 40px;
+                                min-height: 40px;
                                 border: _(bd);
                                 border-radius: 3px;
                                 color: _(cTextOff);
@@ -161,7 +161,7 @@
                             }
 
                             .readonly_boolean {
-                                height: 40px;
+                                min-height: 40px;
                                 padding: 10px;
                             }
 
@@ -231,11 +231,23 @@
                         float: left;
                         overflow: initial;
                     }
+                    .form-row-box{
+                        .form-row-field {
+                            margin-bottom: 10px;
+                        }
+                    }
+
+                    .checkbox-row + .help {
+                        /* Estilos para a div .help que vem imediatamente após a div .checkbox-row */
+                        /* Por exemplo: */
+                        padding-left: 160px!important;
+                    }
                 }
 
                 .field-password .help {
                     margin: -15px 0 0 160px;
                 }
+                
                 
                 
             }
