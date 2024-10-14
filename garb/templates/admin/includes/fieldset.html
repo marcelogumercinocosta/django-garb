@@ -15,9 +15,9 @@
     {% endif %}
 
     {% for line in fieldset %}
-        <div class="form-row{% if line.fields|length_is:'1' and line.errors %} is-invalid{% endif %}{% if not line.has_visible_field %} hidden{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %}">
+        <div class="form-row{% if line.fields|length == 1 and line.errors %} is-invalid{% endif %}{% if not line.has_visible_field %} hidden{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %}">
             {% for field in line %}
-                <div{% if not line.fields|length_is:'1' %} class="form-row-box fieldBox{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if not field.is_readonly and field.errors %} errors{% endif %}{% if field.field.is_hidden %} hidden{% endif %}"{% elif field.is_checkbox %} class="form-row-box checkbox-row"{% else %} class="form-row-box"{% endif %}>
+                <div{% if not line.fields|length == 1 %} class="form-row-box fieldBox{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if not field.is_readonly and field.errors %} errors{% endif %}{% if field.field.is_hidden %} hidden{% endif %}"{% elif field.is_checkbox %} class="form-row-box checkbox-row"{% else %} class="form-row-box"{% endif %}>
                     {% if field.is_checkbox %}
                         <div class="form-row-label"></div>
                         <div class="form-row-checkbox form-row-field">
@@ -41,8 +41,8 @@
                             {% endif %}
                             {% if not field.field.field.widget|to_class_name == "FilteredSelectMultiple" and   not  field.field.field.widget.widget|to_class_name == "FilteredSelectMultiple" %}
                                 <div class="form-row-error">
-                                    {% if not line.fields|length_is:'1' and not field.is_readonly %}{{ field.errors }}{% endif %}
-                                    {% if line.fields|length_is:'1' %}{{ line.errors }}{% endif %}
+                                    {% if not line.fields|length == 1 and not field.is_readonly %}{{ field.errors }}{% endif %}
+                                    {% if line.fields|length == 1 %}{{ line.errors }}{% endif %}
                                 </div>
                             {% endif %}
                         </div>
