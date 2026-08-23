@@ -20,7 +20,7 @@
   {% endif %}
 
   {% if nivel == 3 %}
-      <div class="breadcrumb {{ align }}">
+      <ul class="breadcrumb {{ align }}">
         <li>
           <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|upper }}</a>
           <span class="divider">/</span>
@@ -34,7 +34,7 @@
           <span class="divider">/</span>
         </li>
         <li class="active">{% trans  breadcrumbs_action|upper|truncatewords:"25" %}</li>
-      </div>
+      </ul>
   {% endif %}
 
   {% if nivel == "apps" %}

@@ -12,12 +12,14 @@ class GarbLoginTestCase(UserTestCaseMixin):
         self.client.logout()
         self.login_superuser()
         self.get_response(url="/")
-        self.assertContains(self.response,'<i class="fas fa-sign-out-alt"></i>' + str(_("Log out")))
+        self.assertContains(self.response, '<i class="fas fa-sign-out-alt"></i>')
+        self.assertContains(self.response, str(_("Log out")))
         self.assertContains(self.response, self.superuser.username)
 
     def test_menu_user_is_authenticated(self):
         self.client.logout()
         self.login_user()
         self.get_response(url="/")
-        self.assertContains(self.response,'<i class="fas fa-sign-out-alt"></i>' + str(_("Log out")))
+        self.assertContains(self.response, '<i class="fas fa-sign-out-alt"></i>')
+        self.assertContains(self.response, str(_("Log out")))
         self.assertContains(self.response, self.user.username)

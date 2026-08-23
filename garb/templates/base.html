@@ -1,8 +1,10 @@
 {% load i18n static garb_tags %}
+{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="{{ LANGUAGE_CODE|default:'en-us' }}" dir="{{ LANGUAGE_BIDI|yesno:'rtl,ltr,auto' }}">
     <head>
         <meta charset="utf-8" />
+        <meta name="robots" content="NONE,NOARCHIVE" />
         <link rel="icon" href="#" />
         <title>{% block title %}{{ title|default_if_none:None|garb_title }}{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,17 +13,20 @@
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.0/css/fontawesome.css">
         <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/bootstrap-reboot.min.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap-select/css/bootstrap-select.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/jquery-toast-plugin/jquery.toast.min.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.min.css' %}">
         {% block extrastyle %}{% endblock %}
         {% block extrahead %}{% endblock %}
 
     </head>
-    <body class="{{ "THEME"|settings_value }}">
+    <body class="{{ "THEME"|settings_value }} {% block bodyclass %}{% endblock %}" data-admin-utc-offset="{% now 'Z' %}">
+        <a href="#content-start" class="visually-hidden-focusable">{% translate 'Skip to main content' %}</a>
         {% block header %}
             <header>
                 <div>
                     <div class="titulo">
-                        <a href= {% if user.is_authenticated %} {% url 'admin:index' %} {% else %} "/" {% endif %}>
+                        <a href="{% if user.is_authenticated %}{% url 'admin:index' %}{% else %}/{% endif %}">
                             <div class='logo'>{{ None|garb_title }}</div>
                         </a>
                     </div>
@@ -33,10 +38,10 @@
                             <div class="headerlogin dropdown show">
                                 {% if user.is_authenticated %}
                                     <div class="loginmenu">
-                                        <a class="button dropdown-toggle" href="/#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <a class="button dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                             {{ user.username }}
                                         </a>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuLink">
                                             {% if "ROUTE_PROFILE"|settings_value %} 
                                                 <a class="dropdown-item button" href="{% url "ROUTE_PROFILE"|settings_value %}"><i class="fas fa-user-circle"></i>
                                                     {% if "NAME_PROFILE"|settings_value %} 
@@ -51,7 +56,7 @@
                                             {% endblock %}
                                             <form id="logout-form" method="post" action="{% url 'admin:logout' %}">
                                                 {% csrf_token %}
-                                                <button type="submit" class="dropdown-item button pl-2" ><i class="fas fa-sign-out-alt"></i> {% translate 'Log out' %}</button>
+                                                <button type="submit" class="dropdown-item button ps-2"><i class="fas fa-sign-out-alt"></i> {% translate 'Log out' %}</button>
                                             </form>
                                         </div>
                                     </div>
@@ -77,7 +82,7 @@
                             {% endif %}
                         {% endblock %}
                     {% endif %}
-                <main  {% if is_popup %} class="margin-is-popup" {% endif %}>
+                <main id="content-start"{% if is_popup %} class="margin-is-popup"{% endif %}>
                     {% block breadcrumbs %}
                         {% include "admin/includes/breadcrumbs.html" with nivel=1 breadcrumbs_action=title|default_if_none:None %} 
                     {% endblock %}
@@ -87,21 +92,19 @@
                 </main>
             </div>
         {% endblock %}
-    </body>
-    <script src="{% static 'admin/js/vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/popper.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/bootstrap.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap-select/js/bootstrap-select.min.js' %}" ></script>
-    <script src="{% static 'vendor/jquery-toast-plugin/jquery.toast.min.js' %}" ></script>
-    <script src="{% static 'vendor/pace/pace.min.js' %}" ></script>
-    <script src="{% static 'js/garb_input.js' %}"></script>
-    <script type="text/javascript">
+        <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'vendor/bootstrap/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'vendor/bootstrap-select/js/bootstrap-select.min.js' %}"></script>
+        <script src="{% static 'vendor/jquery-toast-plugin/jquery.toast.min.js' %}"></script>
+        <script src="{% static 'vendor/pace/pace.min.js' %}"></script>
+        <script src="{% static 'js/garb_input.js' %}"></script>
+        <script>
         {% block messages %}
             {% if messages %}
                     {% for message in messages %}
                         $.toast({
-                            text: `{{ message }}`,
-                            icon: `{% firstof message.tags 'info' %}`,
+                            text: '{{ message|escapejs }}',
+                            icon: '{% firstof message.tags 'info' %}',
                             loader: true,
                             position: 'bottom-right',
                             showHideTransition: 'slide',
@@ -112,13 +115,20 @@
                     {% endfor %}
             {% endif %}
         {% endblock %}
-    </script>
-    {% if not "MENU_ONLY_AUTH"|settings_value or user.is_authenticated %}
-        <script type="text/javascript">
-            $('#menu .collapsed').on('click', function () {
-                $('#menu .collapse').collapse('hide');
-            });
         </script>
-    {% endif %}
-    {% block extrajs %}{% endblock %}
+        {% if not "MENU_ONLY_AUTH"|settings_value or user.is_authenticated %}
+            <script>
+                document.querySelectorAll('#menu [data-bs-toggle="collapse"]').forEach(function (trigger) {
+                    trigger.addEventListener('click', function () {
+                        document.querySelectorAll('#menu .collapse.show').forEach(function (panel) {
+                            if (panel.id !== trigger.getAttribute('href').slice(1)) {
+                                bootstrap.Collapse.getOrCreateInstance(panel, {toggle: false}).hide();
+                            }
+                        });
+                    });
+                });
+            </script>
+        {% endif %}
+        {% block extrajs %}{% endblock %}
+    </body>
 </html>

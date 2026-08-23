@@ -1,0 +1,22 @@
+{
+  "name": "django-garb-build",
+  "private": true,
+  "scripts": {
+    "build:css": "sass --style=expanded --source-map garb/static/css/style.scss garb/static/css/style.css && sass --style=compressed --source-map garb/static/css/style.scss garb/static/css/style.min.css",
+    "vendor:sync": "node scripts/sync-vendors.mjs",
+    "test:browser": "node scripts/visual-test.mjs",
+    "test:visual:update": "node scripts/visual-test.mjs --update"
+  },
+  "devDependencies": {
+    "bootstrap": "5.3.8",
+    "bootstrap-select": "1.14.0-beta3",
+    "html-validate": "^11.8.0",
+    "jquery": "3.7.1",
+    "jquery-toast-plugin": "1.3.2",
+    "pace-js": "1.2.4",
+    "pixelmatch": "^7.2.0",
+    "playwright-core": "^1.62.1",
+    "pngjs": "^7.0.0",
+    "sass": "1.93.2"
+  }
+}

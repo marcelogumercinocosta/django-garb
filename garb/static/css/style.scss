@@ -1,4 +1,20 @@
 @use "sass:map";
+@use "scss/tokens";
+@use "scss/variables";
+@use "scss/base";
+@use "scss/input";
+@use "scss/button";
+@use "scss/boostrap_select";
+@use "scss/menu";
+@use "scss/login";
+@use "scss/export";
+@use "scss/jquery_toast_select";
+@use "scss/pace";
+@use "scss/change_list";
+@use "scss/change_form";
+@use "scss/index";
+@use "scss/color";
+
 $themes: (default: (backgroundColor: #eee,
         bd: 1px solid #D9D9D9,
         bdMenu: 1px solid #2059BD,
@@ -72,7 +88,8 @@ $themes: (default: (backgroundColor: #eee,
         bgcMenu: #ffffff,
         bgcMenu2:#dddddd,
         bgcMenuHover: #EDF0F2,
-        bgcMenuItem: #ffffff, s bgcMenuSub: #F5F8FA,
+        bgcMenuItem: #ffffff,
+        bgcMenuSub: #F5F8FA,
         cMenuActive: #216BB8,
         bgMenuDetail: #216BB8,
         cMenuFont: #000,
@@ -107,12 +124,6 @@ $themes: (default: (backgroundColor: #eee,
     ),
 );
 
-$map_update: $themes;
-
-@function _($key) {
-    @return map-get($map_update, $key);
-}
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -121,47 +132,35 @@ $map_update: $themes;
 }
 
 
-@each $theme-name,
-$map in $themes {
-    $default: map-get($themes, 'default');
-    $map_update: map-merge($default, $map);
+@each $theme-name, $theme-map in $themes {
+    $default: map.get($themes, default);
+    $resolved-theme: map.merge($default, $theme-map);
 
     body.#{$theme-name} {
+        @each $key, $value in $resolved-theme {
+            --garb-#{$key}: #{$value};
+        }
+
         -webkit-font-smoothing: antialiased;
-        background-color: _(backgroundColor);
-        font-family: "Dosis", "Roboto", sans-serif;
+        background-color: tokens.get(backgroundColor);
+        font-family: "Sora", "Roboto", sans-serif;
         font-size: 14px;
         font-weight: 400;
         line-height: 1.43;
-        color: _(cText);
+        color: tokens.get(cText);
 
         a {
             text-decoration: none;
-            color: _(cText);
+            color: tokens.get(cText);
         }
 
         .bg_cor_primaria {
-            background-color: _(cPrimary);
+            background-color: tokens.get(cPrimary);
         }
 
         .txt_cor_primaria {
-            color: _(cPrimary);
+            color: tokens.get(cPrimary);
         }
 
-        @import "scss/variables";
-        @import "scss/base";
-        @import "scss/input";
-        @import "scss/button";
-        @import "scss/boostrap_select";
-        @import "scss/menu";
-        @import "scss/login";
-        @import "scss/export";
-        @import "scss/jquery_toast_select";
-        @import "scss/pace";
-        @import "scss/change_list";
-        @import "scss/change_form";
-        @import "scss/index";
     }
 }
-
-@import "scss/color";

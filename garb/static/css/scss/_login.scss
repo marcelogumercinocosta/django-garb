@@ -1,5 +1,8 @@
+@use "tokens";
+@use "variables";
+
 .login_bar {
-	background:  linear-gradient(180deg, _(bgcMenu) 0%,  _(bgcMenu2) 100%); 
+	background: linear-gradient(180deg, tokens.get(bgcMenu) 0%, tokens.get(bgcMenu2) 100%);
 	width: 30vw;
 	height: 100vh;
 }
@@ -14,9 +17,9 @@
 	height: calc(100vh - 80px);
 
 	.loginbox {
-		@include content();
+		@include variables.content();
 		padding: 3em 0 3.5em 0;
-		border-left: 6px solid _(cPrimary);
+		border-left: 6px solid tokens.get(cPrimary);
 		margin-top:  -160px;
 		width: calc(12vw + 250px);
 		form {
@@ -28,7 +31,7 @@
 			text-align: justify;
 		}
 		.login_input.errors input {
-			@include errors();
+			@include variables.errors();
 		}
 		.login_input {
 			width: 100%;
@@ -36,7 +39,7 @@
 
 			label {
 				font-size: 11px;
-				color: _(cText);
+				color: tokens.get(cText);
 				line-height: 1.2;
 				text-transform: uppercase;
 				padding: 5px 0px;
@@ -60,7 +63,7 @@
 				padding: 5px 0px;
 				margin: 0;
 				font-size: 12px;
-				color: _(cTextOff);
+				color: tokens.get(cTextOff);
 				li {
 					padding: 4px 0;
 					margin: 0;
@@ -70,10 +73,10 @@
 			}
 			ul.errorlist {
 				li {
-					@include errors();
-					border-radius: _(bdRadius);
+					@include variables.errors();
+					border-radius: tokens.get(bdRadius);
 					padding-left: 5px;
-					color: _(erro);
+					color: tokens.get(erro);
 					margin-bottom: 3px;
 				}
 			}
@@ -87,7 +90,7 @@
 
 			a {
 				text-decoration: none;
-				color: _(cTextOff);
+				color: tokens.get(cTextOff);
 				outline: none;
 
 				&:hover {
@@ -102,8 +105,8 @@
 		}
 	}
 	.loginbox_error {
-		@include content();
-		border-left: 6px solid _(erro);
+		@include variables.content();
+		border-left: 6px solid tokens.get(erro);
 		width: calc(12vw + 250px);
 		.alert {
 			margin-bottom: 0;
@@ -122,29 +125,29 @@
 
 	.loginmenu {
 		a {
-			background-color: _(bgcMenuItem);
-			color: _(cMenuFont);
+			background-color: tokens.get(bgcMenuItem);
+			color: tokens.get(cMenuFont);
 			text-decoration: none;
 			padding: 8px 25px;
 
 			&:hover {
-				background-color: _(bgcMenuHover);
+				background-color: tokens.get(bgcMenuHover);
 				transition: all 0.6s ease;
 				
 			}
 		}
 
 		button {
-			background-color: _(bgcMenuItem);
-			color: _(cMenuFont);
+			background-color: tokens.get(bgcMenuItem);
+			color: tokens.get(cMenuFont);
 			padding: 8px 25px!important;
 		}
 
 		.dropdown-toggle {
 			width: 250px;
 			text-align: right;
-			box-shadow: _(boxShadow);
-			border: _(bdMenu);
+			box-shadow: tokens.get(boxShadow);
+			border: tokens.get(bdMenu);
 
 			&:after {
 				border: none;
@@ -156,7 +159,7 @@
 				width: 10px;
 			}
 			&:hover {
-				background-color: _(bgcMenuItem);
+				background-color: tokens.get(bgcMenuItem);
 			}
 		}
 
@@ -175,18 +178,18 @@
 		}
 
 		.dropdown-menu {
-			background-color: _(bgcMenuSub);
-			border: _(bdMenu);
+			background-color: tokens.get(bgcMenuSub);
+			border: tokens.get(bdMenu);
 			font-size: 14px;
 			margin: 0.15rem 0 0 0;
 			padding: 5px;
 			width: 250px;
-			box-shadow: _(boxShadow);
+			box-shadow: tokens.get(boxShadow);
 		}
 
 		.dropdown-item {
-			background-color: _(bgcMenuSub);
-			border-radius: _(bdRadius);
+			background-color: tokens.get(bgcMenuSub);
+			border-radius: tokens.get(bdRadius);
 			border: none;
 			text-align: left;
 
@@ -195,7 +198,7 @@
 			}
 
 			&:hover {
-				background-color: _(bgcMenuHover);
+				background-color: tokens.get(bgcMenuHover);
 				transition: all 0.6s ease;
 				box-shadow: none;
 				transform: none

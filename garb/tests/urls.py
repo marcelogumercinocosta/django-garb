@@ -8,4 +8,5 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='base.html'), name='blog2'),
     path('', TemplateView.as_view(template_name='base.html'), name='blog3'),
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]

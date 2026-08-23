@@ -1,17 +1,18 @@
 {% load i18n static garb_tags %}
 <fieldset class="module aligned {{ fieldset.classes }}">
+    {% if not fieldset.name and not fieldset.description %}<legend class="visually-hidden">{% translate "Fields" %}</legend>{% endif %}
     {% if  forloop.first %}
         {% block form_top %}{% endblock %}
     {% endif %}
     {% if fieldset.name  or fieldset.description %}
-        <div class="module-header">
+        <legend class="module-header">
             {% if fieldset.name %}
-                <div class="legend">{{ fieldset.name }}</div>
+                <span class="legend">{{ fieldset.name }}</span>
             {% endif %}
             {% if fieldset.description %}
-                <div class="description">{{ fieldset.description|safe }}</div>
+                <span class="description">{{ fieldset.description|safe }}</span>
             {% endif %}
-        </div>
+        </legend>
     {% endif %}
 
     {% for line in fieldset %}

@@ -1,3 +1,5 @@
+@use "tokens";
+
 .jq-toast-wrap {
     display: block;
     position: fixed;
@@ -34,13 +36,13 @@
     width: 100%;
     padding: 15px 15px 15px 50px;
     margin: 0px 0px 5px;
-    border-radius: _(bdRadius);
+    border-radius: tokens.get(bdRadius);
     font-family: "Dosis", "Roboto", sans-serif;
     font-size: 16px;
     position: relative;
     pointer-events: all !important;
-    background-color: _(backgroundColor);
-    color: _(cText);
+    background-color: tokens.get(backgroundColor);
+    color: tokens.get(cText);
 
     h2 {
         font-family: arial, sans-serif;
@@ -93,12 +95,12 @@
     width: 0%;
     left: 0;
     border-radius: 0;
-    background: _(cPrimary);
+    background: tokens.get(cPrimary);
 }
 
 .jq-toast-loaded {
     width: 100%;
-    background-color: _(cPrimary)!important;
+    background-color: tokens.get(cPrimary)!important;
 }
 
 .jq-has-icon {
@@ -126,7 +128,7 @@
 
 .jq-icon-error {
     background-image: url('../assets/jq-icon-error.svg');;
-    background-color: _(erro);
+    background-color: tokens.get(erro);
     color: #fff;
     .jq-toast-loaded {
         background-color: #800000!important;

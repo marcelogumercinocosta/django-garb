@@ -1,11 +1,11 @@
 {% load i18n  garb_list admin_list%}
 {% if cl.search_fields or cl.has_filters %}
   <div id="toolbar" class="clearfix">
-    <form id="changelist-search" action="" method="get" class="form-inline">
+    <form id="changelist-search" action="." method="get" class="form-inline">
       <div class="search-container">
         {% if cl.search_fields %}
           <div class="input-group">
-            <input type="search"  size="40" name="{{ search_var }}" value="{{ cl.query }}" id="search_form.htmlsearchbar" placeholder="{{ cl.search_fields|garb_placeholder_search:cl.opts }}" {{ cl.query|yesno:' class=active,' }}>
+            <input type="search" size="40" name="{{ search_var }}" value="{{ cl.query }}" id="searchbar" placeholder="{{ cl.search_fields|garb_placeholder_search:cl.opts }}" {{ cl.query|yesno:' class=active,' }}>
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
             </div>

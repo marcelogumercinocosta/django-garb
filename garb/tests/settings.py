@@ -14,7 +14,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': ':memory:',
+        'NAME': os.environ.get('GARB_TEST_DATABASE', ':memory:'),
     }
 }
 
@@ -26,6 +26,9 @@ USE_L10N = True
 MEDIA_ROOT = ''
 MEDIA_URL = ''
 SECRET_KEY = '@x6=fyyw@s*24!$7uxz%#zm#+t5f811em$tyrv9s$9pz!j4*le'
+ALLOWED_HOSTS = ['testserver', '127.0.0.1', 'localhost']
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -45,6 +48,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
+    'django.contrib.staticfiles',
 
     'garb',
     'garb.tests',
@@ -69,5 +73,27 @@ TEMPLATES = [
     },
 ]
 
-GARB_CONFIG = {}
-TEST_RUNNER = 'garb.tests.GarbTestRunner'
+GARB_CONFIG = {
+    'PROJECT_NAME': 'GARB BLOG',
+    'THEME': os.environ.get('GARB_TEST_THEME', 'default'),
+    'MENU': [
+        {'label': 'Home', 'icon': 'fa-home', 'route': 'admin:index', 'auth': 'yes'},
+        {
+            'label': 'Content',
+            'icon': 'fa-newspaper',
+            'sub_itens': [
+                {'model': 'tests.blog'},
+                {'model': 'tests.category'},
+                {'model': 'tests.blogcomment'},
+            ],
+        },
+        {
+            'label': 'Authentication and Authorization',
+            'icon': 'fa-users',
+            'sub_itens': [
+                {'model': 'auth.user'},
+                {'model': 'auth.group'},
+            ],
+        },
+    ],
+}

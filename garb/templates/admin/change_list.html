@@ -9,6 +9,15 @@
   <script src="{% static 'js/garb_list.js' %}" ></script>
 {% endblock %}
 
+{% block title %}{% if cl.formset and cl.formset.errors %}{% translate "Error:" %} {% endif %}{{ block.super }}{% endblock %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  {{ media.css }}
+  {% if cl.formset %}<link rel="stylesheet" href="{% static 'admin/css/forms.css' %}">{% endif %}
+  {% if cl.formset or action_form %}<script src="{% static 'admin/js/filters.js' %}" defer></script>{% endif %}
+{% endblock %}
+
 
 {% block bodyclass %}change-list{% endblock %}
 
@@ -30,7 +39,7 @@
               {% block object-tools-items %}
                 {% if has_add_permission %}
                   <a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}" class="btn button-green">
-                    <i class="fas fa-plus-circle pr-2"></i>
+                    <i class="fas fa-plus-circle pe-2"></i>
                     {% blocktrans with cl.opts.verbose_name|capfirst as name %}Add {{ name  }}{% endblocktrans %}
                   </a>
                 {% endif %}
@@ -57,7 +66,7 @@
           <div class="actions">
             {% if  "ADMIN_ACTIONS_ALL"|settings_value %}
               {% if action_form and actions_on_top and cl.show_admin_actions %}{% admin_actions %}{% endif %}
-              {% if action_form and actions_on_bottom and cl.full_result_count %}{% admin_actions %}{% endif %}
+              {% if action_form and actions_on_bottom and cl.show_admin_actions %}{% admin_actions %}{% endif %}
             {% endif %}
           </div>
           <div class="pagination-block">

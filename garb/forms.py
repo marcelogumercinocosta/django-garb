@@ -1,10 +1,7 @@
-
 from copy import deepcopy
-from dataclasses import fields
 
 from django import forms
-from django.forms.fields import DateField
-from django.forms.utils import ErrorDict, flatatt
+from django.forms.utils import ErrorDict
 from django.utils.safestring import mark_safe
 
 
@@ -21,7 +18,12 @@ class Fieldset(object):
         self.name = name
 
     def _errors(self):
-        return ErrorDict(((k, v) for (k, v) in self.form.errors.iteritems() if k in [f.name for f in self.boundfields]))
+        field_names = {field.name for field in self.boundfields}
+        return ErrorDict(
+            (name, errors)
+            for name, errors in self.form.errors.items()
+            if name in field_names
+        )
     errors = property(_errors)
 
     def __iter__(self):
@@ -30,7 +32,7 @@ class Fieldset(object):
                 if 'class' in bf.field.widget.attrs:
                     bf.field.widget.attrs['class'] += ' vDateField'
                 else:
-                    bf.field.widget.attrs.update({'class':'vDateField'})
+                    bf.field.widget.attrs.update({'class': 'vDateField'})
             yield _mark_row_attrs(bf, self.form)
 
     def __repr__(self):
@@ -58,7 +60,7 @@ class FieldsetCollection(object):
         for field in self._cached_fieldsets:
             if field.name == key:
                 return field
-        raise KeyError
+        raise KeyError(key)
 
     def _gather_fieldsets(self):
         if not self.fieldsets:
@@ -69,8 +71,18 @@ class FieldsetCollection(object):
             except KeyError:
                 message = "Fieldset definition must include 'fields' option."
                 raise ValueError(message)
-            boundfields = [forms.BoundField(self.form, self.form.fields[n], n) for n in field_names]
-            self._cached_fieldsets.append(Fieldset(self.form, name, boundfields, options.get('legend', None), ' '.join(options.get('classes', (''))), options.get('description', '')))
+            boundfields = [self.form[n] for n in field_names]
+            classes = options.get('classes', ())
+            self._cached_fieldsets.append(
+                Fieldset(
+                    self.form,
+                    name,
+                    boundfields,
+                    options.get('legend', ''),
+                    ' '.join(classes),
+                    options.get('description', ''),
+                )
+            )
 
 
 def _get_meta_attr(attrs, attr, default):
@@ -120,7 +132,7 @@ def get_row_attrs(bases, attrs):
 
 def get_submit_text(bases, attrs):
     """Get the row_attrs definition from the inner Meta class."""
-    return _get_meta_attr(attrs, 'submit_text', {})
+    return _get_meta_attr(attrs, 'submit_text', '')
 
 
 def _mark_row_attrs(bf, form):
@@ -135,6 +147,7 @@ def _mark_row_attrs(bf, form):
         row_attrs['class'] = row_attrs['class'] + ' ' + req_class
     else:
         row_attrs['class'] = req_class
+    bf.row_attrs = row_attrs
     return bf
 
 
@@ -194,12 +207,10 @@ class GarbModelForm(with_metaclass(GarbModelFormMetaclass, GarbBaseForm), forms.
 class BasePreviewFormMixin(object):
     def __init__(self, *args, **kwargs):
         super(BasePreviewFormMixin, self).__init__(*args, **kwargs)
-        self.preview = self.check_preview(kwargs.get('data', None))
+        self.preview = self.check_preview(self.data if self.is_bound else None)
 
     def check_preview(self, data):
-        if data and data.get('submit', '').lower() == u'preview':
-            return True
-        return False
+        return bool(data and data.get('submit', '').lower() == 'preview')
 
     def is_valid(self, *args, **kwargs):
         if self.preview:

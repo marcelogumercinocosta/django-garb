@@ -26,7 +26,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-.DS_Store 
+.DS_Store
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -54,6 +54,7 @@ coverage.xml
 
 # Translations
 *.mo
+!garb/locale/**/django.mo
 *.pot
 
 # Django stuff:
@@ -122,6 +123,11 @@ dmypy.json
 # Pyre type checker
 .pyre/
 .vscode
+
+# Front-end build and visual-test output
+node_modules/
+tests/visual/actual/
+tests/visual/diff/
 
 #TODO
 TODO

@@ -18,7 +18,7 @@
                         {{ form.username.errors }}
                     </div>
                     <div class="login_input {% if not form.this_is_the_login_form.errors and form.password.errors %} error{% endif %}">
-                        <label for="id_password" class="control-label  w-15 pr-1 ">{% trans 'Password' %}</label>
+                        <label for="id_password" class="control-label w-15 pe-1">{% trans 'Password' %}</label>
                         {{ form.password }}
                         {{ form.password.errors }}
                     </div>
@@ -31,7 +31,7 @@
                 {% block password_reset %}
                     {% if "password_reset"|garb_url_exists %} 
                         <div class="forGotPassword">
-                            <div class="password-reset-link pl-3">
+                            <div class="password-reset-link ps-3">
                                 <a href="{% url 'password_reset' %}">{% trans 'Forgotten your password or username?' %}</a>
                             </div>
                         </div>

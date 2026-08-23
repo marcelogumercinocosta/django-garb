@@ -1,3 +1,6 @@
+@use "tokens";
+@use "variables";
+
 select.bs-select-hidden,
 .bootstrap-select>select.bs-select-hidden,
 select.selectpicker {
@@ -30,13 +33,13 @@ select.selectpicker {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    background: _(cInput);
+    background: tokens.get(cInput);
     height: 40px;
-    border: _(bd);
-    -webkit-border-radius: _(bdRadius);
-    -moz-border-radius: _(bdRadius);
-    border-radius: _(bdRadius);
-    color: _(cText);
+    border: tokens.get(bd);
+    -webkit-border-radius: tokens.get(bdRadius);
+    -moz-border-radius: tokens.get(bdRadius);
+    border-radius: tokens.get(bdRadius);
+    color: tokens.get(cText);
     font-size: 15px;
     -webkit-transition: all 0.4s ease;
     -o-transition: all 0.4s ease;
@@ -52,7 +55,7 @@ select.selectpicker {
         -ms-transform: translateY(-1px);
         -o-transform: translateY(-1px);
         transform: translateY(-1px);
-        border-color: _(cPrimary);
+        border-color: tokens.get(cPrimary);
     }
 }
 
@@ -65,7 +68,7 @@ select.selectpicker {
     -ms-transform: translateY(-1px);
     -o-transform: translateY(-1px);
     transform: translateY(-1px);
-    border-color: _(cPrimary);
+    border-color: tokens.get(cPrimary);
 }
 
 .bootstrap-select>.dropdown-toggle:after {
@@ -110,9 +113,9 @@ select.selectpicker {
     opacity: 0 !important;
     border: none;
     z-index: 0 !important;
-    background: _(cInput);
+    background: tokens.get(cInput);
     height: 40px;
-    border: _(bd);
+    border: tokens.get(bd);
 }
 
 .bootstrap-select>select.mobile-device {
@@ -127,7 +130,7 @@ select.selectpicker {
 .error .bootstrap-select .dropdown-toggle,
 .bootstrap-select.is-invalid .dropdown-toggle,
 .was-validated .bootstrap-select select:invalid+.dropdown-toggle {
-    @include errors();
+    @include variables.errors();
 }
 
 .bootstrap-select.is-valid .dropdown-toggle,
@@ -313,17 +316,17 @@ select.selectpicker {
     -ms-transform: translateY(-3px);
     -o-transform: translateY(-3px);
     transform: translateY(-3px);
-    border-color: _(cPrimary);
-    background-color: _(cInput);
+    border-color: tokens.get(cPrimary);
+    background-color: tokens.get(cInput);
     .dropdown-item:focus, .dropdown-item:hover {
-        color: _(cMenuFontHover);
+        color: tokens.get(cMenuFontHover);
         text-decoration: none;
-        background-color: _(bgcMenuHover);
+        background-color: tokens.get(bgcMenuHover);
     }
     .dropdown-item.active, .dropdown-item:active {
-        color: _(cTextContrast);
+        color: tokens.get(cTextContrast);
         text-decoration: none;
-        background-color: _(cPrimary);
+        background-color: tokens.get(cPrimary);
     }
 }
 
@@ -386,9 +389,9 @@ select.selectpicker {
     margin: 0 2%;
     min-height: 26px;
     padding: 3px 5px;
-    background: _(cInput);
-    border: _(bd);
-    box-shadow: _(boxShadow);
+    background: tokens.get(cInput);
+    border: tokens.get(bd);
+    box-shadow: tokens.get(boxShadow);
     pointer-events: none;
 }
 
@@ -400,7 +403,7 @@ select.selectpicker {
 
 .bootstrap-select .no-results {
     padding: 3px;
-    background: _(cInput);
+    background: tokens.get(cInput);
     margin: 0 5px;
     white-space: nowrap;
 }

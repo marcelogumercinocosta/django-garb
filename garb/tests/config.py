@@ -1,10 +1,12 @@
 from django.contrib.admin import ModelAdmin
 from django.conf import settings
+from django.test import override_settings
 from garb.config import default_config, get_config
 from garb.tests.mixins import UserTestCaseMixin
 from garb.tests.models import *
 
 
+@override_settings(GARB_CONFIG={})
 class ConfigTestCase(UserTestCaseMixin):
     def test_garb_config_when_not_defined(self):
         try:

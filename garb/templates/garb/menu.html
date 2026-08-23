@@ -1,23 +1,23 @@
-{% load garb_menu %}
-<nav class="menu" id="menu">
+{% load i18n garb_menu %}
+<nav class="menu" id="menu" aria-label="{% translate 'Primary navigation' %}">
     <div class="menu_detalhe"> </div>
     <ul>
         {% get_menu request as app_list %}
         {% for app in app_list %}
             <li {% if app.get_active %} class="active" {% endif %}>
                 {% if app.childrens %}
-                    <a class="collapsed" data-toggle="collapse" data-parent="#menu" href="#{{ app.get_chave }}" aria-expanded="{{app.collapsed|lower}}"  aria-controls="{{ app.get_chave }}">
+                    <a class="collapsed" data-bs-toggle="collapse" data-bs-parent="#menu" href="#{{ app.get_chave }}" aria-expanded="{{ app.collapsed|lower }}" aria-controls="{{ app.get_chave }}">
                         <i class="fa {{ app.icon }} "></i><span>{{ app.label }}</span>
                     </a>
                     <ul class="collapse {{ app.collapsed|yesno:'show,' }}" id="{{ app.get_chave }}">
                         {% for app_sub in app.childrens %}
                             <li {% if app_sub.get_active %} class="active" {% endif %}>
-                                <a href="{{ app_sub.get_url }}" {{ app_sub.get_target }}> </i>  <span>{{ app_sub.label }}</span> </a>
+                                <a href="{{ app_sub.get_url }}"{% if app_sub.get_target %} target="{{ app_sub.get_target }}"{% endif %}> <span>{{ app_sub.label }}</span> </a>
                             </li>
                         {% endfor %}
                     </ul>
                 {% else %}
-                    <a href="{{ app.get_url }}" {{ app.get_target }}> <i class="fa {{ app.icon }} fa-lg "></i>  <span>{{ app.label }}</span> </a>
+                    <a href="{{ app.get_url }}"{% if app.get_target %} target="{{ app.get_target }}"{% endif %}> <i class="fa {{ app.icon }} fa-lg "></i>  <span>{{ app.label }}</span> </a>
                 {% endif %}
             </li>
         {% endfor %}

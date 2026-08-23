@@ -1,5 +1,8 @@
+@use "tokens";
+@use "variables";
+
 .results-footer {
-    @include flex-row();
+    @include variables.flex-row();
     align-items: flex-start;
 
     .button {
@@ -8,7 +11,7 @@
     }
 
     .actions {
-        @include flex-row();
+        @include variables.flex-row();
         justify-content: flex-start;
         width: 50%;
 
@@ -37,30 +40,30 @@
     }
 
     .pagination-block {
-        @include flex-row(); 
+        @include variables.flex-row();
 
         .pagination-list {
             margin: 0;
             li.disabled a,
             li.disabled span {
-                border: _(bd);
+                border: tokens.get(bd);
                 &:hover {
-                    background-color: _(bgcMenuSub);
+                    background-color: tokens.get(bgcMenuSub);
                 }
             }
 
             li.active a,
             li.active span {
                 z-index: 1;
-                color: _(cMenuFont);
-                background-color: _(bgcMenuSub);
-                color: _(cMenuActive);
-                border: _(bd);
+                color: tokens.get(cMenuFont);
+                background-color: tokens.get(bgcMenuSub);
+                color: tokens.get(cMenuActive);
+                border: tokens.get(bd);
                 text-decoration: none;
 
                 &:hover {
-                    color: _(cMenuFontHover);
-                    background-color: _(bgcMenuHover);
+                    color: tokens.get(cMenuFontHover);
+                    background-color: tokens.get(bgcMenuHover);
                 }
                 
             }
@@ -72,22 +75,22 @@
                 padding: 0.5rem 0.75rem;
                 margin-left: -1px;
                 line-height: 1.25;
-                background-color: _(bgcMenuItem);
-                color: _(cMenuFont);
+                background-color: tokens.get(bgcMenuItem);
+                color: tokens.get(cMenuFont);
                 text-decoration: none;
-                border: _(bd);
+                border: tokens.get(bd);
                 &:hover {
-                    color: _(cMenuFontHover); 
-                    background-color: _(bgcMenuHover);
+                    color: tokens.get(cMenuFontHover);
+                    background-color: tokens.get(bgcMenuHover);
                 }
             }
 
             li a.end {
-                border-radius: 0 _(bdRadius) _(bdRadius) 0;
+                border-radius: 0 tokens.get(bdRadius) tokens.get(bdRadius) 0;
             }
 
             li a.start {
-                border-radius: _(bdRadius) 0 0 _(bdRadius);
+                border-radius: tokens.get(bdRadius) 0 0 tokens.get(bdRadius);
             }
         }
     }
@@ -106,21 +109,21 @@
 
         a {
             &:hover {
-                color: _(cPrimary);
+                color: tokens.get(cPrimary);
                 text-decoration: none;
             }
         }
 
         thead {
             tr th {
-                background-color: _(bgcHeadMenu);
+                background-color: tokens.get(bgcHeadMenu);
                 border-bottom: none;
                 border-top: none;
             }
 
             .th-col {
-                @include flex-row();
-                color:_(cText);
+                @include variables.flex-row();
+                color:tokens.get(cText);
 
                 .sortoptions {
                     padding-right: 10px;
@@ -157,18 +160,18 @@
                 th {
                     padding: 0px 0.75rem;
                     vertical-align: middle;
-                    border-bottom: _(bd);
+                    border-bottom: tokens.get(bd);
                     a {
                         font-weight: 400;
                         &:hover {
-                            color: _(cMenuFontHover);
+                            color: tokens.get(cMenuFontHover);
                         }
                     }
                 }
 
                 &:hover {
-                    background-color: _(bgcMenuHover);
-                    color: _(cMenuFontHover);
+                    background-color: tokens.get(bgcMenuHover);
+                    color: tokens.get(cMenuFontHover);
                 }
             }
             .no_actions .action-checkbox {
@@ -180,12 +183,12 @@
 
 .toolbar-content {
     padding: 10px;
-    @include flex-row();
+    @include variables.flex-row();
 
     #toolbar {
         width: 100%;
         .search-container {
-            @include flex-row();
+            @include variables.flex-row();
             input, div.bootstrap-select {
                 margin-right: 10px;
             }
@@ -195,7 +198,7 @@
                 .input-group-text {
                     border-top-left-radius: 3px;
                     border-bottom-left-radius: 3px;
-                    border: _(bd);
+                    border: tokens.get(bd);
                     position: absolute;
                     left: 0;
                     top:0;
@@ -218,9 +221,9 @@
                     -ms-transform: translateY(-3px);
                     -o-transform: translateY(-3px);
                     transform: translateY(-3px);
-                    border-left-color: _(cPrimary);
-                    border-top-color: _(cPrimary);
-                    border-bottom-color: _(cPrimary);
+                    border-left-color: tokens.get(cPrimary);
+                    border-top-color: tokens.get(cPrimary);
+                    border-bottom-color: tokens.get(cPrimary);
                 }
             }
             .search-filters {
@@ -233,25 +236,25 @@
 }
 
 .list-info {
-    border-radius: _(bdRadius);
-    border: _(bd);
-    background-color: _(bgcHeadMenu);
+    border-radius: tokens.get(bdRadius);
+    border: tokens.get(bd);
+    background-color: tokens.get(bgcHeadMenu);
     margin: 0;
     padding: 0.5rem 0.75rem;
     line-height: 1.25;
     margin: 0 10px;
 
     a {
-        color: _(cPrimary);
+        color: tokens.get(cPrimary);
     }
 }
 
 .delete_confirmation {
     .module-header,.module-footer {
-        border-color: _(erro)!important;
+        border-color: tokens.get(erro)!important;
     }
     .module-delete {
-        @include errors();
+        @include variables.errors();
         padding: 20px 170px;
         .delete_confirmation_list {
             padding: 5px 10px;
@@ -263,7 +266,7 @@
             li {
                 padding: 5px 10px;
                 a {
-                    color: _(cPrimary);
+                    color: tokens.get(cPrimary);
                 }
                 &:before {
                     content: "\f03a"; 
@@ -290,14 +293,14 @@
     table {
         width: 100%;
         tr {
-            border-bottom: _(bd);
+            border-bottom: tokens.get(bd);
             th, td {
                 padding: 10px 0;
                 a {
                     text-decoration: none;
                 }
                 i {
-                    color: _(cPrimary);
+                    color: tokens.get(cPrimary);
                 }
             }
             th:first-child,

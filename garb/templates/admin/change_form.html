@@ -8,6 +8,8 @@
   {{ media }}
 {% endblock %}
 
+{% block title %}{% if errors %}{% translate "Error:" %} {% endif %}{{ block.super }}{% endblock %}
+
 {% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
 
 {% block breadcrumbs %}
@@ -21,8 +23,9 @@
 
 {% block content%}
   <div id="content-main" >
-    <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.model_name }}_form" novalidate>
+    <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{% if form_url %}{{ form_url }}{% else %}.{% endif %}" method="post" id="{{ opts.model_name }}_form" novalidate>
       {% csrf_token %}
+      {% block form_top %}{% endblock %}
       <div class="change-columns">
         <div class="main-column">
           
@@ -38,7 +41,7 @@
             {% endif %}
             {% block field_sets %}
               {% for fieldset in adminform %}
-                {% include "admin/includes/fieldset.html" %}
+                {% include "admin/includes/fieldset.html" with heading_level=2 prefix="fieldset" id_prefix=0 id_suffix=forloop.counter0 %}
               {% endfor %}
             {% endblock %}
           </div>
@@ -56,7 +59,7 @@
             {% comment %} {% block submit_buttons_bottom %}{% submit_row %}{% endblock %} {% endcomment %}
 
             {% block admin_change_form_document_ready %}
-                <script type="text/javascript" id="django-admin-form-add-constants" src="{% static 'admin/js/change_form.js' %}"
+                <script id="django-admin-form-add-constants" src="{% static 'admin/js/change_form.js' %}" async
                         {% if adminform and add %}
                             data-model-name="{{ opts.model_name }}"
                         {% endif %}>
@@ -86,5 +89,9 @@
 
 {% block extrajs %}
     {{ block.super }}
-    <script type="text/javascript"> $('.help-tooltip').tooltip() </script>
+    <script>
+      document.querySelectorAll('.help-tooltip').forEach(function (element) {
+        bootstrap.Tooltip.getOrCreateInstance(element);
+      });
+    </script>
 {% endblock %}

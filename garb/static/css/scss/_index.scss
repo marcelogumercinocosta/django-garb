@@ -1,14 +1,17 @@
+@use "tokens";
+@use "variables";
+
 @mixin table-index() {
     width: 100%;
     tr {
-        border-bottom: _(bd);
+        border-bottom: tokens.get(bd);
         th, td {
             padding: 10px 0;
             a {
                 text-decoration: none;
             }
             i {
-                color: _(cPrimary);
+                color: tokens.get(cPrimary);
             }
         }
     }
@@ -18,9 +21,9 @@
     .apps-column {
         width: calc(70% - 20px);
         .app-models {
-            @include content();
+            @include variables.content();
             .module-header .legend a {
-                color: _(cPrimary);
+                color: tokens.get(cPrimary);
                 text-decoration: none;
             }
             table {
@@ -40,12 +43,12 @@
         }
     }
     .last-column{
-        @include content();
+        @include variables.content();
         width: 30%;
         .module-header.last-actions{
             padding-left: 20px;
             .legend  {
-                color: _(cPrimary);
+                color: tokens.get(cPrimary);
                 text-decoration: none;
             }
         }

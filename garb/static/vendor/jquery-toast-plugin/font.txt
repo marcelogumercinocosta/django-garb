@@ -1,3 +1,0 @@
-Highly customizable jquery plugin to show toast messages 
-- http://kamranahmed.info/toast
-- https://github.com/kamranahmedse/jquery-toast-plugin

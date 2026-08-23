@@ -1,13 +1,8 @@
-import re
-from struct import pack_into
-
 from django import template
 from django.apps import apps
-from django.core.exceptions import ObjectDoesNotExist
-from django.core.handlers.wsgi import get_path_info
-from django.http import HttpRequest
-from django.urls import resolve, reverse
+from django.urls import reverse
 from django.urls.exceptions import NoReverseMatch
+from django.utils.text import slugify
 
 from garb.config import get_config
 
@@ -31,40 +26,41 @@ class ItemLink(object):
                 if (not 'auth' in sub_item):
                     sub_item.update({"auth": self.auth})
             menu =  Menu(self.sub_itens, user=user, path_info=path_info).get_app_list()
-            self.collapsed = True if True in [item.get_active() for item in menu ] else False
+            self.collapsed = any(item.get_active() for item in menu)
             self.childrens = menu
     
     def get_target(self):
-        if self.target:
-            return "target='_blank'"
+        return self.target or ""
 
     def get_chave(self):
-        return re.sub(u'[^a-zA-Z0-9áéíóúÁÉÍÓÚâêîôÂÊÎÔãõÃÕçÇ: ]', '', self.label)
+        return f"garb-menu-{slugify(self.label)}"
 
     def get_active(self):
-        array_path = str(self.path_info).split('/')
-        # if self.route:
-        #     print( reverse(self.route).replace("//", "/"),  ('/'.join(array_path[0:4]) + "/").replace("//", "/") )
-        if self.route and ('/'.join(array_path[0:4]) + "/").replace("//", "/") == f"{reverse(self.route)}/".replace("//", "/"):
-            return True
-        return False
+        if not self.route:
+            return False
+        route_path = reverse(self.route).rstrip("/")
+        current_path = str(self.path_info).rstrip("/")
+        if not route_path:
+            return not current_path
+        return current_path == route_path or current_path.startswith(f"{route_path}/")
     
     def get_url(self):
         if self.route:
             return  reverse(self.route)
         elif self.link:
-            self.target = "_blank"
-            return ('http://' + self.link).replace("http://http://", "http://")
+            self.target = self.target or "_blank"
+            if self.link.startswith(("http://", "https://", "/")):
+                return self.link
+            return f"http://{self.link}"
         else:
             return "#"
 
     def check_perms(self):
         if hasattr(self,'permission'):
-            perms = perms if isinstance(self.permission, (list, tuple)) else (self.permission,)
+            perms = self.permission if isinstance(self.permission, (list, tuple)) else (self.permission,)
             if self.user.has_perms(perms):
                 return self
-            else:
-                return None
+            return None
         return self
 
 
@@ -109,26 +105,19 @@ class Menu(object):
     def make_app(self, app):
         if isinstance(app, dict):
             app = app.copy()
-            if ("model" in app) and (self.user.is_authenticated):
+            if ("model" in app) and self.user.is_authenticated:
                 return ItemLinkModel(app, self.user, self.path_info).check_perms()
             if ("label" in app) and self.has_auth_item_link(app, self.user.is_authenticated):
                 return ItemLink(app, self.user, self.path_info).check_perms()
             return False
 
     def has_auth_item_link(self, app, authenticated):
-        if ('auth' in app ):
-            if app['auth']=='all':
+        if 'auth' in app:
+            if app['auth'] == 'all':
                 return True
             if authenticated:
-                if app['auth']=='yes':
-                    return True
-                else:
-                    return False
-            else:
-                if app['auth']=='no':
-                    return True
-                else:
-                    return False
+                return app['auth'] == 'yes'
+            return app['auth'] == 'no'
         elif ("sub_itens" in app):
             return True
         return False
@@ -137,4 +126,4 @@ class Menu(object):
 @register.simple_tag(takes_context=True)
 def get_menu(context, request):
     app_list = get_config('MENU')
-    return Menu(app_list, user=context.get('user'), path_info=request.path_info ).get_app_list()
+    return Menu(app_list, user=context.get('user'), path_info=request.path_info).get_app_list()

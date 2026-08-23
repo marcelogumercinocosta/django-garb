@@ -1,3 +1,0 @@
-Source code and more for the most popular front-end framework in the world.
-- https://getbootstrap.com
-- https://github.com/twbs/bootstrap

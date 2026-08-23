@@ -1,7 +1,11 @@
+@use "tokens";
+@use "variables";
+@use "button";
+
 
 
 .change-columns {
-    @include flex-row();
+    @include variables.flex-row();
     align-items: flex-start;
 
     .box-column.error {
@@ -12,7 +16,7 @@
         width: 250px;
 
         .save-box {
-            @include content();
+            @include variables.content();
             padding: 20px;
             .btn {
                 margin-bottom: 5px;
@@ -21,17 +25,17 @@
 
                 &.btn-light {
                     color: #000000;
-                    border: _(bd);
+                    border: tokens.get(bd);
                 }
             }
         }
         .btn-secondary {
             color: #fff;
-            background-color: _(btnSecondary);
-            border-color:_(btnSecondary);
+            background-color: tokens.get(btnSecondary);
+            border-color:tokens.get(btnSecondary);
             &:hover {
-                background-color: darken(_(btnSecondary),10%);
-                border-color: darken(_(btnSecondary),10%);
+                background-color: color-mix(in srgb, tokens.get(btnSecondary) 90%, black);
+                border-color: color-mix(in srgb, tokens.get(btnSecondary) 90%, black);
             }
         }
     }
@@ -51,26 +55,26 @@
             width: 100%;
 
             .alert {
-                border-radius: _(bdRadius);
-                box-shadow: _(boxShadow);
+                border-radius: tokens.get(bdRadius);
+                box-shadow: tokens.get(boxShadow);
                 padding: 10px;
                 margin: 10px 0;
                 ul.errorlist {
-                    @include errorlist();
+                    @include variables.errorlist();
                 }
             }
 
             fieldset {
-                @include content();
+                @include variables.content();
                 margin-bottom: 20px;
                 .form-row.is-invalid .form-row-box .form-row-field input,
                 .form-row.is-invalid .form-row-box .form-row-checkbox input,
                 .form-row.is-invalid .form-row-box .form-row-field textarea,
                 .form-row.is-invalid .form-row-box .form-row-field .bootstrap-select>.dropdown-toggle {
-                    @include errors();
+                    @include variables.errors();
                 }
                 ul.errorlist {
-                    @include errorlist();
+                    @include variables.errorlist();
                 }
                 .form-row:last-child {
                     border-bottom: none;
@@ -83,13 +87,13 @@
                         width: 20%;
                     }
                     ul.errorlist {
-                        color: _(erro);
+                        color: tokens.get(erro);
                         padding: 0px;
                         margin: px 0px 5px 160px;
                     }
 
                     .form-row-box {
-                        @include flex-row();
+                        @include variables.flex-row();
                         align-items: flex-start;
                         width: 100%;
 
@@ -100,17 +104,17 @@
 
                             label {
                                 font-weight: bold;
-                                color: _(cText);
+                                color: tokens.get(cText);
                                 width: 100%;
                             }
                         }
                         .form-row-field {
-                            @include flex-row();
+                            @include variables.flex-row();
                             justify-content: start;
                             width: 100%;
                             label {
                                 font-weight: bold;
-                                color: _(cText);
+                                color: tokens.get(cText);
                                 float: none;
                                 width: auto;
                                 margin-bottom: 0;
@@ -120,7 +124,7 @@
                                 margin-left: 0px;
                                 font-size: 13px;
                                 a {
-                                    color: _(cPrimary);
+                                    color: tokens.get(cPrimary);
                                 }
                             }
                             .form-row-error {
@@ -128,7 +132,7 @@
                                 margin-top: 0;
                                 margin-left: 0px;
                                 padding-left: 10px;
-                                color: _(erro);
+                                color: tokens.get(erro);
                                 width: 240px;
                                 ul {
                                     padding: 0px;
@@ -147,11 +151,11 @@
                             }
 
                             .readonly {
-                                background: _(cInput);
+                                background: tokens.get(cInput);
                                 min-height: 40px;
-                                border: _(bd);
+                                border: tokens.get(bd);
                                 border-radius: 3px;
-                                color: _(cTextOff);
+                                color: tokens.get(cTextOff);
                                 font-size: 15px;
                                 -webkit-transition: all 0.4s ease;
                                 transition: all 0.4s ease;
@@ -169,7 +173,7 @@
                                 width: 100%;
                                 strong {
                                     padding-left: 10px;
-                                    color: _(cTextOff);
+                                    color: tokens.get(cTextOff);
                                 }
     
                                 .datetimeshortcuts {
@@ -191,8 +195,8 @@
                                     }
                                 }
                                 .selector-chosen h2 {
-                                        background: _(cPrimary);
-                                        color: _(cInput);
+                                        background: tokens.get(cPrimary);
+                                        color: tokens.get(cInput);
                                 }
                                 .selector-available {
                                     label {
@@ -203,8 +207,8 @@
                                         width: 90%;
                                     }
                                     h2 {
-                                        background: _(backgroundColor);
-                                        color: _(cText);
+                                        background: tokens.get(backgroundColor);
+                                        color: tokens.get(cText);
                                     }
                                 }
                                 
@@ -216,14 +220,14 @@
                     }
 
                     .help {
-                        color: _(cTextOff);
+                        color: tokens.get(cTextOff);
                         width: 100%;
                         padding-left: 0px;
                         padding-top: 3px;
 
                         a {
                             padding-left: 3px;
-                            color: _(cPrimary);
+                            color: tokens.get(cPrimary);
                         }
                     }
 
@@ -263,8 +267,8 @@
                     border-bottom: none;
                     td {
                         
-                        color: _(cText);
-                        background: _(bgcContent);
+                        color: tokens.get(cText);
+                        background: tokens.get(bgcContent);
                         vertical-align: bottom;
                         padding: 5px 5px;
                         textarea {
@@ -294,7 +298,7 @@
                             margin: 5px 0px 5px 10px;
                             li {
                                 padding-left: 5px;
-                                color: _(erro);
+                                color: tokens.get(erro);
                                 margin-bottom: 3px;
                                 list-style-type: none;
                             }
@@ -305,8 +309,9 @@
                         text-align: center;
                         vertical-align: middle;
                         div a.inline-deletelink {
-                            @extend .button;
-                            background-color: _(erro);
+                            @include button.button-base;
+                            color: #ffffff;
+                            background-color: tokens.get(erro);
                             background-image: none;
                             float: right;
                             width: 100%;
@@ -326,7 +331,7 @@
                         vertical-align: middle;
                         height: 26px;
                         font-size: 0.8em;
-                        color: _(erro);
+                        color: tokens.get(erro);
                     }
 
                     th.delete {
@@ -334,12 +339,12 @@
                     }
                 }
                 tr.add-row td {
-                    background: _(bgcMenuSub);
+                    background: tokens.get(bgcMenuSub);
                     padding: 2px 20px;
-                    border-bottom: _(bdMenu);
+                    border-bottom: tokens.get(bdMenu);
                     a {
                         text-decoration: none;
-                        color: _(cMenuFont);
+                        color: tokens.get(cMenuFont);
                     }
                 }
                 tbody tr:last-child  {
@@ -349,16 +354,15 @@
             .inline-group {
                 margin: 0px;
                 div.add-row {
-                    color: _(cMenuFont);
-                    background: _(bgcMenuSub);
+                    color: tokens.get(cMenuFont);
+                    background: tokens.get(bgcMenuSub);
                     padding: 2px 20px;
                     a {
                         text-decoration: none;
-                        color: _(cMenuFont);
+                        color: tokens.get(cMenuFont);
                     }
                 }
             }
         }
     }
 }
-

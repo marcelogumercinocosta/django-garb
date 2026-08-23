@@ -1,11 +1,11 @@
 from django.conf import settings
 from django.contrib.auth.models import Permission
 from django.urls import reverse, resolve
-from django.utils.encoding import force_text as force_unicode
 from garb.tests.models import *
 from garb.tests.urls import *
 from garb.templatetags.garb_menu import get_menu, Menu, ItemLink, ItemLinkModel
 from garb.tests.mixins import UserTestCaseMixin
+from django.test import override_settings
 
 
 class GarbMenuTestCase(UserTestCaseMixin):
@@ -15,12 +15,13 @@ class GarbMenuTestCase(UserTestCaseMixin):
     route_content =  ("admin:{0}_{1}_changelist".format(app_label,'blogcomment')) 
 
     def setUp(self):
-        self.setUpConfig()
+        self.config_override = override_settings(GARB_CONFIG=self.make_config())
+        self.config_override.enable()
+        self.addCleanup(self.config_override.disable)
         self.login_superuser()
 
-    def setUpConfig(self):
-        settings.GARB_CONFIG = getattr(settings, 'GARB_CONFIG', {})
-        settings.GARB_CONFIG.update({
+    def make_config(self):
+        return {
             'MENU': [
                 { 'label': 'menu1',  'icon': 'fa-user-plus',  'route': 'blog1', 'auth':'all' },
                 { 'label': 'menu2',  'icon': 'fa-user-plus',
@@ -46,7 +47,7 @@ class GarbMenuTestCase(UserTestCaseMixin):
                     ]
                 }
             ],
-        })
+        }
 
     def make_menu_from_response(self):
         return get_menu(self.response.context, self.response._request)
@@ -187,8 +188,6 @@ class GarbMenuTestCase(UserTestCaseMixin):
         self.assertEqual(menu[1].childrens[1].get_active(), False)
         self.assertEqual(menu[1].collapsed, True)
         self.assertEqual(menu[2].collapsed, False)
-
-
 
 
 

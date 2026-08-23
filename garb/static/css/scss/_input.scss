@@ -1,6 +1,9 @@
+@use "tokens";
+@use "variables";
+
 input[type="checkbox"] {
     width: 14px;
-    border: _(bd);
+    border: tokens.get(bd);
     height: 14px;
     outline: 0;
     box-sizing: border-box;
@@ -18,13 +21,13 @@ input[type="email"],
 input[type="search"],
 input[type="password"],
 textarea {
-    background: _(cInput);
+    background: tokens.get(cInput);
     height: 40px;
-    border: _(bd);
-    -webkit-border-radius: _(bdRadius);
-    -moz-border-radius: _(bdRadius);
-    border-radius: _(bdRadius);
-    color: _(cText);
+    border: tokens.get(bd);
+    -webkit-border-radius: tokens.get(bdRadius);
+    -moz-border-radius: tokens.get(bdRadius);
+    border-radius: tokens.get(bdRadius);
+    color: tokens.get(cText);
     font-size: 15px;
     -webkit-transition: all 0.4s ease;
     -o-transition: all 0.4s ease;
@@ -61,7 +64,7 @@ textarea {
         -ms-transform: translateY(-3px);
         -o-transform: translateY(-3px);
         transform: translateY(-3px);
-        border-color: _(cPrimary);
+        border-color: tokens.get(cPrimary);
     }
 
     &:disabled {
@@ -75,15 +78,15 @@ textarea {
 
 select{
     -webkit-appearance: none;
-    border-radius: _(bdRadius);
-    border: _(bd);
+    border-radius: tokens.get(bdRadius);
+    border: tokens.get(bd);
     display: inline-block;
     font-size: 1rem;
     height: calc(1.5em + .75rem + 4px);
     padding: 0 30px 0 10px;
     vertical-align: middle;
-    color: _(cText);
-    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.4rem center/8px 10px no-repeat _(cInput);
+    color: tokens.get(cText);
+    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.4rem center/8px 10px no-repeat tokens.get(cInput);
     transition: all 0.4s ease;
     width: 100%;
 
@@ -96,7 +99,7 @@ select{
         -ms-transform: translateY(-3px);
         -o-transform: translateY(-3px);
         transform: translateY(-3px);
-        border-color: _(cPrimary);
+        border-color: tokens.get(cPrimary);
     }
 }
 
@@ -112,7 +115,7 @@ label.required:before {
     vertical-align: middle;
     height: 26px;
     font-size: 0.8em;
-    color: _(erro);
+    color: tokens.get(erro);
 }
 
 input[type='checkbox'],
@@ -133,12 +136,12 @@ input[type='radio'] {
     position: relative;
     margin: 0;
     cursor: pointer;
-    border: _(bd);
-    background: _(cInput);
-    transition: _(cInput) .3s, border-color .3s, box-shadow .2s;
+    border: tokens.get(bd);
+    background: tokens.get(cInput);
+    transition: tokens.get(cInput) .3s, border-color .3s, box-shadow .2s;
     width: 18px;
     &:focus {
-        border-color: _(cPrimary);
+        border-color: tokens.get(cPrimary);
     }
 
     &:after {
@@ -151,19 +154,19 @@ input[type='radio'] {
     }
 
     &:checked {
-        background: _(cPrimary);
-        border-color: _(cPrimary);
+        background: tokens.get(cPrimary);
+        border-color: tokens.get(cPrimary);
         transition: transform .6s cubic-bezier(.2, .85, .32, 1.2), opacity 3s;
     }
 
     &:disabled {
-        background: _(cTextOff);
+        background: tokens.get(cTextOff);
         cursor: not-allowed;
         opacity: .9;
 
         &:checked {
-            background-color: _(cTextOff);
-            border: _(bd);
+            background-color: tokens.get(cTextOff);
+            border: tokens.get(bd);
         }
 
         &+label {
@@ -174,7 +177,7 @@ input[type='radio'] {
     &:hover {
         &:not(:checked) {
             &:not(:disabled) {
-                border-color: _(cPrimary);
+                border-color: tokens.get(cPrimary);
             }
         }
     }
@@ -197,11 +200,11 @@ input[type='radio'] {
 }
 
 input[type='checkbox'] {
-        border-radius: _(bdRadius);
+        border-radius: tokens.get(bdRadius);
         &:after {
             width: 5px;
             height: 9px;
-            border: 2px solid _(cTextContrast);
+            border: 2px solid tokens.get(cTextContrast);
             border-top: 0;
             border-left: 0;
             left: 6px;
@@ -236,12 +239,12 @@ input[type='checkbox'] {
             border-radius: 50%;
             width: 15px;
             height: 15px;
-            background: _(backgroundColor);
+            background: tokens.get(backgroundColor);
             transform: translateX(0);
             opacity: 1;
         }
         &:checked:after {
-            background-color: _(cTextContrast);
+            background-color: tokens.get(cTextContrast);
             transform: translateX(17px);
         }
 
@@ -262,7 +265,7 @@ input[type='radio'] {
         width: 19px;
         height: 19px;
         border-radius: 50%;
-        background: _(backgroundColor);
+        background: tokens.get(backgroundColor);
         opacity: 0;
         transform: scale(.7);
     }
@@ -272,9 +275,9 @@ input[type='radio'] {
 }
 
 input.is-invalid, select.is-invalid ~ .dropdown-toggle, input.has-error{
-    @include errors();
+    @include variables.errors();
     &:focus {
-        @include errors();
+        @include variables.errors();
     }
 }
 
@@ -288,9 +291,9 @@ input.is-invalid, select.is-invalid ~ .dropdown-toggle, input.has-error{
 }
 
 .clockbox.module {
-    background-color: _(bgcMenuItem)!important;
+    background-color: tokens.get(bgcMenuItem)!important;
 } 
 
 .calendarbox.module {
-    background-color: _(bgcMenuItem)!important;
+    background-color: tokens.get(bgcMenuItem)!important;
 } 

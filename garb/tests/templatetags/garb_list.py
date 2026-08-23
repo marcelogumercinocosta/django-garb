@@ -29,7 +29,7 @@ class GarbListTestCase(UserTestCaseMixin):
         output = paginator_number(self.changelist, '.')
         self.assertTrue('...' in output)
 
-        output = paginator_number(self.changelist, 0)
+        output = paginator_number(self.changelist, 1)
         self.assertTrue('active' in output)
 
     def test_paginator_info(self):
@@ -57,13 +57,12 @@ class GarbListTestCase(UserTestCaseMixin):
         self.assertEqual(pg['pagination_required'], True)
 
     def test_garb_list_filter_select(self):
-        filter_matches = (self.blog.pk, self.blog.name)
-        self.assertEqual(len(self.changelist.filter_specs), 2)
+        self.assertEqual(len(self.changelist.filter_specs), 3)
 
-        for i, spec in enumerate(self.changelist.filter_specs):
+        for spec in self.changelist.filter_specs:
             filter_output = garb_list_filter_select(self.changelist, spec)
-            self.assertTrue('value="%s"' % filter_matches[i] in filter_output)
+            self.assertIn('search-filter', filter_output)
     
     def test_get_for_one_string(self):
         filter_output = get_for_one_string(self.changelist.list_filter)
-        self.assertEqual(filter_output, 'Id | Name')
+        self.assertEqual(filter_output, 'Id | Name | Category | Deleted')

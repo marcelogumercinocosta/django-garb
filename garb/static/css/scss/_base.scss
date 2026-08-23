@@ -1,3 +1,6 @@
+@use "tokens";
+@use "variables";
+
     header {
         display: flex;
         height: 60px;
@@ -7,8 +10,8 @@
             display: flex;
 
             .titulo {
-                box-shadow: _(boxShadowMenu);
-                background-color: _(bgcMenu);
+                box-shadow: tokens.get(boxShadowMenu);
+                background-color: tokens.get(bgcMenu);
                 width: 230px;
 
                 a {
@@ -20,7 +23,7 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        color: _(cTitle);
+                        color: tokens.get(cTitle);
                         font-family: "Exo", sans-serif;
                         font-size: 1.5rem;
                         font-style: italic;
@@ -33,7 +36,7 @@
 
         .headerlogin {
             justify-content: flex-end;
-            margin: 9px _(marginVw) 15px 15px;
+            margin: 9px tokens.get(marginVw) 15px 15px;
         }
     }
 
@@ -45,7 +48,7 @@
 
         aside {
             flex: 0 0 230px;
-            box-shadow: _(boxShadowMenu);
+            box-shadow: tokens.get(boxShadowMenu);
         }
 
         main.margin-is-popup {
@@ -69,10 +72,10 @@
             flex: 1;
 
             .content-extend {
-                margin: 0 _(marginVw) 10px;
+                margin: 0 tokens.get(marginVw) 10px;
 
                 .content {
-                    @include content();
+                    @include variables.content();
                 }
 
                 .page_error {
@@ -81,7 +84,7 @@
                     align-items: center;
                     height: calc(100vh - 280px);
                     flex-direction: column;
-                    color: _(cBreadcrumb);
+                    color: tokens.get(cBreadcrumb);
 
                     .number_error {
                         font-size: 20em;
@@ -114,7 +117,7 @@
                 }
 
                 .module-header {
-                    border-bottom: _(bd);
+                    border-bottom: tokens.get(bd);
                     padding: 5px 0 5px 15px;
                     min-height: 51px;
                     display: flex;
@@ -146,7 +149,7 @@
                 }
 
                 .module-footer {
-                    border-top: _(bd);
+                    border-top: tokens.get(bd);
                     margin-top: 0px;
                     padding: 10px 5%;
                     min-height: 50px;
@@ -178,9 +181,9 @@
                     height: calc(100vh - 80px);
 
                     .content-box {
-                        @include content();
+                        @include variables.content();
                         padding: 3em;
-                        border-left: 6px solid _(cPrimary);
+                        border-left: 6px solid tokens.get(cPrimary);
                         margin-top: -160px;
                         width: calc(40vw + 230px);
 
@@ -200,7 +203,7 @@
             .breadcrumb {
                 height: 100%;
                 align-items: flex-end;
-                margin: 0 _(marginVw);
+                margin: 0 tokens.get(marginVw);
                 padding: 0 1em;
                 flex-wrap: nowrap;
                 font-size: 24px;
@@ -213,10 +216,10 @@
                 }
 
                 li {
-                    color: _(cBreadcrumb);
+                    color: tokens.get(cBreadcrumb);
 
                     a {
-                        color: _(cBreadcrumb);
+                        color: tokens.get(cBreadcrumb);
                         text-decoration: none;
 
                         &:hover {
@@ -226,7 +229,7 @@
                 }
 
                 .divider {
-                    color: _(cBreadcrumb);
+                    color: tokens.get(cBreadcrumb);
                     padding: 0 5px;
                 }
             }
@@ -238,11 +241,11 @@
     }
 
     .alert-danger {
-        @include errors();
+        @include variables.errors();
     }
 
     .site-name-azul {
-        color: _(cPrimary);
+        color: tokens.get(cPrimary);
         font-family: "Exo", sans-serif;
         font-size: 1.5rem;
         font-style: italic;

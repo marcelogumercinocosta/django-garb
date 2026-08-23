@@ -1,5 +1,4 @@
 import itertools
-from builtins import range
 from html import escape
 from urllib.parse import parse_qs
 
@@ -13,31 +12,25 @@ from garb.config import get_config
 from django.utils.text import capfirst
 
 register = template.Library()
-DOT = "."
-
-
 @register.simple_tag
 def paginator_number(cl, i):
     """
     Generates an individual page index link in a paginated list.
     """
-    if i == DOT:
+    if i in (".", cl.paginator.ELLIPSIS):
         return mark_safe(
             '<li class="disabled page_dot"><a href="#" onclick="return false;">...</a></li>'
         )
     else:
-        i = i + 1
         if i == cl.page_num:
             return mark_safe(
                 '<li class="active"><a %s %s href="">%d</a></li> '
                 % (
-                    (i == cl.paginator.num_pages + 1 and ' class="end"' or ""),
+                    (i == cl.paginator.num_pages and ' class="end"' or ""),
                     (i == 1 and ' class="start"' or ""),
                     i,
                 )
             )
-        elif i > cl.paginator.num_pages:
-            return ""
         else:
             return mark_safe(
                 '<li><a href="%s" %s %s>%d</a></li> '
@@ -87,26 +80,11 @@ def pagination(cl):
         if paginator.num_pages <= 8:
             page_range = range(paginator.num_pages)
         else:
-            # Insert "smart" pagination links, so that there are always ON_ENDS
-            # links at either end of the list of pages, and there are always
-            # ON_EACH_SIDE links at either end of the "current page" link.
-            page_range = []
-            if page_num > (ON_EACH_SIDE + ON_ENDS):
-                page_range += [
-                    *range(0, ON_ENDS),
-                    DOT,
-                    *range(page_num - ON_EACH_SIDE, page_num + 1),
-                ]
-            else:
-                page_range.extend(range(0, page_num + 1))
-            if page_num < (paginator.num_pages - ON_EACH_SIDE - ON_ENDS - 1):
-                page_range += [
-                    *range(page_num + 1, page_num + ON_EACH_SIDE - 1),
-                    DOT,
-                    *range(paginator.num_pages - ON_ENDS, paginator.num_pages),
-                ]
-            else:
-                page_range.extend(range(page_num + 1, paginator.num_pages))
+            page_range = paginator.get_elided_page_range(
+                page_num,
+                on_each_side=ON_EACH_SIDE,
+                on_ends=ON_ENDS,
+            )
 
     need_show_all_link = cl.can_show_all and not cl.show_all and cl.multi_page
     return {

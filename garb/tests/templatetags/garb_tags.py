@@ -6,4 +6,5 @@ class GarbTagsTestCase(TestCase):
 
     def test_garb_tag_urlpath_exists(self):
         self.assertTrue(garb_url_exists('admin:login'))
-        self.assertFalse(garb_url_exists('password_reset'))
+        self.assertTrue(garb_url_exists('password_reset'))
+        self.assertFalse(garb_url_exists('missing-route'))

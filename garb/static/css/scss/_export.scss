@@ -1,14 +1,17 @@
+@use "tokens";
+@use "variables";
+
 .box-alert {
-    border-radius: _(bdRadius);
-    box-shadow: _(boxShadow);
-    background-color: _(bgcMenuHover);
+    border-radius: tokens.get(bdRadius);
+    box-shadow: tokens.get(boxShadow);
+    background-color: tokens.get(bgcMenuHover);
     position: relative;
     padding: 1rem 1.25rem;
     margin-bottom: 2rem;
 }
 
 .box-garb {
-    @include content();
+    @include variables.content();
     margin-bottom: 20px;
     p {
         margin: 10px 20px;
@@ -23,7 +26,7 @@
 }
 
 legend {
-    border-bottom: _(bd);
+    border-bottom: tokens.get(bd);
     padding: 10px 0 0 0;
 }
 

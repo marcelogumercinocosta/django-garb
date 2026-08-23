@@ -1,5 +1,7 @@
-.btn {
-	border-radius: _(bdRadius);
+@use "tokens";
+
+@mixin button-base {
+	border-radius: tokens.get(bdRadius);
 	border: 1px solid transparent;
 	display: block;
 	font-size: 16px;
@@ -21,13 +23,16 @@
 	display: inline-block;
 	outline: none;
 	transition: all ease 0.5s;
-	
+}
+
+.btn {
+	@include button-base;
 }
 
 .button {
 	@extend .btn;
 	color: #ffffff;
-	background-color: _(cPrimary);
+	background-color: tokens.get(cPrimary);
 	&:hover {
 		color: #ffffff;
 	}

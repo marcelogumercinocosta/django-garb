@@ -1,3 +1,5 @@
+@use "tokens";
+
 
 @mixin flex-row() {
     display: flex;
@@ -9,22 +11,22 @@
 
 @mixin content() {
     margin: 0;
-    background-color: _(bgcContent);
+    background-color: tokens.get(bgcContent);
     padding: 10px;
-    border-radius: _(bdRadius);
-    box-shadow: _(boxShadow);
+    border-radius: tokens.get(bdRadius);
+    box-shadow: tokens.get(boxShadow);
     margin-bottom: 10px;
 }
 
 @mixin errors() {
     border-color: #f2a1a6;
     background-color:  #F2DEDE;
-    color: _(erro);
+    color: tokens.get(erro);
 }
 
 
 @mixin errorlist() {
-    color: _(boxShadow);
+    color: tokens.get(boxShadow);
     padding: 0px;
     margin: 10px 0px 5px 10px;
     list-style-type: none;
