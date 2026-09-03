@@ -27,6 +27,8 @@
         }
 
         ul {
+            padding-left: 0;
+
             li.active {
                 border-right: 2px solid tokens.get(cMenuActive);
             }

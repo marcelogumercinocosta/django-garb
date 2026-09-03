@@ -18,5 +18,6 @@ npm run test:visual:update
 ```
 
 O teste reprova diferenças acima de 1%, ausência de componentes esperados e
-erros JavaScript ou de assets locais. Capturas e diffs temporários ficam em
+erros JavaScript ou de assets locais. A matriz cobre seis temas, incluindo o
+tema ``levva``. Capturas e diffs temporários ficam em
 `tests/visual/actual/` e `tests/visual/diff/`.

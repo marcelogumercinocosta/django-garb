@@ -11,7 +11,7 @@ const baseUrl = process.env.GARB_VISUAL_URL || 'http://127.0.0.1:8765';
 const baselineDir = path.resolve('tests/visual/baseline');
 const actualDir = path.resolve('tests/visual/actual');
 const diffDir = path.resolve('tests/visual/diff');
-const themes = ['default', 'light', 'hybrid', 'dark', 'alive'];
+const themes = ['default', 'light', 'hybrid', 'dark', 'alive', 'levva'];
 const failures = [];
 const browserErrors = [];
 const validatedUrls = new Set();
@@ -68,7 +68,7 @@ function compare(name, actualPath) {
 async function capture(page, name, url, theme = 'default') {
   await page.goto(`${baseUrl}${url}`, { waitUntil: 'networkidle' });
   await page.evaluate(selectedTheme => {
-    document.body.classList.remove('default', 'light', 'hybrid', 'dark', 'alive');
+    document.body.classList.remove('default', 'light', 'hybrid', 'dark', 'alive', 'levva');
     document.body.classList.add(selectedTheme);
   }, theme);
   await page.evaluate(() => document.fonts.ready);
@@ -175,5 +175,5 @@ if (failures.length) {
   console.error(failures.join('\n'));
   process.exitCode = 1;
 } else {
-  console.log(`${update ? 'Baselines atualizadas' : 'Comparação visual aprovada'}: 10 capturas, 5 temas, sem erros JavaScript.`);
+  console.log(`${update ? 'Baselines atualizadas' : 'Comparação visual aprovada'}: 11 capturas, 6 temas, sem erros JavaScript.`);
 }

@@ -1197,6 +1197,9 @@ select.selectpicker {
   background-color: var(--garb-bgcMenuHover);
   transition: all 0.6s ease;
 }
+.wrapper .menu ul {
+  padding-left: 0;
+}
 .wrapper .menu ul li.active {
   border-right: 2px solid var(--garb-cMenuActive);
 }
@@ -4721,6 +4724,54 @@ body.light .bg_cor_primaria {
   background-color: var(--garb-cPrimary);
 }
 body.light .txt_cor_primaria {
+  color: var(--garb-cPrimary);
+}
+
+body.levva {
+  --garb-backgroundColor: #F4F6F8;
+  --garb-bd: 1px solid #8792A2;
+  --garb-bdMenu: 1px solid #35517A;
+  --garb-bdRadius: 5px;
+  --garb-bgcContent: #FFFFFF;
+  --garb-bgcMenu: #052455;
+  --garb-bgcMenu2: #031A3E;
+  --garb-bgcMenuHover: #103D7F;
+  --garb-bgcMenuItem: #052455;
+  --garb-bgcMenuSub: #0B316D;
+  --garb-boxShadow: 0 2px 0 rgba(90, 97, 105, 0.11), 0 4px 8px rgba(90, 97, 105, 0.12), 0 10px 10px rgba(90, 97, 105, 0.06), 0 7px 10px rgba(90, 97, 105, 0.1);
+  --garb-boxShadowMenu: 0 0.125rem 9.375rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.5rem rgba(90, 97, 105, 0.12), 0 0.9375rem 1.375rem rgba(90, 97, 105, 0.1), 0 0.4375rem 2.1875rem rgba(165, 182, 201, 0.1);
+  --garb-cMenuFont: #FFFFFF;
+  --garb-cMenuFontHover: #FFFFFF;
+  --garb-cMenuActive: #FF7A00;
+  --garb-bgMenuDetail: #FF7A00;
+  --garb-cInput: #FFFFFF;
+  --garb-bgcTitle: #052455;
+  --garb-cTitle: #FFFFFF;
+  --garb-cPrimary: #C45100;
+  --garb-cText: #052455;
+  --garb-cTextContrast: #FFFFFF;
+  --garb-cTextOff: #5D6778;
+  --garb-btnSecondary: #052455;
+  --garb-erro: #D8000C;
+  --garb-cBreadcrumb: #C45100;
+  --garb-bgcHeadMenu: #EEF1F5;
+  --garb-marginVw: 4vw;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--garb-backgroundColor);
+  font-family: "Sora", "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.43;
+  color: var(--garb-cText);
+}
+body.levva a {
+  text-decoration: none;
+  color: var(--garb-cText);
+}
+body.levva .bg_cor_primaria {
+  background-color: var(--garb-cPrimary);
+}
+body.levva .txt_cor_primaria {
   color: var(--garb-cPrimary);
 }
 

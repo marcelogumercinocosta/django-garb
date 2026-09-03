@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "build:css": "sass --style=expanded --source-map garb/static/css/style.scss garb/static/css/style.css && sass --style=compressed --source-map garb/static/css/style.scss garb/static/css/style.min.css",
+    "test:contrast": "node scripts/check-theme-contrast.mjs",
     "vendor:sync": "node scripts/sync-vendors.mjs",
     "test:browser": "node scripts/visual-test.mjs",
     "test:visual:update": "node scripts/visual-test.mjs --update"
