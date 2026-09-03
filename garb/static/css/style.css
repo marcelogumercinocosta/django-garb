@@ -1833,11 +1833,14 @@ legend {
 }
 .results table tbody tr td a:hover,
 .results table tbody tr th a:hover {
-  color: var(--garb-cMenuFontHover);
+  color: var(--garb-cTableLinkHover);
 }
 .results table tbody tr:hover {
-  background-color: var(--garb-bgcMenuHover);
-  color: var(--garb-cMenuFontHover);
+  background-color: var(--garb-bgcTableHover);
+  color: var(--garb-cTableHover);
+}
+.results table tbody tr:hover a {
+  color: var(--garb-cTableLinkHover);
 }
 .results table tbody .no_actions .action-checkbox {
   display: none;
@@ -4502,6 +4505,9 @@ body.default {
   --garb-boxShadowMenu: 0 0.125rem 9.375rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.5rem rgba(90, 97, 105, 0.12), 0 0.9375rem 1.375rem rgba(90, 97, 105, 0.1), 0 0.4375rem 2.1875rem rgba(165, 182, 201, 0.1);
   --garb-cMenuFont: #fff;
   --garb-cMenuFontHover: #fff;
+  --garb-bgcTableHover: var(--garb-bgcMenuHover);
+  --garb-cTableHover: var(--garb-cMenuFontHover);
+  --garb-cTableLinkHover: var(--garb-cMenuFontHover);
   --garb-cMenuActive: #fff;
   --garb-bgMenuDetail: #fff;
   --garb-cInput: #FFFFFF;
@@ -4550,6 +4556,9 @@ body.hybrid {
   --garb-boxShadowMenu: 0 0.125rem 9.375rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.5rem rgba(90, 97, 105, 0.12), 0 0.9375rem 1.375rem rgba(90, 97, 105, 0.1), 0 0.4375rem 2.1875rem rgba(165, 182, 201, 0.1);
   --garb-cMenuFont: #000;
   --garb-cMenuFontHover: #0068FF;
+  --garb-bgcTableHover: var(--garb-bgcMenuHover);
+  --garb-cTableHover: var(--garb-cMenuFontHover);
+  --garb-cTableLinkHover: var(--garb-cMenuFontHover);
   --garb-cMenuActive: #2096F3;
   --garb-bgMenuDetail: #2096F3;
   --garb-cInput: #FFFFFF;
@@ -4598,6 +4607,9 @@ body.magalu {
   --garb-boxShadowMenu: 0 0.125rem 9.375rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.5rem rgba(90, 97, 105, 0.12), 0 0.9375rem 1.375rem rgba(90, 97, 105, 0.1), 0 0.4375rem 2.1875rem rgba(165, 182, 201, 0.1);
   --garb-cMenuFont: #000;
   --garb-cMenuFontHover: #0068FF;
+  --garb-bgcTableHover: var(--garb-bgcMenuHover);
+  --garb-cTableHover: var(--garb-cMenuFontHover);
+  --garb-cTableLinkHover: var(--garb-cMenuFontHover);
   --garb-cMenuActive: #2096F3;
   --garb-bgMenuDetail: linear-gradient(90deg, rgb(251, 206, 10) 0%, rgb(251, 206, 10) 10%, rgb(247, 148, 32) 20%, rgb(228, 82, 53) 30%, rgb(215, 57, 147) 40%, rgb(154, 79, 158) 50%, rgb(92, 81, 160) 60%, rgb(61, 130, 192) 70%, rgb(53, 193, 219) 80%, rgb(88, 190, 150) 90%, rgb(83, 184, 72) 100%);
   --garb-cInput: #FFFFFF;
@@ -4646,6 +4658,9 @@ body.alive {
   --garb-boxShadowMenu: 0 0.125rem 9.375rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.5rem rgba(90, 97, 105, 0.12), 0 0.9375rem 1.375rem rgba(90, 97, 105, 0.1), 0 0.4375rem 2.1875rem rgba(165, 182, 201, 0.1);
   --garb-cMenuFont: #700099;
   --garb-cMenuFontHover: #700099;
+  --garb-bgcTableHover: var(--garb-bgcMenuHover);
+  --garb-cTableHover: var(--garb-cMenuFontHover);
+  --garb-cTableLinkHover: var(--garb-cMenuFontHover);
   --garb-cMenuActive: #471E5F;
   --garb-bgMenuDetail: #471E5F;
   --garb-cInput: #FFFFFF;
@@ -4694,6 +4709,9 @@ body.light {
   --garb-boxShadowMenu: 0 0.125rem 9.375rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.5rem rgba(90, 97, 105, 0.12), 0 0.9375rem 1.375rem rgba(90, 97, 105, 0.1), 0 0.4375rem 2.1875rem rgba(165, 182, 201, 0.1);
   --garb-cMenuFont: #000;
   --garb-cMenuFontHover: #000;
+  --garb-bgcTableHover: var(--garb-bgcMenuHover);
+  --garb-cTableHover: var(--garb-cMenuFontHover);
+  --garb-cTableLinkHover: var(--garb-cMenuFontHover);
   --garb-cMenuActive: #216BB8;
   --garb-bgMenuDetail: #216BB8;
   --garb-cInput: #FFFFFF;
@@ -4742,6 +4760,9 @@ body.levva {
   --garb-boxShadowMenu: 0 0.125rem 9.375rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.5rem rgba(90, 97, 105, 0.12), 0 0.9375rem 1.375rem rgba(90, 97, 105, 0.1), 0 0.4375rem 2.1875rem rgba(165, 182, 201, 0.1);
   --garb-cMenuFont: #FFFFFF;
   --garb-cMenuFontHover: #FFFFFF;
+  --garb-bgcTableHover: #EEF1F5;
+  --garb-cTableHover: #052455;
+  --garb-cTableLinkHover: #A84400;
   --garb-cMenuActive: #FF7A00;
   --garb-bgMenuDetail: #FF7A00;
   --garb-cInput: #FFFFFF;
@@ -4790,6 +4811,9 @@ body.dark {
   --garb-boxShadowMenu: 0 0.125rem 9.375rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.5rem rgba(90, 97, 105, 0.12), 0 0.9375rem 1.375rem rgba(90, 97, 105, 0.1), 0 0.4375rem 2.1875rem rgba(165, 182, 201, 0.1);
   --garb-cMenuFont: #ffffff;
   --garb-cMenuFontHover: #ccc;
+  --garb-bgcTableHover: var(--garb-bgcMenuHover);
+  --garb-cTableHover: var(--garb-cMenuFontHover);
+  --garb-cTableLinkHover: var(--garb-cMenuFontHover);
   --garb-cMenuActive: #03DAC6;
   --garb-bgMenuDetail: #03DAC6;
   --garb-cInput: #263341;
