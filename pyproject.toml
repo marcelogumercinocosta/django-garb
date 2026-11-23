@@ -13,7 +13,7 @@ authors = [
   {name = "Marcelo Gumercino Costa", email = "marcelogc@gmail.com"},
 ]
 dependencies = [
-  "Django>=5.1,<6.1",
+  "Django>=5.1,<6.2",
 ]
 classifiers = [
   "Development Status :: 4 - Beta",
@@ -22,6 +22,7 @@ classifiers = [
   "Framework :: Django :: 5.1",
   "Framework :: Django :: 5.2",
   "Framework :: Django :: 6.0",
+  "Framework :: Django :: 6.1",
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.10",
